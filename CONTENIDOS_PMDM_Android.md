@@ -1,20 +1,20 @@
 # Índice curricular — Desarrollo de aplicaciones Android
 
-> **Estado:** propuesta curricular consolidada para PMDM (DAM2, curso 2026-2027).  
-> **Publicación:** los títulos que aparecen bajo «Itinerario del curso» y «Ampliaciones» son los propuestos para la web. No se mostrarán números de unidades de trabajo ni de bloques.  
+> **Estado:** índice curricular acordado como base para desarrollar los materiales de Android de PMDM.  
+> **Uso:** documento de planificación del repositorio; las páginas públicas mostrarán títulos temáticos, sin números de UT ni de bloques.  
 > **Tecnologías de referencia:** Android · Kotlin · Jetpack Compose · Material 3 · Room (SQLite) · HTTP/REST · Media3 · OpenStreetMap/MapLibre.
 
 ## Estructura de navegación de la web
 
 - **Inicio:** presentación muy breve del itinerario, requisitos y cómo utilizar los materiales.
-- **Itinerario del curso:** tres temas, uno por cada unidad de trabajo impartida. Contenido **obligatorio y evaluable**, según las evidencias e instrumentos de la programación.
+- **Itinerario del curso:** tres temas, uno por cada unidad de trabajo impartida. Constituyen la ruta principal de aprendizaje.
   - **El ecosistema Android y el entorno de desarrollo**.
   - **Desarrollo de aplicaciones con Kotlin y Jetpack Compose**.
   - **Multimedia, localización y notificaciones en Android**.
-- **Ampliaciones:** temas independientes, claramente identificados como **opcionales y no evaluables** en el itinerario ordinario. No constituyen requisitos previos de los temas anteriores.
+- **Ampliaciones:** temas independientes de profundización, identificados como **Ampliación**. No constituyen requisitos previos de los temas anteriores.
 - **Recursos:** documentación oficial y consulta rápida; sin introducir un temario adicional.
 
-Las páginas interiores tampoco llevarán numeración curricular. Los títulos de apartado serán descriptivos. La correspondencia con las unidades de trabajo, los resultados de aprendizaje y las horas figura **solo en el anexo docente al final de este documento**; ese anexo no debe publicarse en la web del alumnado.
+Las páginas interiores tampoco llevarán numeración curricular. Los títulos de apartado serán descriptivos. La correspondencia con las unidades de trabajo, los resultados de aprendizaje y las horas está en la programación y el anexo docente, conservados fuera de este repositorio público.
 
 ---
 
@@ -199,7 +199,7 @@ Las páginas interiores tampoco llevarán numeración curricular. Los títulos d
 
 ## Ampliaciones
 
-> **Sección opcional y no evaluable del itinerario ordinario.** Cada elemento siguiente constituye un **tema independiente** de la web, con sus propios apartados, ejemplos y prácticas de ampliación. No se enumerarán como unidades de trabajo ni se mezclarán con la secuencia obligatoria.
+> **Sección de ampliación del itinerario ordinario.** Cada elemento siguiente constituye un **tema independiente** de la web, con sus propios apartados, ejemplos y prácticas de ampliación. No se enumerarán como unidades de trabajo ni se mezclarán con la secuencia obligatoria.
 
 ### Kotlin avanzado, asincronía y efectos de Compose
 - Programación funcional y colecciones avanzadas; extensiones y reutilización.
@@ -309,63 +309,4 @@ Priorizar capturas y demostraciones cortas cuando faciliten comprender el result
 
 ---
 
-## Anexo de planificación docente — NO PUBLICAR EN LA WEB
-
-### Correspondencia administrativa y horas
-
-| Tema de la web | Unidad de trabajo | RA principal | Horas de la programación | Instrumentos actuales |
-|---|---|---|---:|---|
-| El ecosistema Android y el entorno de desarrollo | **UT5** | **RA1** | **2 h** | Test teórico |
-| Desarrollo de aplicaciones con Kotlin y Jetpack Compose | **UT6** | **RA2** | **18 h** | Test teórico (25 %) y examen práctico (75 %) |
-| Multimedia, localización y notificaciones en Android | **UT7** | **RA3** | **9 h** | Proyectos y tareas |
-| **Total** | | | **29 h** | |
-
-**UT8:** no tiene tema propio en la web. Sus horas se destinan al desarrollo del proyecto intermodular, empleando los conocimientos de los tres temas y consultando ampliaciones cuando el proyecto lo requiera.
-
-### Distribución orientativa del tiempo
-
-| Unidad | Distribución orientativa |
-|---|---|
-| **UT5 — 2 h** | Tecnologías y particularidades móviles (0,5 h); entorno, estructura y proyecto de ejemplo (1,5 h). Instalación preparada o guiada previamente para que no consuma toda la sesión. |
-| **UT6 — 18 h** | Kotlin (2 h); Compose/Material 3 (4 h); estado, navegación y arquitectura básica (3 h); HTTP/REST (2 h); Room (3 h); Intents y comunicación inalámbrica básica (2 h); comprobaciones, ejecución real y documentación mínima (2 h). Los contenidos transversales se integran en las prácticas. |
-| **UT7 — 9 h** | Selección/captura y transformación de imágenes (3 h); reproducción y animación multimedia (2 h); GPS y mapa (2 h); notificación local (1 h); integración, comprobaciones y documentación (1 h). Estas horas pueden distribuirse entre prácticas sin reservar necesariamente sesiones independientes. |
-
-### Correspondencia con los criterios de evaluación
-
-| Resultado | Criterios que deben quedar acreditados | Evidencias prácticas previstas |
-|---|---|---|
-| **RA1** | **a–e**: limitaciones, tecnologías, entornos, configuraciones y perfiles | Comparativa y análisis; instalación/configuración y lectura de proyecto. |
-| **RA1** | **f–h**: estructura, modificaciones y emuladores | Abrir un proyecto preparado, localizar clases, modificarlo y ejecutar en emulador. El test actual no demuestra directamente todas estas acciones; revisar su instrumento el próximo curso. |
-| **RA2** | **a–b**: estructura e interfaces | Clases Kotlin, Compose, formularios, menús, diálogos y navegación. |
-| **RA2** | **c**: comunicación con dispositivos inalámbricos | Comprobar Wi-Fi en dispositivo real y comunicarse con un servicio/dispositivo de pruebas en la misma red mediante clases de conectividad y cliente HTTP. **Validar que la evidencia responde a la literalidad del criterio en la programación del departamento.** |
-| **RA2** | **d**: intercambio de mensajes de texto y multimedia | Compartición de texto e imagen mediante Intents/Android Sharesheet; comprobar recepción en una aplicación destinataria. No se requiere programar SMS/MMS. |
-| **RA2** | **e–f**: HTTP/HTTPS y persistencia | Consumo funcional de API REST y CRUD Room. |
-| **RA2** | **g–i**: pruebas, despliegue y documentación | Prueba manual con emulador, ejecución en dispositivo físico y guía breve de ejecución/pruebas. No pueden omitirse por completo ni relegarse íntegramente a ampliaciones. |
-| **RA3** | **a–e**: APIs multimedia, captura, conversión, transformación, estados y excepciones | Selección/captura de imagen; transformación y conversión a formato compatible; manejo de errores y eventos. |
-| **RA3** | **f–g**: animación y reproductores | Animación Compose observable y reproducción de audio/vídeo con controles. |
-| **RA3** | **h**: depuración y documentación | Verificación de la funcionalidad multimedia y descripción breve de las pruebas. |
-
-**Advertencia de alcance:** GPS, mapas y notificaciones añaden valor práctico, pero **no son sustitutos de los CE específicos de RA3**. Para encajarlos en nueve horas, se prioriza una implementación pequeña por funcionalidad; procesamiento complejo de audio/vídeo, transmisiones en tiempo real y notificaciones remotas quedan en ampliaciones.
-
-### Decisiones tecnológicas a revisar antes de redactar los tutoriales
-
-- **Mapas:** MapLibre + datos OSM. MapLibre Compose es una opción coherente con Compose, pero su API es todavía evolutiva; fijar y probar una versión concreta antes de preparar el proyecto base. **No usar osmdroid como tecnología nueva de referencia**: repositorio archivado desde noviembre de 2024.
-- **Teselas OpenStreetMap:** los datos OSM son abiertos, pero los servidores públicos de teselas no son infraestructura ilimitada ni un servicio con SLA. Verificar atribución, identificación y caché; no hacer descargas masivas u offline desde `tile.openstreetmap.org`.
-- **Localización:** explicar que la posición puede proceder de varios proveedores y no siempre del GPS. Elegir entre APIs de Android y Fused Location Provider según el entorno del aula; la segunda depende de Google Play services. La ubicación puede ser nula o aproximada.
-- **Notificaciones:** enseñar permiso de ejecución desde Android 13 cuando proceda, canales y notificaciones locales. No mezclarlo con FCM ni WorkManager.
-- **Navegación:** fijar en la versión de Android elegida una única biblioteca de navegación para Compose; actualizar el código a su API documentada.
-- **Paquetes y versiones:** fijar Android Studio, Android Gradle Plugin, Kotlin, Compose BOM, Room/KSP, Media3 y biblioteca cartográfica para que todos los ejemplos sean ejecutables y reproducibles.
-
-### Fuentes oficiales para la preparación técnica
-
-- Android Developers: https://developer.android.com/
-- Kotlin: https://kotlinlang.org/docs/home.html
-- Jetpack Compose: https://developer.android.com/develop/ui/compose
-- Android arquitectura: https://developer.android.com/topic/architecture
-- Room: https://developer.android.com/training/data-storage/room
-- Permisos de localización: https://developer.android.com/develop/sensors-and-location/location/permissions
-- Notificaciones en Compose: https://developer.android.com/develop/ui/compose/notifications/notification-permission
-- Media3: https://developer.android.com/media/media3
-- MapLibre Compose: https://maplibre.org/maplibre-compose/
-- Política oficial de teselas OSM: https://operations.osmfoundation.org/policies/tiles/
-- osmdroid (archivo histórico): https://github.com/osmdroid/osmdroid
+**Derechos del texto docente original:** © Mikel Aingeru Jorge Soteras · CC BY-NC-ND 4.0. El código fuente que se publique en archivos separados tendrá las licencias expresamente indicadas para él.

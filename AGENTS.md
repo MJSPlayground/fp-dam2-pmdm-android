@@ -6,7 +6,7 @@ Este repositorio contiene **exclusivamente materiales de desarrollo de aplicacio
 
 Leer, por este orden, antes de realizar cambios:
 
-1. `CONTENIDOS_ANDROID.md`: índice curricular **acordado**. Mantener la estructura, el alcance, las ampliaciones y la progresión de conceptos. No añadir o suprimir temas ni ampliar el itinerario obligatorio sin validación docente.
+1. `CONTENIDOS_PMDM_Android.md`: índice curricular **acordado**. Mantener la estructura, el alcance, las ampliaciones y la progresión de conceptos. No añadir o suprimir temas ni ampliar el itinerario obligatorio sin validación docente.
 2. `README.md` y archivos reales del proyecto: situación del repositorio y decisiones ya implementadas.
 3. Estándares transversales del repositorio privado [`MJSPlayground/ai-workspace`](https://github.com/MJSPlayground/ai-workspace): `AGENTS.md`, `WORKING-AGREEMENT.md`, `TEACHING-STANDARD.md` y las skills docentes aplicables. **Si no existe acceso, indicarlo; no inventar sus reglas ni bloquear tareas sencillas por ello.**
 4. Hoja de presentación y programación 2026/2027 del módulo (aportadas en el proyecto ChatGPT, no publicadas aquí): referencia para RA, CE, horas e instrumentos. Si no están disponibles, solicitar o señalar el dato pendiente cuando sea indispensable.

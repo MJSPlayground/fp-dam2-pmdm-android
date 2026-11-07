@@ -16,7 +16,7 @@ Cada tema corresponde a una unidad de trabajo impartida y se organiza en apartad
 
 La web contará además con temas propios de **Ampliación**: Kotlin/Compose avanzado, diseño adaptable, arquitectura y persistencia avanzadas, redes y Bluetooth, Firebase, segundo plano, IA, multimedia avanzada, cartografía avanzada, sensores y calidad/publicación.
 
-El índice íntegro aprobado, con contenidos y prácticas previstas, se mantiene en [`CONTENIDOS_ANDROID.md`](CONTENIDOS_ANDROID.md).
+El índice íntegro aprobado, con contenidos y prácticas previstas, se mantiene en [`CONTENIDOS_PMDM_Android.md`](CONTENIDOS_PMDM_Android.md).
 
 ## Cómo se utilizarán los materiales
 

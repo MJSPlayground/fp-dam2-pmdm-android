@@ -1,0 +1,43 @@
+# Generador web y Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+site/
+.cache/
+
+# Editores y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Android / Gradle
+.gradle/
+**/build/
+**/.cxx/
+local.properties
+*.apk
+*.aab
+*.ap_
+*.hprof
+*.log
+captures/
+.externalNativeBuild/
+
+# Credenciales y archivos privados
+.env
+.env.*
+!.env.example
+*.keystore
+*.jks
+*.p12
+*.pem
+service-account*.json
+google-services.local.json
+
+# Artefactos de prueba
+test-results/
+playwright-report/

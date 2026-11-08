@@ -22,6 +22,9 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: android-actions/setup-android@v3
+        with:
+          # El paquete heredado "tools" ya no está disponible en el repositorio SDK.
+          packages: platform-tools
       - name: Instalar plataforma del curso
         run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
       - name: Compilar y analizar los proyectos distribuidos

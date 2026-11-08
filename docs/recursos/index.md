@@ -12,6 +12,12 @@ Los proyectos fijan una combinación estable. No se pretende utilizar la última
 | Compose BOM | 2025.12.00 | [Publicación de diciembre](https://developer.android.com/blog/posts/whats-new-in-the-jetpack-compose-december-release) |
 | Activity Compose | 1.11.0 | [Activity](https://developer.android.com/jetpack/androidx/releases/activity#1.11.0) |
 | Lifecycle | 2.9.4 | [Lifecycle](https://developer.android.com/jetpack/androidx/releases/lifecycle#2.9.4) |
+| Navigation Compose | 2.9.5 | [Navigation](https://developer.android.com/jetpack/androidx/releases/navigation#2.9.5) |
+| Plugin Serialization / JSON | 2.2.21 / 1.9.0 | [Serialization](https://github.com/Kotlin/kotlinx.serialization/releases/tag/v1.9.0) |
+| Corrutinas Android | 1.10.2 | [Publicaciones oficiales](https://github.com/Kotlin/kotlinx.coroutines/releases/tag/1.10.2) |
+| Room | 2.8.4 | [Room](https://developer.android.com/jetpack/androidx/releases/room#2.8.4) |
+| KSP | 2.2.21-2.0.4 | [Compatibilidad con Kotlin fijado](https://github.com/google/ksp/releases/tag/2.2.21-2.0.4) |
+| Retrofit y conversor Serialization | 3.0.0 | [Publicación oficial](https://github.com/lysine-dev/retrofit/releases/tag/3.0.0) |
 | SDK de compilación y objetivo | 36 | [Niveles SDK](https://developer.android.com/guide/topics/manifest/uses-sdk-element) |
 | Android mínimo de los proyectos | API 26 | Elección del curso |
 
@@ -19,7 +25,7 @@ AGP 8.13 requiere Gradle 8.13 y como mínimo JDK 17. En Android Studio seleccion
 
 La compilación local se comprueba con Android Studio instalado 2025.3.1 y su JBR. Puedes utilizar una versión estable compatible más reciente: al abrir la práctica, evita actualizar sus plugins automáticamente. La [página oficial de instalación](https://developer.android.com/studio/install) indica la versión estable y los requisitos actuales del IDE.
 
-Las dependencias adicionales de los siguientes temas se incorporarán a esta tabla al generar y comprobar sus proyectos, para no presentar como validada una combinación todavía sin ejecutar.
+Los puntos de control incorporan solo las dependencias necesarias para su etapa. Por ejemplo, la pantalla inicial no usa Room ni Retrofit; la etapa de red conserva datos en memoria y la solución añade Room. Los catálogos se incluyen en cada proyecto descargable para que pueda abrirse de forma independiente. Conserva las versiones comunes al avanzar entre etapas.
 
 ## Consultar la documentación
 

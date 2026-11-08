@@ -49,6 +49,7 @@ jobs:
       - name: Comprobar navegación y generar PDF
         run: |
           python scripts/test_navigation.py
+          python scripts/test_lan_server.py
           python scripts/package_projects.py
           python scripts/export_pdfs.py
       - name: Comprobar enlaces, navegación y descargas

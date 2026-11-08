@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import functools
 import io
+import sys
 import threading
 from zipfile import ZipFile
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -63,14 +64,18 @@ def check_tab_contrast(page):
         assert ratio >= 4.5, (link.inner_text(), ratio)
 
 
-def check():
+def check(*, published=False):
     project = config()
     sections = find_sections(project)
-    server = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Handler, directory=str(SITE)))
-    threading.Thread(target=server.serve_forever, daemon=True).start()
-    base = f"http://127.0.0.1:{server.server_port}{PREFIX}"
-    captures = ROOT / "qa-captures"
-    captures.mkdir(exist_ok=True)
+    server = None
+    if published:
+        base = project["site_url"].rstrip("/") + "/"
+    else:
+        server = ThreadingHTTPServer(("127.0.0.1", 0), functools.partial(Handler, directory=str(SITE)))
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        base = f"http://127.0.0.1:{server.server_port}{PREFIX}"
+    captures = ROOT / "qa-captures" / ("publicado" if published else "local")
+    captures.mkdir(parents=True, exist_ok=True)
     try:
         with sync_playwright() as pw:
             browser = launch_chromium(pw)
@@ -79,6 +84,7 @@ def check():
                 errors = []
                 page.on("pageerror", lambda error: errors.append(str(error)))
                 pages = flatten_nav(project["nav"])
+                zip_targets = {}
                 for source in pages:
                     response = page.goto(base + route(source), wait_until="networkidle")
                     assert response and response.ok, source
@@ -87,6 +93,8 @@ def check():
                     assert page.locator(".md-tabs__link").count() == len(project["nav"])
                     assert page.locator(".md-header__button.md-logo").evaluate("el => el.href") == base
                     assert page.locator(".mjs-pdf-trigger").count() == 1
+                    for link in page.locator('article a[href$=".zip"]').all():
+                        zip_targets[link.evaluate("el => el.href")] = (source, link.get_attribute("href"))
                     for image in page.locator("article img").all():
                         assert image.get_attribute("alt"), source
                         assert image.evaluate("el => el.complete && el.naturalWidth > 0"), source
@@ -97,16 +105,33 @@ def check():
                             box = link.bounding_box()
                             assert box and box["width"] <= 280, (source, width, box)
                     page.set_viewport_size({"width": 1366, "height": 844})
-                for source in ("index.md", sections[0][2][0]):
+                for source in ["index.md"] + [section[2][0] for section in sections]:
                     for width in (1366, 390):
                         page.set_viewport_size({"width": width, "height": 844})
                         for theme in ("default", "slate"):
                             page.goto(base + route(source), wait_until="networkidle")
                             set_scheme(page, theme)
                             check_tab_contrast(page)
-                            label = "inicio" if source == "index.md" else sections[0][0].replace("/", "-")
+                            label = "inicio" if source == "index.md" else route(source).strip("/").replace("/", "-")
                             page.screenshot(path=str(captures / f"{label}-{width}-{theme}.png"), full_page=True)
                 page.set_viewport_size({"width": 1366, "height": 844})
+                if "desarrollo/proyecto.md" in pages:
+                    page.goto(base + "desarrollo/proyecto/", wait_until="networkidle")
+                    boxes = page.locator('.mjs-task input[type="checkbox"]')
+                    assert boxes.count() == 6, "La progresión de Cuaderno debe contener seis etapas"
+                    for box in boxes.all():
+                        box.uncheck()
+                    assert page.locator(".mjs-progress-count").inner_text() == "0 de 6 pasos"
+                    boxes.first.check()
+                    assert page.locator(".mjs-progress-count").inner_text() == "1 de 6 pasos"
+                    page.reload(wait_until="networkidle")
+                    assert boxes.first.is_checked(), "No se conserva el avance local de Cuaderno"
+                    assert page.locator(".mjs-progress-count").inner_text() == "1 de 6 pasos"
+                    boxes.first.uncheck()
+                    page.reload(wait_until="networkidle")
+                    assert not boxes.first.is_checked()
+                    assert page.locator(".mjs-progress-count").inner_text() == "0 de 6 pasos"
+                    page.locator(".mjs-progress-panel").screenshot(path=str(captures / "cuaderno-progreso.png"))
                 for slug, title, _ in sections:
                     page.goto(base + slug + "/", wait_until="networkidle")
                     page.locator(".mjs-pdf-trigger").click()
@@ -159,10 +184,11 @@ def check():
                             page.wait_for_timeout(300)
                             figure.screenshot(path=str(captures / f"captura-figura-{width}-{theme}.png"))
                     page.set_viewport_size({"width": 1366, "height": 844})
-                zip_links = page.locator('article a[href$=".zip"]')
-                assert zip_links.count() >= 2
-                for link in zip_links.all():
-                    response = page.request.get(link.evaluate("el => el.href"))
+                assert len(zip_targets) >= 2
+                for target, (source, href) in zip_targets.items():
+                    page.goto(base + route(source), wait_until="networkidle")
+                    link = page.locator(f'article a[href="{href}"]').first
+                    response = page.request.get(target)
                     assert response.ok
                     with ZipFile(io.BytesIO(response.body())) as archive:
                         assert archive.testzip() is None
@@ -180,13 +206,16 @@ def check():
                 assert not page.locator(".mjs-pdf-menu").is_visible()
                 assert page.locator(".mjs-pdf-trigger").evaluate("el => el === document.activeElement")
                 assert not errors, errors
-                print(f"OK UI: {len(pages)} páginas, 2 tamaños, 2 temas, {len(sections)} pares de descargas y teclado")
+                print(f"OK UI: {len(pages)} páginas, 2 tamaños, 2 temas, {len(sections)} pares PDF, {len(zip_targets)} ZIP y teclado")
             finally:
                 browser.close()
     finally:
-        server.shutdown()
-        server.server_close()
+        if server is not None:
+            server.shutdown()
+            server.server_close()
 
 
 if __name__ == "__main__":
-    check()
+    if sys.argv[1:] not in ([], ["--published"]):
+        raise SystemExit("Uso: check_site_ui.py [--published]")
+    check(published="--published" in sys.argv)

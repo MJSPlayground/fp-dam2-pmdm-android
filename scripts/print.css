@@ -115,7 +115,8 @@ a { color: #1b5e20; text-decoration: none; }
 a:not([href]) { color: inherit; }
 img,svg,figure { max-width: 100%; }
 img { height: auto; }
-figure,table,pre,.admonition,details,blockquote { break-inside: avoid; }
+figure,table,pre,.highlight,.admonition,details,blockquote { break-inside: avoid; }
+.highlight > .filename { display: block; break-after: avoid; }
 table {
   border-collapse: collapse;
   width: 100%;

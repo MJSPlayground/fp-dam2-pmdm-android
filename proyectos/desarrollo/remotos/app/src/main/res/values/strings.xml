@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Cuaderno</string>
+    <string name="nueva">Nueva nota</string>
+    <string name="remotos">Notas remotas</string>
+    <string name="titulo">Título</string>
+    <string name="contenido">Contenido</string>
+    <string name="guardar">Guardar</string>
+    <string name="guardando">Guardando…</string>
+    <string name="volver">Volver</string>
+    <string name="vacia">Todavía no hay notas. Crea la primera.</string>
+    <string name="validacion">Escribe un título de 3 a 80 caracteres y un contenido no vacío.</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="confirmar_eliminar">¿Eliminar esta nota?</string>
+    <string name="eliminacion_aviso">La nota desaparecerá de este dispositivo.</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="compartir">Compartir texto</string>
+    <string name="elegir_app">Compartir nota con</string>
+    <string name="sin_app">No hay una aplicación disponible para compartir.</string>
+    <string name="url">URL completa del recurso</string>
+    <string name="cargar">Cargar</string>
+    <string name="cargando">Cargando…</string>
+    <string name="reintentar">Reintentar</string>
+    <string name="importar">Importar copia</string>
+    <string name="importada">Nota importada</string>
+    <string name="sin_remotas">El servidor no devolvió notas.</string>
+    <string name="introduccion_remotas">Consulta el servidor y guarda una copia local de la nota que elijas.</string>
+    <string name="nota_ausente">Esta nota ya no existe. Vuelve al listado.</string>
+    <string name="error_red">No se pudo conectar. Comprueba la URL y la conexión.</string>
+    <string name="error_http">El servidor respondió con HTTP %1$d.</string>
+    <string name="error_json">La respuesta no tiene el formato JSON esperado.</string>
+    <string name="error_url">Usa una URL HTTPS completa. HTTP solo se admite en debug y con una IP privada o localhost.</string>
+    <string name="error_datos">No se pudo completar la operación local.</string>
+    <string name="comprobar_wifi">Comprobar Wi-Fi</string>
+    <string name="wifi_activa">Red activa Wi-Fi</string>
+    <string name="wifi_ausente">La red activa no es Wi-Fi o no está disponible</string>
+</resources>

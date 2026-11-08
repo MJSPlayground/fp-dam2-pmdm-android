@@ -5,7 +5,7 @@ Aprende a construir aplicaciones Android con Kotlin y Jetpack Compose partiendo 
 ## Itinerario del curso
 
 - [El ecosistema Android y el entorno de desarrollo](ecosistema/index.md): prepara el entorno, comprende un proyecto y modifica una aplicación.
-- **Desarrollo de aplicaciones con Kotlin y Jetpack Compose — En construcción.** Una aplicación incremental con interfaz, navegación, datos remotos y persistencia.
+- [Desarrollo de aplicaciones con Kotlin y Jetpack Compose](desarrollo/index.md): una aplicación incremental con interfaz, navegación, datos remotos y persistencia.
 - **Multimedia, localización y notificaciones en Android — En construcción.** Imágenes, reproducción, mapas y funciones del dispositivo.
 
 Las [ampliaciones](ampliaciones/index.md) son opcionales e independientes de esta ruta. Se publican cuando sus explicaciones, prácticas y proyectos están preparados.

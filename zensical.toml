@@ -15,6 +15,14 @@ nav = [
       "ecosistema/index.md", "ecosistema/tecnologias.md", "ecosistema/entorno.md",
       "ecosistema/proyecto.md", "ecosistema/practica.md", "ecosistema/repaso.md", "ecosistema/soluciones-repaso.md",
     ] },
+    { "Desarrollo de aplicaciones con Kotlin y Jetpack Compose" = [
+      "desarrollo/index.md", "desarrollo/kotlin.md", "desarrollo/practica-kotlin.md",
+      "desarrollo/estructura.md", "desarrollo/compose.md", "desarrollo/estado.md",
+      "desarrollo/navegacion.md", "desarrollo/arquitectura.md", "desarrollo/http.md",
+      "desarrollo/room.md", "desarrollo/intents.md", "desarrollo/comprobaciones.md",
+      "desarrollo/proyecto.md", "desarrollo/integracion.md", "desarrollo/repaso.md",
+      "desarrollo/soluciones-repaso.md",
+    ] },
   ] },
   { "Ampliaciones" = ["ampliaciones/index.md"] },
   { "Recursos y ayuda" = ["recursos/index.md"] },
@@ -24,10 +32,11 @@ nav = [
 generator = false
 # Solo estas carpetas representan temas publicables en PDF. Las agrupaciones
 # de navegación pueden contener tantos temas anidados como se necesiten.
-pdf_sections = ["ecosistema", "recursos"]
+pdf_sections = ["ecosistema", "desarrollo", "recursos"]
 
 [project.extra.pdf_titles]
 ecosistema = "El ecosistema Android y el entorno de desarrollo"
+desarrollo = "Desarrollo de aplicaciones con Kotlin y Jetpack Compose"
 recursos = "Recursos y ayuda"
 
 [project.theme]

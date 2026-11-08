@@ -48,6 +48,7 @@ def check():
         url = "https://mjsplayground.github.io" + PREFIX + rel
         soup = BeautifulSoup(page.read_text(encoding="utf-8"), "html.parser")
         assert soup.select_one("article h1"), f"Sin título: {rel}"
+        assert "--8<--" not in soup.select_one("article").get_text(), f"Snippet sin resolver: {rel}"
         for tag in soup.select("article a[href], article img[src]"):
             target = tag.get("href") or tag.get("src")
             if not target or target.startswith(("mailto:", "tel:", "data:")):

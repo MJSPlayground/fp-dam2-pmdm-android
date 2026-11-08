@@ -41,3 +41,7 @@ google-services.local.json
 # Artefactos de prueba
 test-results/
 playwright-report/
+qa-captures/
+# Descargas reproducibles generadas durante la publicación.
+docs/descargas/*.pdf
+docs/descargas/proyectos/*.zip

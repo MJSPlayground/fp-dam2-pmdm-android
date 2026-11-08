@@ -23,7 +23,7 @@ El índice es la base aprobada de contenidos; la redacción concreta, las biblio
 - Usar la **misma base visual y tecnológica que ACDA** (Zensical Modern y plantilla común, cuando se apruebe la implementación), cambiando la paleta a **verde**, con soporte claro/oscuro, navegación accesible, búsqueda y PDF por tema y global.
 - Verde orientativo: principal `#2E7D32`, oscuro `#1B5E20`, acento `#81C784`. Verificar contraste, no copiar CSS a ciegas.
 - En el pie público: **© Mikel Aingeru Jorge Soteras**. «MJS Playground» puede aparecer como marca.
-- **Este encargo inicial configura la documentación del repositorio, no autoriza habilitar GitHub Pages ni lanzar una web incompleta.** Para fases siguientes, comprobar si `main` publica automáticamente antes de integrar o desplegar.
+- **Encargo integral autorizado (2026-11-08):** desarrollar todos los contenidos del índice y publicar progresivamente en GitHub Pages desde `main`, con commit y push por hitos verificados. Las secciones pendientes se identifican como «En construcción» o se mantienen fuera de navegación. No requiere aprobación entre temas. No autoriza difusión desde Moodle, cambios de visibilidad ni publicaciones ajenas a esta web.
 
 ## Modelo didáctico
 

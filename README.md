@@ -1,49 +1,46 @@
-# 📱 Programación Multimedia y Dispositivos Móviles · Android
+﻿# PMDM — Android
 
-Materiales de **desarrollo de aplicaciones Android** para el módulo **PMDM de 2.º de Desarrollo de Aplicaciones Multiplataforma (DAM)**. Proyecto de documentación y autoaprendizaje de **MJS Playground**.
+Materiales públicos de desarrollo Android para PMDM de 2.º DAM. Alumnado con conocimientos de Java que empieza Kotlin y Android.
 
-> **Estado:** repositorio en preparación. La web de GitHub Pages y los proyectos prácticos **aún no están implementados ni publicados**.
+**Publicación progresiva autorizada:** [web Android](https://mjsplayground.github.io/fp-dam2-pmdm-android/). El estado comprobado de cada hito y los pendientes figuran en [ESTADO-DESARROLLO.md](ESTADO-DESARROLLO.md); no se presenta el curso como terminado mientras falten temas.
 
-El desarrollo de videojuegos se trabaja en **otro repositorio**: aquí solo habrá aplicaciones móviles.
+## Alcance
 
-## Itinerario de aprendizaje
+El [índice aprobado](CONTENIDOS_PMDM_Android.md) fija tres temas principales y once ampliaciones. Las ampliaciones son opcionales y no introducen requisitos ocultos en el itinerario. No se publican exámenes, tareas de Moodle, información del alumnado ni planificación administrativa.
 
-Cada tema corresponde a una unidad de trabajo impartida y se organiza en apartados prácticos:
+El contenido público comienza en `docs/`. Los proyectos Android, con starter y solución separados, se mantienen en `proyectos/<tema>/`. Las versiones reproducibles están en [Recursos](docs/recursos/index.md) y sus catálogos Gradle.
 
-- **El ecosistema Android y el entorno de desarrollo:** tecnologías, versiones, Android Studio, SDK, Gradle, estructura y primera aplicación.
-- **Desarrollo de aplicaciones con Kotlin y Jetpack Compose:** Kotlin desde Java, Material 3, estado, navegación, arquitectura básica, HTTP/REST, Room, Intents y ejecución.
-- **Multimedia, localización y notificaciones en Android:** permisos, imágenes y conversión, audio/vídeo, animaciones, ubicación y mapas OpenStreetMap/MapLibre, notificaciones locales.
+## Construir y comprobar
 
-La web contará además con temas propios de **Ampliación**: Kotlin/Compose avanzado, diseño adaptable, arquitectura y persistencia avanzadas, redes y Bluetooth, Firebase, segundo plano, IA, multimedia avanzada, cartografía avanzada, sensores y calidad/publicación.
+Python 3.11 y un navegador Chromium. En Windows:
 
-El índice íntegro aprobado, con contenidos y prácticas previstas, se mantiene en [`CONTENIDOS_PMDM_Android.md`](CONTENIDOS_PMDM_Android.md).
+```powershell
+py -3.11 -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m playwright install --only-shell chromium
+.\.venv\Scripts\python.exe scripts\package_projects.py
+.\.venv\Scripts\python.exe scripts\test_navigation.py
+.\.venv\Scripts\python.exe scripts\export_pdfs.py
+.\.venv\Scripts\python.exe scripts\check_links.py
+.\.venv\Scripts\python.exe scripts\check_site_ui.py
+```
 
-## Cómo se utilizarán los materiales
+El exportador construye Zensical, genera PDF por tema y global y reconstruye el sitio con las descargas. Los ZIP y PDF son artefactos generados; no se versionan. `zensical.toml` define el orden de navegación y los temas exportables. Las pruebas comprueban subruta pública, enlaces y fragmentos, búsqueda, temas, tamaños de pantalla y descargas. Las capturas de QA son locales.
 
-La documentación se diseñará para el **autoaprendizaje**: explicaciones comprensibles, código contextualizado, prácticas guiadas, actividades de consolidación y repaso. Se parte de conocimientos previos de **Java**, pero no de Kotlin.
+Cada proyecto Android incluye Gradle Wrapper y un README con instrucciones de apertura desde Android Studio, ejecución y pruebas técnicas. No se requiere Gradle global. No versionar `local.properties`, cachés, APK, AAB, keystores ni credenciales.
 
-Las entregas y pruebas evaluables se gestionarán desde **Moodle**. Este repositorio público **no** contendrá exámenes reservados, soluciones de evaluaciones, datos personales del alumnado ni planificación docente confidencial.
+## Publicación
 
-## Tecnologías de referencia
+`.github/workflows/validate.yml` construye y comprueba antes de desplegar en GitHub Pages desde `main`. Pages utiliza el modo **GitHub Actions**. El propietario ha autorizado la publicación progresiva; las secciones pendientes se identifican como en construcción. No se cambia la visibilidad del repositorio ni se difunde desde Moodle.
 
-- **Kotlin**, **Android Studio**, **Gradle Kotlin DSL** y Android SDK.
-- **Jetpack Compose** y **Material 3** para la interfaz.
-- **ViewModel**, estado observable y separación básica de responsabilidades.
-- **Retrofit / HTTP REST** para conectividad y **Room / SQLite** para datos locales.
-- **Media3**, permisos, geolocalización, **OpenStreetMap / MapLibre** y notificaciones locales.
+`scripts/github_pages.py status` permite consultar Pages y los últimos workflows con la autenticación del gestor Git local sin mostrarla. `enable` configura el modo Actions y requiere autorización de publicación. El workflow no necesita esa credencial local: utiliza los permisos efímeros de GitHub Actions.
 
-Las versiones exactas y las librerías de ejemplo se fijarán y verificarán antes de desarrollar los materiales correspondientes. No se incluye todavía un proyecto Android ejecutable.
+## Procedencia y licencias
 
-## Web y desarrollo
+© Mikel Aingeru Jorge Soteras · MJS Playground.
 
-La web utilizará **Zensical Modern**, heredando la estructura visual de [ACDA](https://mjsplayground.github.io/fp-dam2-acda/) y diferenciándose mediante una **paleta verde**, con soporte de tema claro/oscuro, búsqueda, navegación y PDF por tema y completo.
+Texto docente original: [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.es). Código original: [Apache 2.0](LICENSE), salvo aviso específico.
 
-**GitHub Pages todavía no está configurado.** Los scripts, el generador, la estructura `docs/` y los proyectos de ejemplo se incorporarán cuando comience el desarrollo real del sitio, reutilizando la plantilla común en lugar de duplicarla prematuramente.
+Plantilla visual, logo, codelabs y base PDF adaptados con autorización del propietario desde [ACDA](https://github.com/MJSPlayground/fp-dam2-acda), referencia local del conjunto `a60e79e2449c14b693d6db23d99b28424b9788ce`. El origen no contiene una licencia general explícita: se registra su procedencia y la autorización de reutilización, sin atribuirle una licencia de terceros inexistente. El Gradle Wrapper conserva los avisos de Gradle. Las bibliotecas externas mantienen sus propias licencias.
 
-Las instrucciones para agentes de desarrollo y documentación están en [`AGENTS.md`](AGENTS.md). Los estándares transversales se mantienen en el repositorio privado `MJSPlayground/ai-workspace`, accesible únicamente al personal autorizado.
-
-## Autoría y licencias
-
-**© Mikel Aingeru Jorge Soteras.**
-
-El repositorio conserva la licencia **Apache 2.0** existente para el código y los archivos sin aviso específico. Los **materiales docentes textuales originales** se indicarán expresamente bajo **CC BY-NC-ND 4.0**; los ejemplos y proyectos de código podrán mantener permisos distintos. No incorporar material de terceros sin comprobar sus condiciones de uso y atribución.
+Los estándares compartidos se consultan en origen y no se copian ni modifican aquí.

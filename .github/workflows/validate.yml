@@ -1,0 +1,73 @@
+name: Validar y publicar Android
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pmdm-android-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Instalar plataforma del curso
+        run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
+      - name: Compilar y analizar los proyectos distribuidos
+        shell: bash
+        run: |
+          set -euo pipefail
+          while IFS= read -r -d '' settings; do
+            project="$(dirname "$settings")"
+            (cd "$project" && bash gradlew :app:assembleDebug :app:testDebugUnitTest :app:lintDebug :app:assembleDebugAndroidTest --console=plain)
+          done < <(find proyectos -name settings.gradle.kts -print0)
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar dependencias
+        run: python -m pip install -r requirements.txt
+      - name: Instalar Chromium
+        run: python -m playwright install --with-deps --only-shell chromium
+      - name: Comprobar navegación y generar PDF
+        run: |
+          python scripts/test_navigation.py
+          python scripts/package_projects.py
+          python scripts/export_pdfs.py
+      - name: Comprobar enlaces, navegación y descargas
+        run: |
+          python scripts/check_links.py
+          python scripts/check_site_ui.py
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Subir web con PDF
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/
+  deploy:
+    needs: [build, android]
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

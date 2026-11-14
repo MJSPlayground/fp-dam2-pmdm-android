@@ -1,83 +1,88 @@
-# Práctica: editor mínimo de imágenes
+﻿# Práctica guiada: editor mínimo de imágenes
 
-## Abrir el proyecto
+Selecciona o captura una foto, transforma sus píxeles y genera un archivo PNG o JPEG que otra aplicación pueda abrir. Utilizaremos Activity Result, Bitmap, un ViewModel y FileProvider. La selección y la exportación PNG son ejemplos preparados; tú completarás el giro, la conversión JPEG y la compartición.
 
-Lee primero [permisos y URI](permisos.md), [selección y captura](imagenes.md) y [transformación de imágenes](transformaciones.md). Utiliza el mismo entorno Android del tema anterior.
+Lee [permisos](permisos.md), [imágenes](imagenes.md) y [transformaciones](transformaciones.md).
 
 [Proyecto inicial — ZIP](../descargas/proyectos/multimedia-imagenes-inicial.zip){ .md-button .md-button--primary }
 
-Abre la carpeta con `settings.gradle.kts` y ejecuta **app**. Este laboratorio es independiente de Cuaderno: no utiliza su base de datos ni necesita una cuenta. La interfaz de partida permite identificar las acciones; los TODO del procesamiento delimitan las funciones que debes completar.
+???+ example "Preparación y primera lectura"
 
-Necesitas una imagen que puedas utilizar y una aplicación de cámara disponible si quieres probar la captura. En un emulador sin fotos, incorpora un archivo propio al dispositivo o utiliza su cámara virtual. No solicites acceso a toda la galería para resolver que el selector está vacío.
+    Abre en Android Studio la carpeta con `settings.gradle.kts`, espera la sincronización y ejecuta **app**. Incorpora una foto propia al emulador si el selector está vacío. Puedes empezar sin cámara.
 
-## Seguir el recorrido de una imagen
+    **Observa el código existente.** En `app/src/main/java/es/mjsplayground/pmdm/multimedia/imagenes`, sigue `MainActivity.kt` → `ImagenViewModel.kt` → `ProcesadorImagen.kt`. La Activity abre selectores; el ViewModel coordina carga y errores; el procesador lee y escribe archivos. La interfaz está preparada para concentrarnos en multimedia.
 
-En este proyecto, la Activity coordina los selectores del sistema; `ImagenViewModel` representa carga, imagen y resultado; `ProcesadorImagen` abre el contenido y transforma los píxeles. Una URI identifica el contenido al que puedes acceder; no debes convertir su texto en una supuesta ruta del disco.
+    | Archivo | Preparado | Completarás |
+    | --- | --- | --- |
+    | `MainActivity.kt` | Selector, cámara y vista previa | `imagen-compartir` |
+    | `ImagenViewModel.kt` | Trabajo asíncrono y estado | Nada |
+    | `ProcesadorImagen.kt` | Lectura acotada, EXIF y PNG | `imagen-transformacion`, `imagen-jpeg` |
 
-Antes de modificar código, sigue este recorrido:
+    **Comprueba.** Selecciona una imagen: debe verse con sus dimensiones. Cancela otra selección: debe permanecer la imagen anterior. Exporta PNG: debe aparecer nombre, MIME y bytes. Giro y JPEG muestran un error recuperable hasta completar sus TODO; Compartir muestra el aviso de pendiente.
 
-```text
-Seleccionar o capturar → URI de entrada → carga acotada
-                                      → Bitmap de trabajo
-                                      → transformación → archivo nuevo → URI de salida
-```
+??? example "Selección y captura: comprender lo resuelto"
 
-La imagen que se dibuja, el archivo codificado y la URI que se comparte son piezas diferentes. El objetivo no es únicamente mostrar una miniatura: debes poder comprobar dimensiones, formato y archivo resultante.
+    **Observa el código existente.** Localiza el registro de `PickVisualMedia` y su callback. Solo una URI no nula llega a `vm.cargar`. En `TakePicture`, el resultado es un booleano; la URI de destino se conserva antes de lanzar la cámara.
 
-## Seleccionar y cargar sin bloquear
+    `prepararCaptura` crea un archivo privado. Comprueba que coinciden la autoridad del manifiesto y la usada en FileProvider. `res/xml/file_paths.xml` expone únicamente `imagenes/`.
 
-Localiza `imagen-carga`. La entrada será una URI del selector o de la cámara. Completa la apertura mediante `ContentResolver` y el procesador explicado en la teoría; conserva las APIs de Android correspondientes al nivel del dispositivo.
+    **Ejemplo resuelto.** En `ImagenViewModel.cargar`, `withContext(Dispatchers.IO)` realiza la lectura fuera del hilo de interfaz. Después el bitmap pasa al estado observado por la pantalla. Una URI no es una ruta que debas abrir con `File(uri.path)`.
 
-En API 28 o posterior, `ImageDecoder` conoce las dimensiones antes de decodificar. Fija un tamaño de salida acotado y utiliza un bitmap de software para procesarlo. En la rama compatible con API 26–27, una primera lectura obtiene dimensiones; otra lectura decodifica con muestreo. No reutilices un stream que ya has consumido o cerrado.
+    **Ahora te toca.** Predice qué sucederá si cancelas la cámara y si giras el dispositivo antes de aceptar la fotografía. Localiza qué propiedad conserva la URI pendiente y explica por qué no se guarda el Bitmap en un Bundle.
 
-La orientación EXIF también forma parte de la lectura: una fotografía puede guardar los píxeles en una orientación y declarar otra para su presentación. La rama compatible debe contemplar rotación y reflejo. No vuelvas a aplicar esa orientación si el decodificador ya la ha corregido.
+    **Comprueba.** Solo una captura confirmada reemplaza la imagen. Si no existe app de cámara debe aparecer un aviso y seguir disponible Seleccionar. La cámara virtual no acredita el hardware de un teléfono.
 
-El ViewModel ejecuta el trabajo fuera del hilo de interfaz y publica un resultado nuevo. La pantalla debe mostrar carga durante la espera y un error recuperable si el contenido ya no existe, no se puede abrir o no es una imagen compatible. Cancelar el selector no es un error de lectura: conserva la imagen anterior.
+??? example "Transformar los píxeles"
 
-Comprueba una imagen pequeña y otra de resolución grande. La imagen grande debe cargarse con dimensiones de trabajo acotadas, sin congelar la pantalla. Anota dimensiones y tamaño del archivo original cuando estén disponibles: ambos datos miden cosas distintas.
+    La lectura ya limita el tamaño y corrige EXIF. El giro del usuario es una transformación adicional.
 
-## Capturar una fotografía
+    **Ejemplo resuelto de la técnica.** Esta matriz refleja horizontalmente una imagen:
 
-Antes de lanzar `TakePicture`, prepara el archivo de destino y obtén su URI mediante FileProvider. Conserva la URI pendiente antes de abrir la aplicación externa: el resultado del contrato es un booleano, no los bytes de la fotografía.
+    ```kotlin
+    val matriz = Matrix().apply { postScale(-1f, 1f) }
+    val reflejada = Bitmap.createBitmap(
+        original, 0, 0, original.width, original.height, matriz, true
+    )
+    ```
 
-Si el resultado confirma la captura, carga **esa URI** con el mismo recorrido de selección. Si se cancela, no presentes el archivo vacío como una imagen válida. La configuración del proveedor debe exponer solo los subdirectorios previstos, con `exported=false` y permisos temporales.
+    `Bitmap` y `Matrix` pertenecen a `android.graphics`; están importados en el procesador. El rectángulo abarca todos los píxeles; la matriz determina la transformación. El fragmento supone una variable `original`; no es un archivo independiente.
 
-La cámara externa realiza la captura; este laboratorio no dibuja un visor propio ni necesita introducir CameraX. Si no existe una aplicación que resuelva la acción, presenta una explicación y permite seguir con Seleccionar. No añadas el permiso CAMERA por anticipado para esta delegación.
+    **Ahora te toca.** Sustituye la excepción de `rotar90` en `imagen-transformacion`. Devuelve un bitmap girado 90 grados. El ViewModel ya publicará tu devolución. Girar solo el componente `Image` no transforma el archivo.
 
-Comprueba captura y cancelación. En el emulador, una escena virtual demuestra el intercambio de URI con su aplicación de cámara; no verifica enfoque, calidad ni hardware de un teléfono real.
+    ??? tip "Pista: otra operación de Matrix"
 
-## Rotar y ajustar dimensiones
+        Conserva la selección de píxeles de `createBitmap`. Revisa `postRotate`, que recibe grados. No recicles una imagen que la interfaz todavía utiliza.
 
-En `imagen-transformacion`, implementa la rotación de 90 grados creando el resultado correspondiente. Si la entrada mide 800 × 600, la imagen girada debe medir 600 × 800. Una rotación de la vista mediante un modificador visual no transforma el archivo que después exportarás.
+    **Comprueba.** Una entrada de 800 × 600 debe pasar a 600 × 800. Usa letras para observar el giro. Cuatro giros recuperan la orientación inicial. Exporta PNG y comprueba las dimensiones resultantes.
 
-`ajustarDimensiones` debe conservar la proporción y limitar el lado mayor sin ampliar imágenes pequeñas. Por ejemplo, 2400 × 1200 con límite 1024 produce 1024 × 512; 300 × 600 no necesita ampliación. Comprueba que ninguna dimensión sea cero y rechaza entradas inválidas antes de dividir.
+??? example "Del ejemplo PNG a JPEG"
 
-Aplica la transformación sobre la imagen de trabajo, no sobre un archivo original reabierto a resolución completa sin límites. La interfaz debe actualizar la vista previa y las dimensiones que muestra. Repite la rotación y observa cómo cambia la orientación; no sobrescribas silenciosamente el archivo original.
+    **Observa el código existente.** En `exportar`, sigue archivo nuevo → stream cerrado con `use` → `compress` → verificación del MIME y dimensiones. No basta con cambiar la extensión.
 
-## Convertir y comprobar el archivo
+    **Ahora te toca.** Completa `imagen-jpeg`: conserva PNG y añade JPEG. Retira la restricción que rechaza JPEG cuando ya lo implementes. Elige el compresor adecuado y prepara fondo blanco cuando haya alfa. Conserva la verificación y libera únicamente la copia temporal creada para esa conversión.
 
-Completa `imagen-exportacion` para escribir un archivo nuevo en el formato elegido. Para PNG, usa extensión y MIME de PNG; para JPEG, los de JPEG. Cambiar `.png` por `.jpg` en un nombre no convierte sus bytes.
+    `Canvas(destino)` dibuja sobre un bitmap nuevo: `drawColor(Color.WHITE)` pinta el fondo; `drawBitmap(origen, 0f, 0f, null)` superpone la imagen. Los imports están preparados. La [teoría](transformaciones.md#convertir-a-png-o-jpeg) explica transparencia y calidad.
 
-Si la imagen contiene transparencia, decide cómo se compone sobre un fondo opaco antes de JPEG y explícalo en el resultado. PNG puede conservar el canal alfa. La calidad de compresión no tiene el mismo significado en ambos formatos: no prometas reducir un PNG variando un parámetro que ese formato ignora.
+    ??? tip "Pista: identidad de los bitmaps"
 
-Comprueba el booleano devuelto por la compresión, cierra el stream y vuelve a abrir el archivo exportado para verificar que se puede decodificar y que sus dimensiones son las esperadas. Muestra un resultado observable: nombre, formato, dimensiones y bytes. Compara el tamaño de dos salidas sin concluir que JPEG sea siempre más pequeño para cualquier contenido.
+        Para PNG puedes comprimir la entrada. Para JPEG transparente necesitas otra imagen. Compara su identidad antes de liberar recursos en `finally`. La verificación de MIME detectará escribir bytes PNG bajo un nombre JPG.
 
-## Compartir el resultado
+    **Comprueba.** Exporta una imagen transparente a ambos formatos: PNG conserva alfa y JPEG muestra fondo blanco. Reabre los archivos y compara dimensiones y MIME. No presupongas que JPEG siempre ocupará menos bytes.
 
-En `imagen-compartir`, comparte la URI del **archivo exportado**, con su MIME y un permiso temporal de lectura. Utiliza Sharesheet y FileProvider; no compartas una URI `file://` ni amplíes la visibilidad de toda la carpeta privada.
+??? example "Compartir e integrar"
 
-Abre la salida desde otra aplicación compatible. Debe verse la imagen transformada, no la original. Cancela también el selector: la exportación ya realizada debe seguir siendo un resultado válido. Una aplicación receptora ausente o incompatible necesita un mensaje, no un cierre inesperado.
+    **Ahora te toca.** En `imagen-compartir`, sustituye el aviso por un Intent de envío del resultado exportado: MIME, URI, Sharesheet y lectura temporal. Usa el patrón de [Intents de Cuaderno](../desarrollo/intents.md) y la [explicación de URI multimedia](transformaciones.md#compartir-una-uri-con-acceso-temporal). Los imports están preparados.
 
-## Consolidación y registro
+    ??? tip "Pista: qué archivo viaja"
 
-- Selecciona, gira, exporta y abre el resultado desde otra aplicación.
-- Repite con una entrada de otra proporción y compara dimensiones.
-- Cancela selección y cámara; comprueba que no se presenta una operación cancelada como completada.
-- Intenta abrir contenido no disponible y comprueba la recuperación mediante nueva selección.
-- Registra qué se verificó en emulador y qué falta comprobar en cámara y dispositivo reales.
+        Utiliza `resultado.uri` y `resultado.mime`. Revisa `EXTRA_STREAM`, `ClipData` y `FLAG_GRANT_READ_URI_PERMISSION`. Captura `ActivityNotFoundException` para mostrar el recurso `sin_destino` si falta un receptor.
 
-Para practicar el cálculo, predice el resultado de `ajustarDimensiones` para 1024 × 2048, 640 × 480 y 1 × 3000 antes de ejecutar las pruebas de referencia. Justifica por qué convertir a PNG no recupera el detalle que ya se perdió en un JPEG.
+    **Comprueba.** Selecciona, gira, convierte y abre desde otra app: debe recibir el archivo girado. Cancela Compartir: la exportación debe permanecer. Repite con una entrada inaccesible y recupera mediante otra selección.
+
+    Los archivos quedan en `filesDir/imagenes`; no se añaden a la galería y desaparecen al borrar datos de la app. Registra API, dimensiones, formatos y acciones observadas; separa emulación de cámara y receptores físicos.
+
+## Solución de referencia
 
 [Solución formativa completa — ZIP](../descargas/proyectos/multimedia-imagenes-solucion.zip){ .md-button }
 
-La solución contiene Activity, ViewModel, procesador, proveedor y recursos. Compara la función de cada fase con tu implementación; su README identifica cómo abrirla y qué pruebas se incluyen.
+Contiene las mismas clases y los tres TODO resueltos. Ábrela en otra carpeta para conservar tu trabajo. Los ejercicios autónomos están en [consolidación](consolidacion.md).

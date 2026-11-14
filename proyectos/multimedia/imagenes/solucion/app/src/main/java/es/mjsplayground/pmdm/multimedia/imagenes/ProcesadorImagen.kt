@@ -108,4 +108,3 @@ class ProcesadorImagen(context: Context) {
     }
     // --8<-- [end:imagen-exportacion]
 }
-

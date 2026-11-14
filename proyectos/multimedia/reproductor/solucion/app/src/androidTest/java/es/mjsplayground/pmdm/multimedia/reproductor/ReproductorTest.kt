@@ -42,4 +42,3 @@ class ReproductorTest {
         assertNotSame(anterior, regla.activity.control)
     }
 }
-

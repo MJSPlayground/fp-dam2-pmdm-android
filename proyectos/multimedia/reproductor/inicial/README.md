@@ -20,4 +20,3 @@ obtenidos se registran en ESTADO-DESARROLLO.md del repositorio, distinguiendo em
 y pruebas físicas pendientes.
 
 Código y Gradle Wrapper bajo Apache-2.0; LICENSE incluido, avisos del wrapper en sus scripts.
-

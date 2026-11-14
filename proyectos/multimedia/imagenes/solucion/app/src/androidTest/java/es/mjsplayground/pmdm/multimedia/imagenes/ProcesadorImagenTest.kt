@@ -83,4 +83,3 @@ class ProcesadorImagenTest {
         assertThrows(IllegalArgumentException::class.java) { ajustarDimensiones(0, 2) }
     }
 }
-

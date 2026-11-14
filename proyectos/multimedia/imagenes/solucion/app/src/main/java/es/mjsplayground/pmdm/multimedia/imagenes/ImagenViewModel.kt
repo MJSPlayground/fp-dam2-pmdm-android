@@ -61,4 +61,3 @@ class ImagenViewModel(private val procesador: ProcesadorImagen) : ViewModel() {
         }
     }
 }
-

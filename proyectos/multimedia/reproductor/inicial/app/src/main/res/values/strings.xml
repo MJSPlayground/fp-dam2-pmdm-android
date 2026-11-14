@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Reproductor multimedia</string>
+    <string name="audio">Usar audio de ejemplo</string>
+    <string name="video">Seleccionar vídeo</string>
+    <string name="play">Reproducir</string>
+    <string name="pause">Pausar</string>
+    <string name="stop">Detener</string>
+    <string name="preparado">Preparado</string>
+    <string name="reproduciendo">Reproduciendo</string>
+    <string name="cargando">Cargando</string>
+    <string name="finalizado">Finalizado</string>
+    <string name="detenido">Detenido</string>
+    <string name="animacion">Reproducción en curso</string>
+    <string name="error">No se pudo reproducir el contenido. Selecciona otro archivo o el audio de ejemplo.</string>
+    <string name="cancelada">Selección de vídeo cancelada.</string>
+    <string name="pendiente">Completa la creación, carga, eventos y liberación del reproductor.</string>
+</resources>
+

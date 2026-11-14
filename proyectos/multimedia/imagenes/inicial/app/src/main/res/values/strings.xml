@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Editor mínimo de imágenes</string>
+    <string name="seleccionar">Seleccionar imagen</string>
+    <string name="capturar">Capturar fotografía</string>
+    <string name="rotar">Rotar 90 grados</string>
+    <string name="png">Guardar PNG</string>
+    <string name="jpeg">Guardar JPEG</string>
+    <string name="compartir">Compartir imagen</string>
+    <string name="imagen_preview">Imagen seleccionada y transformada</string>
+    <string name="dimensiones">%1$d × %2$d píxeles</string>
+    <string name="resultado">%1$s · %2$s · %3$d bytes</string>
+    <string name="guardada">Archivo nuevo guardado y comprobado.</string>
+    <string name="cancelada">Selección o captura cancelada. Puedes volver a intentarlo.</string>
+    <string name="error_imagen">No se pudo procesar la imagen. Selecciona otra o vuelve a capturarla.</string>
+    <string name="error_memoria">Memoria insuficiente. Cierra otras aplicaciones o elige una imagen menor.</string>
+    <string name="sin_camara">No hay una aplicación de cámara disponible.</string>
+    <string name="sin_destino">No hay una aplicación disponible para compartir.</string>
+    <string name="pendiente">Completa las etapas de carga, transformación, exportación y compartición.</string>
+</resources>
+

@@ -1,0 +1,15 @@
+﻿<resources>
+<string name="app_name">Notas en Firebase local</string>
+<string name="solo_local">Laboratorio exclusivo de Emulator Suite. No se conecta a un proyecto real.</string>
+<string name="inicio">Inicia los emuladores del README y crea una cuenta local de prueba.</string>
+<string name="release_bloqueado">Esta demo solo está habilitada en Debug.</string>
+<string name="correo">Correo local de prueba</string><string name="clave">Contraseña local de prueba</string>
+<string name="crear">Crear cuenta local</string><string name="entrar">Iniciar sesión</string><string name="salir">Cerrar sesión</string>
+<string name="titulo">Título de la nota</string><string name="guardar">Guardar nota</string><string name="eliminar">Eliminar nota</string>
+<string name="subir">Seleccionar y subir imagen</string><string name="descargar">Descargar mi imagen</string>
+<string name="trabajando">Operación en curso…</string><string name="sesion">Sesión iniciada.</string>
+<string name="error_sesion">No se pudo iniciar la sesión. Revisa los datos y los emuladores.</string>
+<string name="guardada">Nota guardada.</string><string name="eliminada">Nota eliminada.</string><string name="vacia">Todavía no hay notas.</string>
+<string name="error_datos">No se pudo completar la operación de datos.</string><string name="error_imagen">No se pudo procesar la imagen. Usa PNG/JPEG de hasta 1 MiB y dimensiones máximas 4096.</string>
+<string name="subida">Imagen subida al emulador.</string><string name="descargada">Imagen descargada.</string><string name="imagen">Imagen privada descargada</string>
+</resources>

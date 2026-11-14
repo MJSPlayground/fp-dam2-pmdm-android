@@ -1,0 +1,14 @@
+{
+  "name": "pmdm-firebase-local",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "firebase emulators:start --project demo-pmdm --only auth,firestore,storage",
+    "test": "firebase emulators:exec --project demo-pmdm --only auth,firestore,storage \"node reglas.test.mjs\""
+  },
+  "devDependencies": {
+    "firebase-tools": "15.36.0",
+    "@firebase/rules-unit-testing": "6.0.0",
+    "firebase": "13.3.0"
+  }
+}

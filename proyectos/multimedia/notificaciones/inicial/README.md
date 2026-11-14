@@ -17,7 +17,7 @@ Inicial y solución comparten applicationId; instalar otra variante sustituye a 
 .\gradlew.bat :app:connectedDebugAndroidTest --console=plain
 ```
 
-La compilación y lint no demuestran funcionamiento de hardware o servicios externos. Las pruebas instrumentadas requieren dispositivo conectado; el comando no implica que se hayan ejecutado. Los resultados reales y las limitaciones de cada hito se registran en `ESTADO-DESARROLLO.md` del repositorio.
+La compilación y lint no demuestran funcionamiento de hardware o servicios externos. En la solución, antes de la prueba instrumentada concede POST_NOTIFICATIONS desde los ajustes de la app si utilizas API 33 o posterior. La prueba comprueba canal, IDs y actualización de avisos; la pulsación real de la bandeja se comprueba aparte. Las pruebas instrumentadas requieren dispositivo conectado; el comando no implica que se hayan ejecutado. Los resultados reales y las limitaciones de cada hito se registran en `ESTADO-DESARROLLO.md` del repositorio.
 
 El evento de nota guardada se simula con un botón: no hay persistencia de notas. Comprueba bandeja, actualización por ID, ambos destinos, permiso denegado y canal bloqueado. Prueba API 26–32 además de API 33 o posterior para cubrir ambas ramas; no acredites una versión que no hayas ejecutado. Un banner flotante no es condición de éxito. No requiere Internet.
 

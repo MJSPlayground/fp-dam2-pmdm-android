@@ -4,7 +4,7 @@ from zipfile import ZipFile, ZIP_DEFLATED, ZipInfo
 from navigation import config, find_sections
 
 ROOT = Path(__file__).resolve().parent.parent
-EXCLUDED = {"build", ".gradle", ".idea", ".git", ".kotlin", "__pycache__"}
+EXCLUDED = {"build", ".gradle", ".idea", ".git", ".kotlin", "__pycache__", "node_modules", ".firebase"}
 
 
 def package():

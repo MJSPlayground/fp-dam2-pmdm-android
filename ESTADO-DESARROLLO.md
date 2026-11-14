@@ -65,3 +65,11 @@ La programación y hoja de presentación externas no están disponibles en el re
 ### Trabajo en curso y próximo cierre
 
 Diseño visual, persistencia/arquitectura y cartografía se desarrollan en rutas propias y no se publican como terminados. Después: redes/Bluetooth, Firebase, tareas de fondo, IA, multimedia avanzada y calidad/publicación; aún faltan hasta completar las once ampliaciones. No se declara finalizado el encargo integral.
+
+### Cierre QA del hito multimedia y primeras ampliaciones
+
+- Asincronía: además de 9 JVM, 1 instrumentada Compose correcta en Pixel_9 API36: filtros, favoritos, error/recuperación y snackbar.
+- Sensores: 1 instrumentada Compose correcta API36: cambio de sensores, acciones alcanzables y recreación. No verifica biometría/flash/vibración físicos. Dos JVM correctas y lint sin errores en inicial/solución.
+- Navegador: 58 páginas, 2 tamaños, 2 temas, teclado, 6 pares PDF y19 ZIP descargados/inspeccionados correctos. Pruebas abren también contenido plegado y comprueban hash interior y pistas cerradas. Capturas PDF renderizadas/revisadas de guiadas Cuaderno/imágenes/asincronía: código, pistas y continuidad entre páginas legibles, sin cortes observados.
+- En esta sesión el emulador presentó capturas obsoletas y UiAutomator sin root después de iniciar Photo Picker. Se reinició sin borrar datos y las pruebas Compose de sensores volvieron a pasar. No se certifica selección/captura física ni salida audible por esas pruebas; la lógica de procesamiento sí tiene instrumentación real.
+- Las compilaciones locales de web pueden recoger temas no versionados que otros agentes están redactando. La publicación se valida sobre una instantánea Git aislada del hito, para que los borradores no entren accidentalmente en Pages. Se conserva el árbol de trabajo original.

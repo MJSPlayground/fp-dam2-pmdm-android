@@ -1,3 +1,26 @@
+/* Un enlace a una etapa debe mostrar su destino aunque esté plegada. */
+(() => {
+  const revealTarget = () => {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    let opened = false;
+    for (let parent = target.parentElement; parent; parent = parent.parentElement) {
+      if (parent.tagName === 'DETAILS' && !parent.open) {
+        parent.open = true;
+        opened = true;
+      }
+    }
+    if (opened) requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+  };
+  window.addEventListener('hashchange', revealTarget);
+  if (typeof document$ !== 'undefined' && document$.subscribe) document$.subscribe(revealTarget);
+  else if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', revealTarget);
+  else revealTarget();
+})();
+
 /* Checklists privadas de navegador: no hay backend ni transmisión de datos. */
 (() => {
   function initTasks() {

@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+    <string name="app_name">Buscador con flujos</string>
+    <string name="consulta">Buscar por título</string>
+    <string name="favoritos">Solo favoritos</string>
+    <string name="vacia">No hay coincidencias</string>
+    <string name="cargando">Consultando catálogo…</string>
+    <string name="error">Consulta rechazada. Cambia el texto y vuelve a intentarlo.</string>
+    <string name="simular">Escribe !error para simular un fallo</string>
+    <string name="ayuda">Ayuda</string>
+    <string name="ayuda_texto">Escribe parte del título y espera a que termine la búsqueda.</string>
+    <string name="esperando">La consulta ha cambiado; espera un momento.</string>
+    <string name="estable">La consulta lleva al menos un segundo sin cambiar.</string>
+    <string name="ciclo">Retornos a primer plano: %1$d</string>
+    <string name="favorito">Favorito</string>
+</resources>

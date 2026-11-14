@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Avisos locales</string>
+    <string name="canal">Acciones de la aplicación</string>
+    <string name="explicacion">El aviso aparece después de pulsar. Android puede pedir permiso para mostrarlo. No se envían datos a Internet.</string>
+    <string name="instruccion">Pulsa un botón y revisa la bandeja de notificaciones.</string>
+    <string name="basica">Mostrar aviso de ejemplo</string>
+    <string name="nota">Avisar nota guardada</string>
+    <string name="denegado">No has autorizado notificaciones. La aplicación sigue disponible; puedes cambiarlo en ajustes.</string>
+    <string name="bloqueada">Aviso bloqueado por permiso o ajustes del canal. Revisa los ajustes si deseas recibirlo.</string>
+    <string name="enviada">Aviso enviado al sistema. Revisa la bandeja; no se garantiza un banner flotante.</string>
+    <string name="pendiente">Completa TODO notificacion-nota para construir un aviso equivalente.</string>
+    <string name="ajustes">Abrir ajustes de notificaciones</string>
+    <string name="titulo_demo">Comprobación completada</string>
+    <string name="texto_demo">Pulsa para abrir el detalle de demostración.</string>
+    <string name="titulo_nota">Nota guardada</string>
+    <string name="texto_nota">La nota del laboratorio está lista para consultar.</string>
+    <string name="detalle_demo">Detalle abierto desde el aviso de demostración.</string>
+    <string name="detalle_nota">Detalle abierto desde el aviso de nota guardada.</string>
+    <string name="volver">Volver a las acciones</string>
+</resources>

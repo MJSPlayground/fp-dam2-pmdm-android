@@ -98,6 +98,9 @@ def check(*, published=False):
                     for image in page.locator("article img").all():
                         assert image.get_attribute("alt"), source
                         assert image.evaluate("el => el.complete && el.naturalWidth > 0"), source
+                    assert page.locator('article details.tip[open], article details.hint[open]').count() == 0, (source, "Pista abierta inicialmente")
+                    # Comprobar también el contenido que el alumno desplegará.
+                    page.locator("article details").evaluate_all("els => els.forEach(el => el.open = true)")
                     for width in (1366, 390):
                         page.set_viewport_size({"width": width, "height": 844})
                         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth + 2"), (source, width)
@@ -117,6 +120,15 @@ def check(*, published=False):
                 page.set_viewport_size({"width": 1366, "height": 844})
                 if "desarrollo/proyecto.md" in pages:
                     page.goto(base + "desarrollo/proyecto/", wait_until="networkidle")
+                    # Enlazar a un encabezado interior debe abrir sus etapas padres.
+                    target = page.locator("article details h2[id], article details h3[id]").first
+                    if target.count():
+                        anchor = target.get_attribute("id")
+                        page.locator("article details").evaluate_all("els => els.forEach(el => el.open = false)")
+                        page.evaluate("id => location.hash = id", anchor)
+                        page.wait_for_function("id => { const el = document.getElementById(id); for (let p = el?.parentElement; p; p = p.parentElement) if (p.tagName === 'DETAILS' && !p.open) return false; return !!el; }", arg=anchor)
+                        assert target.is_visible(), anchor
+                    page.locator("article details").evaluate_all("els => els.forEach(el => el.open = true)")
                     boxes = page.locator('.mjs-task input[type="checkbox"]')
                     assert boxes.count() == 6, "La progresión de Cuaderno debe contener seis etapas"
                     for box in boxes.all():
@@ -125,10 +137,12 @@ def check(*, published=False):
                     boxes.first.check()
                     assert page.locator(".mjs-progress-count").inner_text() == "1 de 6 pasos"
                     page.reload(wait_until="networkidle")
+                    page.locator("article details").evaluate_all("els => els.forEach(el => el.open = true)")
                     assert boxes.first.is_checked(), "No se conserva el avance local de Cuaderno"
                     assert page.locator(".mjs-progress-count").inner_text() == "1 de 6 pasos"
                     boxes.first.uncheck()
                     page.reload(wait_until="networkidle")
+                    page.locator("article details").evaluate_all("els => els.forEach(el => el.open = true)")
                     assert not boxes.first.is_checked()
                     assert page.locator(".mjs-progress-count").inner_text() == "0 de 6 pasos"
                     page.locator(".mjs-progress-panel").screenshot(path=str(captures / "cuaderno-progreso.png"))
@@ -170,6 +184,7 @@ def check(*, published=False):
                 assert page.locator("article h1").is_visible()
                 page.keyboard.press("Escape")
                 page.goto(base + "ecosistema/practica/", wait_until="networkidle")
+                page.locator("article details").evaluate_all("els => els.forEach(el => el.open = true)")
                 figure = page.locator("article figure").first
                 if figure.count():
                     for width in (1366, 390):
@@ -187,6 +202,7 @@ def check(*, published=False):
                 assert len(zip_targets) >= 2
                 for target, (source, href) in zip_targets.items():
                     page.goto(base + route(source), wait_until="networkidle")
+                    page.locator("article details").evaluate_all("els => els.forEach(el => el.open = true)")
                     link = page.locator(f'article a[href="{href}"]').first
                     response = page.request.get(target)
                     assert response.ok

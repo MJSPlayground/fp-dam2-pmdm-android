@@ -23,8 +23,28 @@ nav = [
       "desarrollo/proyecto.md", "desarrollo/integracion.md", "desarrollo/repaso.md",
       "desarrollo/soluciones-repaso.md",
     ] },
+    { "Multimedia, localización y notificaciones en Android" = [
+      "multimedia/index.md", "multimedia/permisos.md", "multimedia/imagenes.md",
+      "multimedia/transformaciones.md", "multimedia/practica-imagenes.md",
+      "multimedia/reproduccion.md", "multimedia/animaciones.md", "multimedia/practica-reproductor.md",
+      "multimedia/ubicacion.md", "multimedia/mapas.md", "multimedia/practica-mapa.md",
+      "multimedia/notificaciones.md", "multimedia/practica-notificaciones.md",
+      "multimedia/depuracion.md", "multimedia/consolidacion.md", "multimedia/repaso.md",
+      "multimedia/soluciones-repaso.md",
+    ] },
   ] },
-  { "Ampliaciones" = ["ampliaciones/index.md"] },
+  { "Ampliaciones" = [
+    "ampliaciones/index.md",
+    { "Kotlin avanzado, asincronía y efectos de Compose" = [
+      "asincronia/index.md", "asincronia/colecciones.md", "asincronia/corrutinas.md",
+      "asincronia/flujos.md", "asincronia/efectos.md", "asincronia/practica.md",
+      "asincronia/actividades.md", "asincronia/repaso.md", "asincronia/soluciones.md",
+    ] },
+    { "Sensores, biometría y hardware" = [
+      "sensores/index.md", "sensores/lecturas.md", "sensores/hardware.md", "sensores/practica.md",
+      "sensores/actividades.md", "sensores/soluciones.md",
+    ] },
+  ] },
   { "Recursos y ayuda" = ["recursos/index.md"] },
 ]
 
@@ -32,11 +52,14 @@ nav = [
 generator = false
 # Solo estas carpetas representan temas publicables en PDF. Las agrupaciones
 # de navegación pueden contener tantos temas anidados como se necesiten.
-pdf_sections = ["ecosistema", "desarrollo", "recursos"]
+pdf_sections = ["ecosistema", "desarrollo", "multimedia", "asincronia", "sensores", "recursos"]
 
 [project.extra.pdf_titles]
 ecosistema = "El ecosistema Android y el entorno de desarrollo"
 desarrollo = "Desarrollo de aplicaciones con Kotlin y Jetpack Compose"
+multimedia = "Multimedia, localización y notificaciones en Android"
+asincronia = "Kotlin avanzado, asincronía y efectos de Compose"
+sensores = "Sensores, biometría y hardware"
 recursos = "Recursos y ayuda"
 
 [project.theme]

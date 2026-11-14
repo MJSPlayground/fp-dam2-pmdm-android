@@ -2,9 +2,13 @@
 
 Material complementario para profundizar después de la ruta principal. Ninguno de estos temas es requisito previo de los tres temas del itinerario.
 
-## Temas en construcción
+## Temas disponibles
 
-- Kotlin avanzado, asincronía y efectos de Compose.
+- [Kotlin avanzado, asincronía y efectos de Compose](../asincronia/index.md).
+- [Sensores, biometría y hardware](../sensores/index.md).
+
+## Temas en desarrollo
+
 - Diseño visual avanzado, recursos y accesibilidad.
 - Persistencia y arquitectura avanzada.
 - Redes, mensajería y Bluetooth avanzado.
@@ -13,7 +17,6 @@ Material complementario para profundizar después de la ruta principal. Ninguno 
 - Inteligencia artificial en aplicaciones Android.
 - Cámara, edición y reproducción multimedia avanzada.
 - Cartografía y geolocalización avanzada.
-- Sensores, biometría y hardware.
 - Calidad, pruebas, publicación y mantenimiento.
 
 Las páginas y sus descargas se incorporarán aquí al completar sus comprobaciones.

@@ -166,6 +166,9 @@ code:not(pre code) {
 .admonition p:last-child,details p:last-child { margin-bottom: 0; }
 details > summary { list-style: none; }
 details > summary::-webkit-details-marker { display: none; }
+/* Las etapas pueden abarcar varias páginas; las pistas cortas siguen juntas. */
+details.example { break-inside: auto; }
+details.example > summary { break-after: avoid; }
 .tabbed-set > input, .tabbed-labels { display: none !important; }
 .tabbed-content, .tabbed-content > .tabbed-block {
   display: block !important;

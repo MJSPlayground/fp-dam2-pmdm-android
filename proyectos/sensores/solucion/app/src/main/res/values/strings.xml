@@ -1,0 +1,36 @@
+﻿<resources>
+    <string name="app_name">Laboratorio del dispositivo</string>
+    <string name="privacidad">Lecturas en pantalla, sin registro ni envío de datos.</string>
+    <string name="acelerometro">Acelerómetro</string>
+    <string name="giroscopio">Giroscopio</string>
+    <string name="luz">Luz ambiental</string>
+    <string name="presion">Presión</string>
+    <string name="temperatura">Temperatura ambiente</string>
+    <string name="preparado">Selecciona una función para comprobarla.</string>
+    <string name="esperando">Esperando una lectura del sensor.</string>
+    <string name="sin_sensor">Sensor no disponible o no registrado.</string>
+    <string name="vector_aceleracion">X %1$.2f · Y %2$.2f · Z %3$.2f m/s² · módulo %4$.2f m/s²</string>
+    <string name="vector_giro">X %1$.2f · Y %2$.2f · Z %3$.2f °/s</string>
+    <string name="medida_luz">%1$.2f lux</string>
+    <string name="medida_presion">%1$.2f hPa</string>
+    <string name="medida_temperatura">%1$.2f °C</string>
+    <string name="haptica">Respuesta háptica</string>
+    <string name="vibrar">Vibrar brevemente</string>
+    <string name="linterna">Alternar linterna</string>
+    <string name="autenticar">Mostrar demostración biométrica</string>
+    <string name="contenido">Demostración autorizada en esta pantalla.</string>
+    <string name="permiso_denegado">Permiso de cámara denegado. Las otras funciones siguen disponibles.</string>
+    <string name="sin_vibrador">No hay vibrador disponible.</string>
+    <string name="vibracion_solicitada">Vibración solicitada; comprueba físicamente el resultado.</string>
+    <string name="sin_linterna">No se ha encontrado una cámara con flash.</string>
+    <string name="linterna_encendida">Linterna encendida.</string>
+    <string name="linterna_apagada">Linterna apagada.</string>
+    <string name="linterna_error">No se pudo acceder a la linterna. Puede estar ocupada.</string>
+    <string name="auth_correcta">Identidad local confirmada.</string>
+    <string name="auth_no_coincide">No coincide. Puedes volver a intentarlo.</string>
+    <string name="auth_cancelada">Autenticación cancelada o no completada.</string>
+    <string name="auth_no_disponible">Biometría fuerte no disponible o no configurada.</string>
+    <string name="titulo_biometria">Confirmar identidad local</string>
+    <string name="subtitulo_biometria">Demostración sin información privada.</string>
+    <string name="cancelar">Cancelar</string>
+</resources>

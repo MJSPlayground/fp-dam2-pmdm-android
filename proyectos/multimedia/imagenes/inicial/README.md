@@ -8,6 +8,10 @@ La aplicación sigue el tema claro/oscuro del sistema. Inicial y solución compa
 applicationId: instalar una sustituye a la otra. La solución formativa se distribuye
 [por separado](https://github.com/MJSPlayground/fp-dam2-pmdm-android/tree/main/proyectos/multimedia/imagenes/solucion).
 
+Selección, captura, lectura acotada, ViewModel y exportación PNG están preparados.
+Completa imagen-transformacion, imagen-jpeg e imagen-compartir. Las operaciones
+pendientes muestran un aviso/error recuperable; no son funciones verificadas.
+
 ## Comprobaciones técnicas
 
 ```powershell

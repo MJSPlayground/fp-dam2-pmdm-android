@@ -19,6 +19,11 @@ Los proyectos fijan una combinación estable. No se pretende utilizar la última
 | KSP | 2.2.21-2.0.4 | [Compatibilidad con Kotlin fijado](https://github.com/google/ksp/releases/tag/2.2.21-2.0.4) |
 | Retrofit y conversor Serialization | 3.0.0 | [Publicación oficial](https://github.com/lysine-dev/retrofit/releases/tag/3.0.0) |
 | SDK de compilación y objetivo | 36 | [Niveles SDK](https://developer.android.com/guide/topics/manifest/uses-sdk-element) |
+| ExifInterface | 1.4.2 | [Publicaciones oficiales](https://developer.android.com/jetpack/androidx/releases/exifinterface#1.4.2) |
+| Media3 | 1.9.4 | [Publicación elegida](https://developer.android.com/jetpack/androidx/releases/media3#1.9.4) |
+| MapLibre Native Android | 12.2.0 | [SDK y ejemplos oficiales](https://maplibre.org/maplibre-native/android/examples/) |
+| Fragment (propietario de BiometricPrompt) | 1.8.9 | [Compatibilidad de la biblioteca](https://developer.android.com/jetpack/androidx/releases/fragment#1.8.9) |
+| Biometric | 1.1.0 | [Biblioteca estable](https://developer.android.com/jetpack/androidx/releases/biometric#1.1.0) |
 | Android mínimo de los proyectos | API 26 | Elección del curso |
 
 AGP 8.13 requiere Gradle 8.13 y como mínimo JDK 17. En Android Studio selecciona un Gradle JDK compatible —por ejemplo el JBR incluido en una versión compatible del IDE— y conserva el objetivo de bytecode del proyecto. Los proyectos introductorios no necesitan Room, Retrofit ni otras bibliotecas de datos.

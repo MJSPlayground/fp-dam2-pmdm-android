@@ -8,6 +8,11 @@ La aplicación sigue el tema claro/oscuro del sistema. Inicial y solución compa
 applicationId: instalar una sustituye a la otra. La solución formativa se distribuye
 [por separado](https://github.com/MJSPlayground/fp-dam2-pmdm-android/tree/main/proyectos/multimedia/reproductor/solucion).
 
+Creación, carga y liberación están preparadas. Completa player-eventos,
+player-pausa, player-detener y player-animacion. El audio puede sonar antes de
+completar los controles; las operaciones pendientes están señaladas con TODO.
+El tono incluido es original, generado por generar_audio.py, Apache-2.0.
+
 ## Comprobaciones técnicas
 
 ```powershell

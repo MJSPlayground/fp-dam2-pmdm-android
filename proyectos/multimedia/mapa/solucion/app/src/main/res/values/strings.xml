@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mapa de lugares</string>
+    <string name="cargando">Cargando cartografía…</string>
+    <string name="error_mapa">No se pudo cargar la cartografía. Revisa la conexión y reintenta.</string>
+    <string name="mapa_listo">Mapa preparado. El círculo grande representa el lugar de referencia.</string>
+    <string name="atribucion">Mapa: OpenFreeMap · © OpenMapTiles · Datos © OpenStreetMap contributors</string>
+    <string name="recargar">Recargar cartografía</string>
+    <string name="centrar">Centrar lugar de referencia</string>
+    <string name="explicacion_permiso">Obtener posición solicita ubicación solo durante esta lectura. Puedes conceder precisión aproximada. No se guarda ni se comparte.</string>
+    <string name="obtener">Obtener mi posición</string>
+    <string name="sin_solicitud">Todavía no has solicitado una ubicación.</string>
+    <string name="permiso_denegado">Ubicación no autorizada. El mapa de referencia sigue disponible.</string>
+    <string name="buscando">Buscando una posición puntual…</string>
+    <string name="sin_posicion">No se obtuvo una posición. Puedes reintentar.</string>
+    <string name="sin_proveedor">No hay un proveedor autorizado disponible. Revisa ubicación y permiso en ajustes.</string>
+    <string name="posicion_lista">Posición recibida. El círculo pequeño representa tu posición.</string>
+    <string name="coordenadas">Latitud %1$.5f · Longitud %2$.5f · Precisión %3$.0f m</string>
+    <string name="cancelada">Lectura cancelada al salir. Pulsa Obtener para reintentar.</string>
+    <string name="pendiente">Completa los TODO mapa-permiso, mapa-lectura y mapa-posicion de la práctica.</string>
+</resources>

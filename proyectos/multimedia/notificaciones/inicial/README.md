@@ -1,12 +1,14 @@
 # notificaciones — inicial
 
-Abre esta carpeta **inicial** desde **Open** en Android Studio y espera la sincronización
-Gradle. Instala Android SDK36 y selecciona JDK17 o JBR21 para Gradle. Escoge **app**,
-un emulador o dispositivo API26 o posterior y pulsa **Run**.
+Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 36 y Gradle JDK compatible (JDK 17 o el JBR 21 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
 
-La aplicación sigue el tema claro/oscuro del sistema. Inicial y solución comparten
-applicationId: instalar una sustituye a la otra. La solución formativa se distribuye
-[por separado](https://github.com/MJSPlayground/fp-dam2-pmdm-android/tree/main/proyectos/multimedia/notificaciones/solucion).
+El aviso básico, canal, permiso y destino están implementados. Completa únicamente `notificacion-nota` en `Avisos.notaGuardada()` siguiendo el aviso resuelto. La segunda acción informa de su TODO hasta completarlo.
+
+Inicial y solución comparten applicationId; instalar otra variante sustituye a la anterior. Conserva tu copia de trabajo. La solución completa se descarga por separado desde la guía pública. El código de referencia no se incluye oculto dentro del inicial.
+
+## Archivos y recorrido
+
+`MainActivity.kt` solicita permiso en contexto, conserva la acción pendiente y recibe el destino en onCreate/onNewIntent. `Avisos.kt` define canal, contenido y PendingIntent; `strings.xml` e `ic_aviso.xml` aportan contenido e icono.
 
 ## Comprobaciones técnicas
 
@@ -15,9 +17,8 @@ applicationId: instalar una sustituye a la otra. La solución formativa se distr
 .\gradlew.bat :app:connectedDebugAndroidTest --console=plain
 ```
 
-Las pruebas Android requieren un dispositivo conectado. Los resultados realmente
-obtenidos se registran en ESTADO-DESARROLLO.md del repositorio, distinguiendo emulador
-y pruebas físicas pendientes.
+La compilación y lint no demuestran funcionamiento de hardware o servicios externos. Las pruebas instrumentadas requieren dispositivo conectado; el comando no implica que se hayan ejecutado. Los resultados reales y las limitaciones de cada hito se registran en `ESTADO-DESARROLLO.md` del repositorio.
 
-Código y Gradle Wrapper bajo Apache-2.0; LICENSE incluido, avisos del wrapper en sus scripts.
+El evento de nota guardada se simula con un botón: no hay persistencia de notas. Comprueba bandeja, actualización por ID, ambos destinos, permiso denegado y canal bloqueado. Prueba API 26–32 además de API 33 o posterior para cubrir ambas ramas; no acredites una versión que no hayas ejecutado. Un banner flotante no es condición de éxito. No requiere Internet.
 
+Código original y Gradle Wrapper bajo Apache-2.0; LICENSE incluido. MapLibre y las demás bibliotecas conservan sus propias licencias.

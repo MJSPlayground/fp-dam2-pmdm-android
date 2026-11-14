@@ -42,8 +42,26 @@ El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y on
 
 ## Pendiente
 
-Publicar el hito central y comprobar CI. Después multimedia y las once ampliaciones, y revisión global. Inicio y ampliaciones muestran su estado de construcción sin enlaces a páginas inexistentes.
+El hito central `50ead86` está publicado y su workflow 42453872684 finalizó correctamente. Continúan las ampliaciones y la revisión global; solo se incorporan a navegación las versiones comprobadas.
 
 La ejecución por Run dentro del IDE no se ha automatizado visualmente: build y emulador se han comprobado por Gradle/ADB. No hay teléfono físico conectado; despliegue físico y comunicación Wi-Fi entre equipos siguen pendientes. TalkBack y diálogo de eliminación con IME abierto no se han verificado. Estas limitaciones no se certifican por emulación ni por compilación.
 
 La programación y hoja de presentación externas no están disponibles en el repositorio. El alcance ya acordado permite elaborar contenidos; no se publican ni se reconstruyen correspondencias administrativas.
+
+## Recuperación y continuación (noviembre)
+
+- Antes de editar: main y origin/main coincidían en 50ead86; no había cambios staged ni unstaged en archivos rastreados. Había diez borradores y ocho proyectos nuevos de multimedia. Cachés, compilaciones, ZIP/PDF y evidencias QA ignorados conservados localmente.
+- Recuperación íntegra de fuentes sin reset/clean/pull: fd4db12 subido a recuperacion/multimedia-noviembre. El workflow solo despliega main, por lo que esta copia no publicó proyectos incompletos. Escaneo de patrones de secretos y revisión de archivos del commit sin hallazgos; no se incluyeron builds, credenciales ni configuración local.
+- Segundo resguardo 5024df7: starters de imágenes y reproductor ejecutables, ejemplos preparados y TODO de técnica equivalente; guías Nexo, consolidación autónoma y repaso separado.
+- Corregidas las guías de ecosistema y Cuaderno sin cambiar sus soluciones/checkpoints: etapas desplegables, ejemplos/tareas, pistas y comprobaciones; se conservan cabeceras y seis casillas. Integración HTTP evita mostrar de inmediato el repositorio y DTO completos. Revisión independiente realizada; no equivale a aprobación docente.
+- Multimedia: teoría, cuatro guiadas, consolidación, depuración y repaso; fuentes trasladadas de borradores a docs/multimedia conservando historial. Ocho variantes compilan y lint sin errores. Imágenes: 4 instrumentadas correctas API36 (EXIF, giro, formato, proveedor, dimensiones). Reproductor: 1 instrumentada correcta (eventos, controles, final/error/liberación); primer intento Gradle perdió conexión del emulador, repetición directa ADB correcta. Mapa/notificaciones: 1 instrumentada correcta cada solución.
+- Mapa: teselas reales OpenFreeMap y marcador fijo observados; posición simulada -3.69/40.42 recibida y representada. Notificaciones: bandeja real y apertura del detalle comprobadas. El resumen automático del sistema se distingue de avisos propios en pruebas. No certifica GPS físico ni versiones inferiores.
+- Revisión independiente multimedia: sin bloqueantes de secuencia; corregida diferencia entre tamaño exacto ImageDecoder y muestreo API26–27 en teoría/repaso. Hardware, TalkBack, aproximada/denegada manual y matriz visual completa siguen pendientes.
+- Asincronía: ampliación con teoría, guiada, proyectos y actividades/repaso; solución 9 pruebas JVM correctas. Validación de interfaz en curso.
+- Sensores: ampliación con teoría, biometría y hardware, guiada, inicial/solución separados. Ambos compilan y pasan lint; solución 2 pruebas JVM correctas. Se fijó Fragment 1.8.9 para compatibilidad de Activity Result y Biometric 1.1.0; no se silenció el error de lint. Interfaz/hardware aún en revisión.
+- PDF inicial de integración: ecosistema16p, desarrollo65p, multimedia38p, asincronía19p, sensores10p, recursos4p, global143p. Exportador abre todas las pistas/etapas; etapas largas pueden dividirse entre páginas. Falta cierre visual de esta ronda y regeneración tras últimas correcciones.
+- Enlaces estáticos: 58 páginas, 1028 enlaces, 877 fragmentos y 323 entradas de búsqueda correctos. QA navegador ampliado a contenido desplegado, pistas inicialmente cerradas y destinos hash dentro de etapas.
+
+### Trabajo en curso y próximo cierre
+
+Diseño visual, persistencia/arquitectura y cartografía se desarrollan en rutas propias y no se publican como terminados. Después: redes/Bluetooth, Firebase, tareas de fondo, IA, multimedia avanzada y calidad/publicación; aún faltan hasta completar las once ampliaciones. No se declara finalizado el encargo integral.

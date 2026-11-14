@@ -20,3 +20,6 @@ obtenidos se registran en ESTADO-DESARROLLO.md del repositorio, distinguiendo em
 y pruebas físicas pendientes.
 
 Código y Gradle Wrapper bajo Apache-2.0; LICENSE incluido, avisos del wrapper en sus scripts.
+
+El tono incluido es original, generado por `../generar_audio.py`: 440 Hz, 3 s,
+PCM16 mono a 16 kHz. Código y audio bajo Apache-2.0; sin muestras de terceros.

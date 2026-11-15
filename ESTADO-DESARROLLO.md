@@ -2,7 +2,7 @@
 
 El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y once ampliaciones completos. Se autoriza implementación y publicación progresiva en `main`; no se autoriza difusión en Moodle ni modificación de otros repositorios.
 
-## Situación actual — cierre integral en validación
+## Situación actual — contenido integral validado, publicación en curso
 
 Las fuentes de los tres temas principales y las once ampliaciones están desarrolladas. Firebase está cerrado con pruebas de sesión y selector real; IA con consulta simulada de texto e imagen. Multimedia avanzada está integrada con sus cuatro proyectos y QA local completado. La publicación de esta ronda sigue protegida en la rama de recuperación: no se declara desplegada hasta comprobar Actions y Pages.
 
@@ -126,7 +126,7 @@ Revisiones independientes de prácticas realizadas sobre las fuentes nuevas: sin
 - Build/lint de las cuatro etapas correctos. Captura: una instrumentada produce JPEG y MP4 con cámara virtual. Editor: tres JVM por etapa y cuatro instrumentadas normales (recorte PNG real, Transformer, SoundPool y primer fotograma), más una ejecución RTSP/TCP contra MediaMTX/FFmpeg propios. La salida se decodificó independientemente: H.264 192×144 sin audio.
 - Hallazgo independiente corregido: reinicio de primer fotograma y métricas al comenzar otra sesión de reproducción. Prueba RTSP afectada repetida correctamente. Editor revisado en claro, oscuro, fuente 150 % y horizontal; recreación reinicia la selección temporal, limitación explicada en guía/README.
 - Auditoría didáctica independiente del índice completo: correspondencia de los tres temas principales y las once ampliaciones, sin bloqueantes nuevos confirmados; guías con prerrequisitos enseñados, iniciales sin soluciones de sus retos y actividades autónomas sin recetas. No equivale a aprobación docente.
-- La integración final requiere regeneración de 39 ZIP, 15 PDF por tema/recursos y PDF global, navegación/enlaces/QA web y publicación verificada. Esos pasos se registrarán después de ejecutarse.
+- Integración local validada: 39 ZIP regenerados; 15 PDF por tema/recursos y global de 262 páginas. Zensical sin incidencias. Enlaces: 140 páginas, 1465 enlaces, 1121 fragmentos y 651 entradas de búsqueda. Navegador: 140 páginas, dos tamaños, dos temas, teclado, 15 pares PDF y 39 ZIP íntegros y contrastados con sus fuentes. Revisión independiente adicional: ocho variantes web de las dos guías multimedia y cuatro páginas PDF renderizadas, sin recortes ni solapamientos confirmados. Es una revisión representativa, no inspección visual de cada página global.
 
 ### Límites de la verificación
 

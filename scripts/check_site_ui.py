@@ -236,7 +236,7 @@ def check(*, published=False):
                             text_file = source_file.suffix.lower() in {
                                 ".kt", ".kts", ".md", ".xml", ".toml", ".properties", ".py",
                                 ".js", ".mjs", ".cjs", ".json", ".rules", ".html", ".css",
-                                ".svg", ".bat", ".ps1", ".sql", ".txt", ".yml", ".yaml",
+                                ".svg", ".bat", ".ps1", ".sql", ".txt", ".yml", ".yaml", ".java", ".pro",
                             } or source_file.name in {"gradlew", "LICENSE"}
                             if text_file:
                                 downloaded = downloaded.replace(b"\r\n", b"\n")

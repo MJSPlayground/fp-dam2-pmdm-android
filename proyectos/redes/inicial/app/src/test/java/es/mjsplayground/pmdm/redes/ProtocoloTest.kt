@@ -8,7 +8,7 @@ class ProtocoloTest {
     @Test fun desconocido() { assertEquals("ERROR", Protocolo.responder("OTRO".toByteArray())) }
     @Test(expected = IllegalArgumentException::class) fun limiteDeTrama() { Protocolo.responder(ByteArray(21)) }
     @Test fun ping() { org.junit.Assume.assumeTrue("Activa las pruebas del TODO", System.getProperty("aprendizaje.redes") == "true"); assertEquals("PONG", Protocolo.responder("PING".toByteArray())) }
-    @Test fun pendientesConservanOrden() { org.junit.Assume.assumeTrue("Activa las pruebas del TODO", System.getProperty("aprendizaje.redes") == "true"); 
+    @Test fun pendientesConservanOrden() { org.junit.Assume.assumeTrue("Activa las pruebas del TODO", System.getProperty("aprendizaje.redes") == "true");
         val datos = listOf(Mensaje(1,"Uno",false), Mensaje(2,"Dos",true), Mensaje(3,"Tres",false))
         assertEquals(listOf(1L,3L), Bandeja.pendientes(datos).map { it.id })
         assertTrue(Bandeja.pendientes(emptyList()).isEmpty())

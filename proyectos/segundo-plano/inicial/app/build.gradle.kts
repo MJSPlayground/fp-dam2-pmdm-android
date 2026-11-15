@@ -47,4 +47,3 @@ dependencies {
     androidTestImplementation(libs.work.testing)
     debugImplementation(libs.compose.test.manifest)
 }
-

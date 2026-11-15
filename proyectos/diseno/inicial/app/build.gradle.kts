@@ -44,4 +44,3 @@ dependencies {
     androidTestImplementation(libs.androidx.test.runner)
     debugImplementation(libs.compose.test.manifest)
 }
-

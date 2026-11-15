@@ -21,6 +21,8 @@ Los proyectos fijan una combinación estable. No se pretende utilizar la última
 | SDK de compilación y objetivo | 36 | [Niveles SDK](https://developer.android.com/guide/topics/manifest/uses-sdk-element) |
 | ExifInterface | 1.4.2 | [Publicaciones oficiales](https://developer.android.com/jetpack/androidx/releases/exifinterface#1.4.2) |
 | Media3 | 1.9.4 | [Publicación elegida](https://developer.android.com/jetpack/androidx/releases/media3#1.9.4) |
+| CameraX | 1.5.3 | [Versiones oficiales](https://developer.android.com/jetpack/androidx/releases/camera) |
+| Android Image Cropper | 4.7.0 | [Repositorio mantenido](https://github.com/CanHub/Android-Image-Cropper) |
 | MapLibre Native Android | 12.2.0 | [SDK y ejemplos oficiales](https://maplibre.org/maplibre-native/android/examples/) |
 | Fragment (propietario de BiometricPrompt) | 1.8.9 | [Compatibilidad de la biblioteca](https://developer.android.com/jetpack/androidx/releases/fragment#1.8.9) |
 | Biometric | 1.1.0 | [Biblioteca estable](https://developer.android.com/jetpack/androidx/releases/biometric#1.1.0) |

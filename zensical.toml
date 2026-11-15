@@ -71,6 +71,13 @@ nav = [
       "ia/multimodal.md", "ia/practica.md", "ia/repaso.md",
       "ia/soluciones.md",
     ] },
+    { "Cámara, edición y reproducción multimedia avanzada" = [
+      "multimedia-avanzada/index.md", "multimedia-avanzada/camara.md", "multimedia-avanzada/edicion-imagen.md",
+      "multimedia-avanzada/archivos.md", "multimedia-avanzada/sonido-midi.md", "multimedia-avanzada/streaming.md",
+      "multimedia-avanzada/transformer.md", "multimedia-avanzada/youtube.md", "multimedia-avanzada/rtp.md",
+      "multimedia-avanzada/practica-captura.md", "multimedia-avanzada/practica-edicion.md",
+      "multimedia-avanzada/actividades.md", "multimedia-avanzada/repaso.md", "multimedia-avanzada/soluciones.md",
+    ] },
     { "Cartografía y geolocalización avanzada" = [
       "cartografia/index.md", "cartografia/seguimiento.md", "cartografia/capas.md",
       "cartografia/servicios.md", "cartografia/offline.md", "cartografia/practica.md",
@@ -93,7 +100,7 @@ nav = [
 generator = false
 # Solo estas carpetas representan temas publicables en PDF. Las agrupaciones
 # de navegación pueden contener tantos temas anidados como se necesiten.
-pdf_sections = ["ecosistema", "desarrollo", "multimedia", "asincronia", "diseno", "persistencia", "redes", "firebase", "segundo-plano", "ia", "cartografia", "sensores", "calidad", "recursos"]
+pdf_sections = ["ecosistema", "desarrollo", "multimedia", "asincronia", "diseno", "persistencia", "redes", "firebase", "segundo-plano", "ia", "multimedia-avanzada", "cartografia", "sensores", "calidad", "recursos"]
 
 [project.extra.pdf_titles]
 ecosistema = "El ecosistema Android y el entorno de desarrollo"
@@ -106,6 +113,7 @@ redes = "Redes, mensajería y Bluetooth avanzado"
 firebase = "Firebase: backend y almacenamiento en la nube"
 segundo-plano = "Notificaciones avanzadas y tareas en segundo plano"
 ia = "Inteligencia artificial en aplicaciones Android"
+multimedia-avanzada = "Cámara, edición y reproducción multimedia avanzada"
 cartografia = "Cartografía y geolocalización avanzada"
 sensores = "Sensores, biometría y hardware"
 calidad = "Calidad, pruebas, publicación y mantenimiento"

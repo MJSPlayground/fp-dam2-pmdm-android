@@ -2,7 +2,7 @@
 
 Materiales públicos de desarrollo Android para PMDM de 2.º DAM. Alumnado con conocimientos de Java que empieza Kotlin y Android.
 
-**Publicación progresiva autorizada:** [web Android](https://mjsplayground.github.io/fp-dam2-pmdm-android/). El estado comprobado de cada hito y los pendientes figuran en [ESTADO-DESARROLLO.md](ESTADO-DESARROLLO.md); no se presenta el curso como terminado mientras falten temas.
+**Web docente:** [web Android](https://mjsplayground.github.io/fp-dam2-pmdm-android/). El estado comprobado de cada hito y los pendientes figuran en [ESTADO-DESARROLLO.md](ESTADO-DESARROLLO.md).
 
 ## Alcance
 
@@ -31,7 +31,7 @@ Cada proyecto Android incluye Gradle Wrapper y un README con instrucciones de ap
 
 ## Publicación
 
-`.github/workflows/validate.yml` construye y comprueba antes de desplegar en GitHub Pages desde `main`. Pages utiliza el modo **GitHub Actions**. El propietario ha autorizado la publicación progresiva; las secciones pendientes se identifican como en construcción. No se cambia la visibilidad del repositorio ni se difunde desde Moodle.
+`.github/workflows/validate.yml` construye y comprueba antes de desplegar en GitHub Pages desde `main`. Pages utiliza el modo **GitHub Actions**. El propietario ha autorizado la publicación de los hitos comprobados. No se cambia la visibilidad del repositorio ni se difunde desde Moodle.
 
 `scripts/github_pages.py status` permite consultar Pages y los últimos workflows con la autenticación del gestor Git local sin mostrarla. `enable` configura el modo Actions y requiere autorización de publicación. El workflow no necesita esa credencial local: utiliza los permisos efímeros de GitHub Actions.
 

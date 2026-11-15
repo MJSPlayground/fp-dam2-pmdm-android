@@ -12,7 +12,7 @@ El laboratorio fija Media3 1.9.4 para Transformer, efectos y reproductor. No mez
 
 `MediaItem` identifica el recurso. `EditedMediaItem` añade las decisiones de edición: retirar pistas y aplicar efectos. `Effects` contiene procesadores de audio y efectos de vídeo; no introduce una transformación automáticamente por el mero hecho de crear una lista vacía.
 
-El ejemplo resuelto aplica un cambio de altura mediante `Presentation.createForHeight(144)`. Se elige una resolución pequeña para que el patrón de prueba pueda transformarse rápidamente y mostrar un cambio observable de 320 × 240 a aproximadamente192 ×144, manteniendo proporción. No es una recomendación de calidad para vídeos de producción.
+El ejemplo resuelto aplica un cambio de altura mediante `Presentation.createForHeight(144)`. Se elige una resolución pequeña para que el patrón de prueba pueda transformarse rápidamente y mostrar un cambio observable de 320 × 240 a aproximadamente 192 × 144, manteniendo proporción. No es una recomendación de calidad para vídeos de producción.
 
 ```kotlin title="Fragmento de un efecto de presentación"
 val efectos = Effects(
@@ -43,7 +43,7 @@ Una exportación nueva no borra resultados anteriores válidos. Tras un error la
 
 ## Comprobar el archivo, no solo la etiqueta
 
-El recurso propio `muestra.mp4` tiene patrón visual y tono, duración de2s y dimensiones320 ×240. La prueba instrumentada ejecuta Transformer real y utiliza `MediaMetadataRetriever` para comprobar altura144, duración positiva y ausencia de pista de audio. No se limita a buscar un texto de éxito.
+El recurso propio `muestra.mp4` tiene patrón visual y tono, duración de 2 s y dimensiones 320 × 240. La prueba instrumentada ejecuta Transformer real y utiliza `MediaMetadataRetriever` para comprobar altura 144, duración positiva y ausencia de pista de audio. No se limita a buscar un texto de éxito.
 
 Para verificar el códec puede utilizarse también `MediaExtractor`: selecciona el track de vídeo y lee `MediaFormat.KEY_MIME`. Para una comprobación funcional completa, abre el resultado en otro reproductor y confirma imagen y silencio. Una salida aceptada por el muxer no demuestra por sí sola calidad visual, sincronización ni compatibilidad con todos los receptores.
 

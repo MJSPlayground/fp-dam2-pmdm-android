@@ -230,7 +230,18 @@ def check(*, published=False):
                             source_file = (source_project / name).resolve()
                             assert source_file.is_relative_to(source_project.resolve()), (target, name)
                             assert source_file.is_file(), (target, name, "Archivo ajeno a la fuente")
-                            assert archive.read(name) == source_file.read_bytes(), (target, name, "ZIP desactualizado")
+                            downloaded = archive.read(name)
+                            expected = source_file.read_bytes()
+                            # Git puede materializar CRLF en Windows y LF en el runner de Pages.
+                            text_file = source_file.suffix.lower() in {
+                                ".kt", ".kts", ".md", ".xml", ".toml", ".properties", ".py",
+                                ".js", ".mjs", ".cjs", ".json", ".rules", ".html", ".css",
+                                ".svg", ".bat", ".ps1", ".sql", ".txt", ".yml", ".yaml",
+                            } or source_file.name in {"gradlew", "LICENSE"}
+                            if text_file:
+                                downloaded = downloaded.replace(b"\r\n", b"\n")
+                                expected = expected.replace(b"\r\n", b"\n")
+                            assert downloaded == expected, (target, name, "ZIP desactualizado")
                     with page.expect_download() as download:
                         link.click()
                     assert download.value.failure() is None

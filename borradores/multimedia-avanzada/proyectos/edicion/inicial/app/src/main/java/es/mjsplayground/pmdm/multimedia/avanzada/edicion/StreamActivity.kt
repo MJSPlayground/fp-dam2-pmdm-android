@@ -48,6 +48,10 @@ class StreamActivity : ComponentActivity() {
     }
     override fun onStart() {
         super.onStart()
+        primerFotograma = false
+        anchoBanda = 0L
+        perdidos = 0
+        estado = R.string.stream_preparando
         try {
             val url = validarFuente(intent.getStringExtra("fuente") ?: "")
             player = ExoPlayer.Builder(this).build().also { motor ->

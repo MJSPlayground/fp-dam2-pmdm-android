@@ -10,7 +10,7 @@ Un archivo MP4 por HTTPS puede reproducirse progresivamente sin utilizar RTP. Un
 
 Una cabecera RTP identifica una fuente y permite reconstruir el orden y el tiempo relativo de las muestras. El **número de secuencia** ayuda a detectar saltos o reordenaciones. El **timestamp** sigue el reloj del medio, que depende de su codificación; no son milisegundos universales. El identificador **SSRC** distingue la fuente de sincronización.
 
-Imagina recibir secuencias100,101,103 y después102. El salto observado no demostraba todavía una pérdida definitiva: había reordenación. Para interpretar el tiempo de vídeo se necesita conocer la frecuencia de reloj declarada, por ejemplo un reloj de90kHz; un incremento de9000 representa0,1s en ese reloj. Cambiar la hora del teléfono no cambia el significado de esa unidad.
+Imagina recibir secuencias 100,101,103 y después102. El salto observado no demostraba todavía una pérdida definitiva: había reordenación. Para interpretar el tiempo de vídeo se necesita conocer la frecuencia de reloj declarada, por ejemplo un reloj de 90 kHz; un incremento de 9000 representa 0,1 s en ese reloj. Cambiar la hora del teléfono no cambia el significado de esa unidad.
 
 RTP no garantiza entrega, cifrado ni un plazo máximo. Esas propiedades dependen del transporte y del diseño completo. El [estándar RTP/RTCP](https://www.rfc-editor.org/rfc/rfc3550) define cabeceras e informes; aquí nos interesa interpretar evidencias, no implementar un protocolo desde cero.
 
@@ -52,7 +52,7 @@ Para medir retardo de extremo a extremo necesitas una referencia observable y un
 
 ## Emisor local reproducible
 
-El README técnico de Mesa de edición describe un servidor MediaMTX1.21.3 y FFmpeg publicando el vídeo propio incluido en bucle. La configuración de prueba limita RTSP a loopback, desactiva otros protocolos y usa el puerto8558. El emulador lo alcanza mediante `rtsp://10.0.2.2:8558/aula`.
+El README técnico de Mesa de edición describe un servidor MediaMTX 1.21.3 y FFmpeg publicando el vídeo propio incluido en bucle. La configuración de prueba limita RTSP a loopback, desactiva otros protocolos y usa el puerto 8558. El emulador lo alcanza mediante `rtsp://10.0.2.2:8558/aula`.
 
 Una prueba instrumentada puede recibir esa fuente como argumento y espera el evento real de primera imagen. El servidor debe registrar la sesión de lectura y el cliente recibir frames. Esto demuestra una transmisión local RTP intercalada sobre TCP, con patrón sintético; no recepción de una cámara física, pérdida de paquetes UDP ni comportamiento de una red pública.
 

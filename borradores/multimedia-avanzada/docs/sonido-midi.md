@@ -36,7 +36,7 @@ PCM contiene muestras que representan la onda sonora. Un MP3 o AAC codifica audi
 
 En MIDI 1.0, un mensaje de canal utiliza un byte de estado y bytes de datos. Note On tiene familia hexadecimal `0x90`; el nibble inferior indica el canal de 0 a 15. Nota y velocidad utilizan siete bits, con valores 0…127. Note Off utiliza la familia `0x80`.
 
-El helper `notaMidi` del proyecto construye esos tres bytes y valida rangos. Para canal2, nota60 y velocidad100 genera `92 3C 64` en hexadecimal. No envía ni sintetiza ese mensaje por sí solo. Las pruebas JVM comprueban bytes, cambio a Note Off y rechazo de valores que desbordarían el contrato.
+El helper `notaMidi` del proyecto construye esos tres bytes y valida rangos. Para canal 2, nota 60 y velocidad 100 genera `92 3C 64` en hexadecimal. No envía ni sintetiza ese mensaje por sí solo. Las pruebas JVM comprueban bytes, cambio a Note Off y rechazo de valores que desbordarían el contrato.
 
 ## Dispositivos, puertos y recepción
 

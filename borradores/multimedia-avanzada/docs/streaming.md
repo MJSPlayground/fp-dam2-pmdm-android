@@ -28,7 +28,7 @@ El laboratorio añade una señal de **primera imagen recibida** desde el evento 
 
 `AnalyticsListener` permite observar estimación de ancho de banda y fotogramas descartados. Los callbacks concretos se contrastan con el [código de la versión](https://github.com/androidx/media/blob/1.9.4/libraries/exoplayer/src/main/java/androidx/media3/exoplayer/analytics/AnalyticsListener.java).
 
-La estimación se expresa en bit/s; la pantalla la divide entre1000 para mostrar kbit/s. No es el bitrate del archivo ni una velocidad garantizada de la conexión. Una muestra local puede no generar una estimación de red útil, y RTSP no ofrece necesariamente los mismos eventos que una descarga HTTP.
+La estimación se expresa en bit/s; la pantalla la divide entre 1000 para mostrar kbit/s. No es el bitrate del archivo ni una velocidad garantizada de la conexión. Una muestra local puede no generar una estimación de red útil, y RTSP no ofrece necesariamente los mismos eventos que una descarga HTTP.
 
 Los fotogramas descartados describen la presentación de vídeo. No equivalen al número de paquetes RTP perdidos. Un equipo lento puede descartar frames con una red perfecta; una red con pérdidas puede recuperarse antes de que el renderizador descarte alguno. La [página de RTP](rtp.md) separa esas capas.
 

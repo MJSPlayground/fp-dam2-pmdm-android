@@ -1,0 +1,15 @@
+logLevel: info
+rtsp: true
+rtspAddress: 127.0.0.1:8558
+rtspTransports: [tcp]
+rtmp: false
+hls: false
+webrtc: false
+srt: false
+moq: false
+api: false
+metrics: false
+playback: false
+paths:
+  aula:
+    source: publisher

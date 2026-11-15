@@ -2,6 +2,12 @@
 
 El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y once ampliaciones completos. Se autoriza implementación y publicación progresiva en `main`; no se autoriza difusión en Moodle ni modificación de otros repositorios.
 
+## Situación actual — cierre integral en validación
+
+Las fuentes de los tres temas principales y las once ampliaciones están desarrolladas. Firebase está cerrado con pruebas de sesión y selector real; IA con consulta simulada de texto e imagen. La última ampliación, multimedia avanzada, termina su QA local antes de integrar sus cuatro proyectos. La publicación de esta ronda sigue protegida en la rama de recuperación: no se declara desplegada hasta comprobar Actions y Pages.
+
+Las secciones siguientes conservan el registro cronológico; sus pendientes históricos quedan sustituidos por los cierres posteriores. Las limitaciones físicas y de servicios externos se mantienen cuando no aparece una prueba explícita posterior.
+
 ## Hitos y orden
 
 1. Infraestructura: adaptar ACDA, verde, Zensical Modern, PDF por tema/global, descargas, enlaces, QA responsive y workflow Pages.

@@ -15,6 +15,7 @@ from pypdf import PdfReader
 
 from export_pdfs import launch_chromium
 from navigation import ROOT, config, find_sections, flatten_nav
+from package_projects import source_files
 
 SITE = ROOT / "site"
 PREFIX = urlparse(config()["site_url"]).path
@@ -85,6 +86,10 @@ def check(*, published=False):
                 page.on("pageerror", lambda error: errors.append(str(error)))
                 pages = flatten_nav(project["nav"])
                 zip_targets = {}
+                source_projects = {
+                    "-".join(path.parent.relative_to(ROOT / "proyectos").parts) + ".zip": path.parent
+                    for path in source_files(ROOT / "proyectos") if path.name == "settings.gradle.kts"
+                }
                 for source in pages:
                     response = page.goto(base + route(source), wait_until="networkidle")
                     assert response and response.ok, source
@@ -211,6 +216,12 @@ def check(*, published=False):
                         names = archive.namelist()
                         assert "settings.gradle.kts" in names and "gradlew.bat" in names
                         assert not any("build/" in name or ".gradle/" in name or "local.properties" in name for name in names)
+                        source_project = source_projects[Path(urlparse(target).path).name]
+                        for name in names:
+                            source_file = (source_project / name).resolve()
+                            assert source_file.is_relative_to(source_project.resolve()), (target, name)
+                            assert source_file.is_file(), (target, name, "Archivo ajeno a la fuente")
+                            assert archive.read(name) == source_file.read_bytes(), (target, name, "ZIP desactualizado")
                     with page.expect_download() as download:
                         link.click()
                     assert download.value.failure() is None

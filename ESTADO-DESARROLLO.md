@@ -95,3 +95,11 @@ Resguardo 38c696a subido a recuperacion/multimedia-noviembre antes de desarrolla
 Se integran navegación y descargas de los diez temas de ampliación desarrollados, todavía en rama de recuperación. El siguiente cierre requiere terminar Firebase/IA, exportar/revisar PDF y web globales, y completar multimedia avanzada antes de afirmar encargo terminado. Los borradores no se integran indiscriminadamente en main.
 
 Revisiones independientes de prácticas realizadas sobre las fuentes nuevas: sin bloqueantes didácticos en Diseño/Persistencia/Calidad/IA y guiadas del itinerario; se corrigieron UTF8 de README/comentarios y precisión de borde de geocerca. No equivalen a aprobación docente. Hardware físico, TalkBack y servicios reales se conservan como pruebas pendientes específicas, no como cobertura inferida.
+
+### Firebase cerrado sobre la corrección final
+
+- SesionUsuario versiona cambios de identidad, no la salida a Photo Picker. Cada lectura/callback conserva turno y valida también UID real antes de publicar; el turno del selector se captura antes de abrirlo y se restaura con la sesión al recrear.
+- Se limpian notas, imagen, borrador, contraseña y carga al cambiar de cuenta. La reanudación de la misma cuenta no borra el trabajo activo ni resetea su carga; callbacks de login anteriores no alteran el estado de otra identidad. Scaffold respeta IME y tests desplazan acciones.
+- Ambos proyectos: assemble/lint y APK de test correctos. Solución4JVM: límites/lectura acotada e intercalados de sesión. Reglas13checks reales tras trim: acceso propio/ajeno/anónimo, datos inválidos, tiempo real y archivos.
+- Suite final3instrumentadas correctas,0fallos/0omitidas,35.358s en5556: cuenta/notas/archivo/cambioA→B; PhotoPicker REAL con imagen sintética→subida→vista previa y limpiezaB; lecturaURI retenida→cambioA/B→liberación→3descargasBsin archivoA. Provider diferido existe exclusivamente en androidTest.
+- No se activaron servicios de producción, proveedores externos ni facturación. Captura y log: qa-captures/firebase-picker-imagen.png y firebase-cierre-instrumentadas.log.

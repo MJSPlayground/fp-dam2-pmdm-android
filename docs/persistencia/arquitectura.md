@@ -12,8 +12,8 @@ La aplicación tiene un solo módulo Gradle y tres grupos de responsabilidades. 
 | Configuración | `di/Modulos.kt` | Cómo construir y conectar los objetos |
 
 <figure markdown="span">
-![El ViewModel recibe eventos y combina el catálogo emitido por Room, a través del repositorio, con el filtro emitido por DataStore. La fuente remota actualiza primero la base.](figuras/flujo-datos.svg)
-<figcaption>Recorrido real de Lecturas: la respuesta remota no sustituye directamente la colección de la pantalla.</figcaption>
+[![El ViewModel recibe eventos y combina el catálogo emitido por Room, a través del repositorio, con el filtro emitido por DataStore. La fuente remota actualiza primero la base.](figuras/flujo-datos.svg)](figuras/flujo-datos.svg)
+<figcaption>Recorrido real de Lecturas: la respuesta remota no sustituye directamente la colección de la pantalla. Abre el diagrama para ampliarlo.</figcaption>
 </figure>
 
 `FichaLectura` no lleva anotaciones Room ni Retrofit. Permite representar una ficha sin que la UI dependa del esquema de las tablas. No es obligatorio crear un modelo distinto por cada capa en todos los programas: aquí la relación con autor y etiquetas hace útil transformar el resultado Room en una ficha de presentación.

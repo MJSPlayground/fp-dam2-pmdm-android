@@ -2,9 +2,15 @@
 
 El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y once ampliaciones completos. Se autoriza implementación y publicación progresiva en `main`; no se autoriza difusión en Moodle ni modificación de otros repositorios.
 
-## Situación actual — contenido integral validado, publicación en curso
+## Situación actual — completo y publicado
 
-Las fuentes de los tres temas principales y las once ampliaciones están desarrolladas. Firebase está cerrado con pruebas de sesión y selector real; IA con consulta simulada de texto e imagen. Multimedia avanzada está integrada con sus cuatro proyectos y QA local completado. La publicación de esta ronda sigue protegida en la rama de recuperación: no se declara desplegada hasta comprobar Actions y Pages.
+Los tres temas principales y las once ampliaciones están desarrollados y publicados en [GitHub Pages](https://mjsplayground.github.io/fp-dam2-pmdm-android/): 140 páginas, 39 variantes descargables (iniciales, checkpoints y soluciones), 15 PDF de temas/recursos y un global de 261 páginas en la publicación Linux. No quedan temas pendientes ni fuentes en borradores. Las guías de ecosistema/Cuaderno se mejoraron conservando sus proyectos y su progresión; las nuevas guías alternan ejemplos, tareas, pistas y comprobaciones. Las soluciones están separadas.
+
+Código verificado: 33a19d5. [Workflow final 43710364117](https://github.com/MJSPlayground/fp-dam2-pmdm-android/actions/runs/43710364117) completado con éxito: cuatro grupos Android, web y despliegue. Registros contrastados: 39 BUILD SUCCESSFUL y 39 rutas únicas (10/10/10/9). JUnit de IA descargado del artefacto: cuatro pruebas, cero fallos/errores/omisiones tras corregir la carrera del test. El primer intento fallido se conserva documentado más abajo.
+
+Pages comprobado después del despliegue: 140 páginas, dos tamaños, dos temas, teclado, búsqueda, 15 pares PDF y 39 ZIP íntegros y contrastados con las fuentes. Los 16 PDF públicos coinciden por SHA-256 con el artefacto final de CI. Global con las cabeceras de las 140 páginas; revisión visual representativa en Windows y Linux, no inspección manual de cada página. La paginación local de Windows es de 262 páginas.
+
+Las limitaciones físicas y de servicios reales están documentadas: no se certifican por compilación/emulador ni se declaran cubiertas administrativamente. El material queda preparado para revisión docente, sin atribuirle aprobación pedagógica humana.
 
 Las secciones siguientes conservan el registro cronológico; sus pendientes históricos quedan sustituidos por los cierres posteriores. Las limitaciones físicas y de servicios externos se mantienen cuando no aparece una prueba explícita posterior.
 
@@ -139,3 +145,12 @@ El primer intento integral, commit e3cdfb6 y workflow43703439971, NO se despleg�
 El log mostró pausas largas en mergeExtDexDebug seguidas de builds correctos, sin OOM ni errores de red; no se trató como éxito ni se ocultó el fallo. Se conserva el enlace al intento fallido. Para completar la validación con trazabilidad, CI reparte las mismas cuatro tareas Android entre cuatro grupos deterministas (10/10/10/9), registra proyecto y duración y conserva XML JUnit/lint incluso al fallar. Caché Gradle básica de GitHub, sin backend comercial; el despliegue sigue esperando el éxito de todos los grupos y de la web. Partición, YAML y Bash revisados localmente. Pendiente el resultado del nuevo workflow y Pages.
 
 PDF del primer artefacto Linux/CI: global261 páginas, cabeceras de las140 páginas presentes. Seis páginas renderizadas y revisadas de Cuaderno/multimedia avanzada sin defectos visuales confirmados. La paginación local262 difiere sin pérdida de encabezados; la inspección visual sigue siendo representativa.
+
+## Registro final de entrega
+
+- Fuentes recuperadas y protegidas sin reset, clean, force push ni pérdida de cambios. Hitos relevantes: 38c696a (resguardo), b11c797 (Firebase y selector real), 48b2be9 (multimedia avanzada), e3cdfb6 (web integral local) y 33a19d5 (carrera del test IA y CI distribuida).
+- Los tres temas y once ampliaciones están en navegación y exportación, con teoría, guiadas, actividades autónomas/repaso y soluciones formativas. Se conservan las comprobaciones Android y los límites específicos de cada hito registrados arriba.
+- Workflow final y Pages correctos. Evidencias locales: qa-captures/web-publicada-final.log, pdf-publicados-integridad.json, ia-jvm-ci-final.json, ci-pdf-review y multimedia-final. El informe de CI conserva XML JUnit/lint por grupo; no se suben caches, APK, credenciales ni capturas QA al repositorio.
+- Este último registro no modifica código, apuntes ni artefactos publicados; se versiona con skip ci para conservar el resultado verificado del código 33a19d5 sin repetir las mismas compilaciones por un archivo de estado externo a la web.
+- Servicios de prueba propios detenidos, emulador auxiliar 5556 cerrado y sus cambios de tamaño/densidad revertidos. Emulador 5554 libre con configuración restaurada por el productor. El worktree QA antiguo se conserva sin borrar sus evidencias.
+- No queda desarrollo curricular pendiente. Quedan las pruebas físicas/TalkBack y servicios de producción enumerados en Límites de la verificación, y la revisión docente de las evidencias que requieran aula, dispositivo y programación externa.

@@ -1,9 +1,9 @@
 package es.mjsplayground.pmdm.ia
 
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 import java.util.concurrent.atomic.AtomicReference
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.*
 import org.junit.Assert.*
 import org.junit.Test
@@ -27,18 +27,20 @@ class PreparacionTest {
         Dispatchers.setMain(StandardTestDispatcher(testScheduler))
         try {
             val adjunto = AtomicReference<String?>()
-            val enviado = CountDownLatch(1)
-            val vm = ConsultaViewModel { _, imagen -> adjunto.set(imagen); enviado.countDown(); Respuesta("Prueba", true) }
+            val enviados = AtomicInteger()
+            val vm = ConsultaViewModel { _, imagen -> adjunto.set(imagen); enviados.incrementAndGet(); Respuesta("Prueba", true) }
             vm.preparar { withContext(NonCancellable) { delay(2000); "vieja" } }
             runCurrent()
             vm.consultar("Pregunta de prueba")
-            assertEquals(1L, enviado.count)
+            assertEquals(0, enviados.get())
             vm.preparar { delay(100); "nueva" }
             advanceUntilIdle()
             assertTrue(vm.estado.value.imagenPreparada)
             vm.consultar("Pregunta de prueba")
-            runCurrent()
-            assertTrue(enviado.await(5, TimeUnit.SECONDS))
+            // Esperar también el retorno IO -> Main antes de restablecer Main.
+            // Un efecto dentro de generar() todavía no confirma ese retorno.
+            vm.estado.first { !it.cargando && it.respuesta == "Prueba" }
+            assertEquals(1, enviados.get())
             assertEquals("nueva", adjunto.get())
             advanceUntilIdle()
         } finally { Dispatchers.resetMain() }

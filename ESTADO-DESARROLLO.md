@@ -103,3 +103,13 @@ Revisiones independientes de prácticas realizadas sobre las fuentes nuevas: sin
 - Ambos proyectos: assemble/lint y APK de test correctos. Solución4JVM: límites/lectura acotada e intercalados de sesión. Reglas13checks reales tras trim: acceso propio/ajeno/anónimo, datos inválidos, tiempo real y archivos.
 - Suite final3instrumentadas correctas,0fallos/0omitidas,35.358s en5556: cuenta/notas/archivo/cambioA→B; PhotoPicker REAL con imagen sintética→subida→vista previa y limpiezaB; lecturaURI retenida→cambioA/B→liberación→3descargasBsin archivoA. Provider diferido existe exclusivamente en androidTest.
 - No se activaron servicios de producción, proveedores externos ni facturación. Captura y log: qa-captures/firebase-picker-imagen.png y firebase-cierre-instrumentadas.log.
+
+### Integración local de diez ampliaciones
+
+- IA cerrada localmente: ambos proyectos assemble/lint correctos;4JVM (validación y preparación concurrente),5checksPython (HTTP/contrato/límites/salida parcial) y1Compose API36 (respuesta simulada,error,recuperación,cancelación sin resultado tardío) correctos. No se hizo inferencia remota ni envío a proveedor real. La preparación de fotos tiene trabajo/versionado y bloquea consulta hasta terminar; Quitar y sustitución descartan resultados antiguos.
+- Web de esta ronda:126páginas,1390enlaces,1080fragmentos y587entradas búsqueda; navegador2tamaños/2temas/teclado,14paresPDF y35ZIP íntegros. Auditoría independiente32variantes de8guiadas y8páginasPDF sin cortes/solapamientos. Diagrama de persistencia ahora ampliable.
+- Se detectó ZIPIA anterior a la corrección de salida parcial: se reempaquetará antes de publicar. check_site_ui ahora compara cada archivo descargado con la fuente, además de estructura/ausencia de generados. Empaquetador poda node_modules/cachés antes de recorrerlos.
+- Multimedia avanzada ya tiene pruebas CameraX1/1 (foto/vídeo virtual),Editor3/3 (recorte,Transformer,SoundPool) y MIDI2JVM; documentación/streaming todavía en elaboración fuera del sitio. No se declara aún completo.
+
+- IA multimodal completada: suite final2instrumentadas correctas,20.341s,sin omisiones. PhotoPicker real con imagen sintética→preparaciónJPEG→backendsimulado confirma texto+imagen; Quitar→consulta solo texto. Captura compacta oscura revisada, tema restaurado. Primer timeout no persistente se estabilizó cerrando IME en el test; no hubo cambio de producción ni inferencia real.
+- Multimedia avanzada en borrador ya tiene CameraX1/1,Editor4/4,MIDI2JVM y StreamTest1/1 contra emisor propioRTSP/TCP. Documentación y QAvisual aún en cierre. Se protege ese código también en la rama de recuperación antes de integrarlo; no se publica el borrador.

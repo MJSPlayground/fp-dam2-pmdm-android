@@ -31,6 +31,7 @@ Los proyectos fijan una combinación estable. No se pretende utilizar la última
 | WorkManager | 2.10.5 | [Versiones AndroidX](https://developer.android.com/jetpack/androidx/releases/work) |
 | Firebase BoM | 34.7.0 | [Combinación elegida](https://firebase.google.com/support/release-notes/android#bom_v34-7-0) |
 | MockK | 1.14.6 | [Publicación oficial](https://github.com/mockk/mockk/releases/tag/1.14.6) |
+| UiAutomator (pruebas del selector del sistema) | 2.3.0 | [Versiones AndroidX Test](https://developer.android.com/jetpack/androidx/releases/test-uiautomator) |
 | Android mínimo de los proyectos | API 26 | Elección del curso |
 
 AGP 8.13 requiere Gradle 8.13 y como mínimo JDK 17. En Android Studio selecciona un Gradle JDK compatible —por ejemplo el JBR incluido en una versión compatible del IDE— y conserva el objetivo de bytecode del proyecto. Los proyectos introductorios no necesitan Room, Retrofit ni otras bibliotecas de datos.

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import functools
+import hashlib
 import io
 import sys
 import threading
@@ -151,6 +152,7 @@ def check(*, published=False):
                     assert not boxes.first.is_checked()
                     assert page.locator(".mjs-progress-count").inner_text() == "0 de 6 pasos"
                     page.locator(".mjs-progress-panel").screenshot(path=str(captures / "cuaderno-progreso.png"))
+                checked_pdfs = {}
                 for slug, title, _ in sections:
                     page.goto(base + slug + "/", wait_until="networkidle")
                     page.locator(".mjs-pdf-trigger").click()
@@ -164,11 +166,18 @@ def check(*, published=False):
                         assert link.get_attribute("href") == base + "descargas/" + filename
                         response = page.request.get(link.get_attribute("href"))
                         assert response.ok
-                        pdf = PdfReader(io.BytesIO(response.body()))
-                        assert pdf.pages
-                        if filename == "documentacion-completa.pdf":
-                            text = "\n".join(p.extract_text() for p in pdf.pages)
-                            assert "Publicación progresiva" in text and "En construcción" in text
+                        payload = response.body()
+                        digest = hashlib.sha256(payload).digest()
+                        if filename not in checked_pdfs:
+                            pdf = PdfReader(io.BytesIO(payload))
+                            assert pdf.pages
+                            if filename == "documentacion-completa.pdf":
+                                text = "\n".join(p.extract_text() for p in pdf.pages)
+                                assert "Itinerario del curso" in text and "Mikel Aingeru Jorge Soteras" in text
+                                assert all(section[1] in text for section in sections)
+                            checked_pdfs[filename] = digest
+                        else:
+                            assert checked_pdfs[filename] == digest, (filename, "Artefacto cambiado durante QA")
                         with page.expect_download() as download:
                             link.click()
                         assert download.value.suggested_filename == filename

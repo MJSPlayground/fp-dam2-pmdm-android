@@ -1,0 +1,8 @@
+<resources>
+<string name="app_name">Captura propia</string><string name="explicacion">Visor CameraX. Cambia entre foto y vídeo silencioso; los archivos quedan en almacenamiento privado.</string>
+<string name="activar">Activar cámara</string><string name="inicial">La cámara se activa solo al solicitarla.</string><string name="denegado">Sin permiso de cámara. Puedes volver a solicitarlo o revisarlo desde ajustes.</string>
+<string name="preparando">Preparando cámara…</string><string name="lista">Cámara lista</string><string name="sin_camara">No hay cámara trasera disponible.</string><string name="error">No se pudo completar la captura. Revisa la cámara y vuelve a activarla.</string>
+<string name="modo_foto">Cambiar a foto</string><string name="modo_video">Cambiar a vídeo</string><string name="foto">Capturar foto</string><string name="grabar">Grabar vídeo silencioso</string><string name="detener">Detener grabación</string>
+<string name="capturando">Capturando foto…</string><string name="iniciando">Iniciando grabación…</string><string name="grabando">Grabando vídeo sin audio</string><string name="guardado">Archivo guardado</string>
+<string name="resultado">%1$s · %2$d bytes</string><string name="compartir">Compartir captura</string><string name="sin_destino">No se ha encontrado una aplicación receptora.</string><string name="pendiente">Completa la etapa de la práctica para activar esta operación.</string>
+</resources>

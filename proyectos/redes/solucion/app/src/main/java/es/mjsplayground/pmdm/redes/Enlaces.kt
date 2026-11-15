@@ -152,9 +152,10 @@ class Enlaces(contexto: Context, private val estado: (String) -> Unit,
         try {
             val callback = object : BluetoothGattCallback() {
                 override fun onConnectionStateChange(actual: BluetoothGatt, status: Int, newState: Int) {
-                    if (token != generacion) { actual.close(); return }
+                    if (token != generacion) { try { actual.close() } catch (_: SecurityException) {}; return }
                     if (status != BluetoothGatt.GATT_SUCCESS || newState == BluetoothProfile.STATE_DISCONNECTED) {
-                        actual.close(); gatt = null; caracteristica = null; operacionGatt = false
+                        gatt = null; caracteristica = null; operacionGatt = false
+                        try { actual.close() } catch (_: SecurityException) { comunicar(R.string.sin_permiso, token); return }
                         comunicar(R.string.desconectado, token)
                     } else if (newState == BluetoothProfile.STATE_CONNECTED) {
                         try { if (!actual.discoverServices()) comunicar(R.string.error_enlace, token) }

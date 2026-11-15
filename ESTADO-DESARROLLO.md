@@ -4,7 +4,7 @@ El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y on
 
 ## Situación actual — cierre integral en validación
 
-Las fuentes de los tres temas principales y las once ampliaciones están desarrolladas. Firebase está cerrado con pruebas de sesión y selector real; IA con consulta simulada de texto e imagen. La última ampliación, multimedia avanzada, termina su QA local antes de integrar sus cuatro proyectos. La publicación de esta ronda sigue protegida en la rama de recuperación: no se declara desplegada hasta comprobar Actions y Pages.
+Las fuentes de los tres temas principales y las once ampliaciones están desarrolladas. Firebase está cerrado con pruebas de sesión y selector real; IA con consulta simulada de texto e imagen. Multimedia avanzada está integrada con sus cuatro proyectos y QA local completado. La publicación de esta ronda sigue protegida en la rama de recuperación: no se declara desplegada hasta comprobar Actions y Pages.
 
 Las secciones siguientes conservan el registro cronológico; sus pendientes históricos quedan sustituidos por los cierres posteriores. Las limitaciones físicas y de servicios externos se mantienen cuando no aparece una prueba explícita posterior.
 
@@ -119,3 +119,15 @@ Revisiones independientes de prácticas realizadas sobre las fuentes nuevas: sin
 
 - IA multimodal completada: suite final2instrumentadas correctas,20.341s,sin omisiones. PhotoPicker real con imagen sintética→preparaciónJPEG→backendsimulado confirma texto+imagen; Quitar→consulta solo texto. Captura compacta oscura revisada, tema restaurado. Primer timeout no persistente se estabilizó cerrando IME en el test; no hubo cambio de producción ni inferencia real.
 - Multimedia avanzada en borrador ya tiene CameraX1/1,Editor4/4,MIDI2JVM y StreamTest1/1 contra emisor propioRTSP/TCP. Documentación y QAvisual aún en cierre. Se protege ese código también en la rama de recuperación antes de integrarlo; no se publica el borrador.
+
+## Cierre de multimedia avanzada e integración curricular
+
+- Catorce páginas y dos guías Nexo con seis tareas reales entre iniciales, pistas cerradas, comprobaciones y soluciones separadas. Cuatro proyectos ejecutables trasladados conservando historial a proyectos/multimedia-avanzada; no quedan fuentes pendientes en borradores.
+- Build/lint de las cuatro etapas correctos. Captura: una instrumentada produce JPEG y MP4 con cámara virtual. Editor: tres JVM por etapa y cuatro instrumentadas normales (recorte PNG real, Transformer, SoundPool y primer fotograma), más una ejecución RTSP/TCP contra MediaMTX/FFmpeg propios. La salida se decodificó independientemente: H.264 192×144 sin audio.
+- Hallazgo independiente corregido: reinicio de primer fotograma y métricas al comenzar otra sesión de reproducción. Prueba RTSP afectada repetida correctamente. Editor revisado en claro, oscuro, fuente 150 % y horizontal; recreación reinicia la selección temporal, limitación explicada en guía/README.
+- Auditoría didáctica independiente del índice completo: correspondencia de los tres temas principales y las once ampliaciones, sin bloqueantes nuevos confirmados; guías con prerrequisitos enseñados, iniciales sin soluciones de sus retos y actividades autónomas sin recetas. No equivale a aprobación docente.
+- La integración final requiere regeneración de 39 ZIP, 15 PDF por tema/recursos y PDF global, navegación/enlaces/QA web y publicación verificada. Esos pasos se registrarán después de ejecutarse.
+
+### Límites de la verificación
+
+No hay teléfono físico conectado. No se certifican captura/orientación real, GPS/seguimiento/geocercas físicos, Bluetooth clásico/BLE entre equipos, instrumento MIDI, salida audible/háptica/biometría ni TalkBack. Hay instrucciones y pruebas pendientes específicas para aula; emulador y JVM no sustituyen esas evidencias. Se han probado servicios locales Firebase y backend IA simulado; no Firebase de producción, FCM real, inferencia remota/Nano, Crashlytics de producción, credenciales de firma ni publicación en Play. No se han activado facturación ni proveedores pagados. La matriz visual Android de cada aplicación se limita a las variantes registradas; no se declara una auditoría universal de dispositivos/versiones. Run visual desde Android Studio y despliegue físico no se han automatizado.

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Adaptive gallery</string>
+    <string name="favoritos">Favourites</string>
+    <string name="vacia">No pictures match these filters.</string>
+    <string name="catalogo">Catalogue</string>
+    <string name="accion_favorito">%1$s: %2$s</string>
+    <string name="menu">Menu</string>
+    <string name="actualizar">Refresh</string>
+    <string name="revision">Refreshes: %1$d</string>
+    <string name="naturaleza">Nature</string>
+    <string name="ciudad">City</string>
+    <string name="todas">All</string>
+    <string name="lamina_bosque">Forest</string>
+    <string name="lamina_montana">Mountain</string>
+    <string name="lamina_ciudad">Buildings</string>
+    <string name="lamina_app">First application</string>
+    <string name="marcado">Saved to favourites</string>
+    <string name="sin_marcar">Not saved</string>
+    <string name="guardar">Save favourite</string>
+    <string name="quitar">Remove favourite</string>
+    <string name="volver">Back</string>
+    <string name="error_imagen">Could not load this image.</string>
+    <string name="descripcion">Gallery picture. The vector illustrations are original; the remote screenshot comes from the first application in these materials. Its title identifies the content even without the image.</string>
+</resources>

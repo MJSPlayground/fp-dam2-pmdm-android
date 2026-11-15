@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="390" viewBox="0 0 960 390" role="img" aria-labelledby="titulo descripcion">
+  <title id="titulo">Fuentes de datos y presentación en Lecturas</title>
+  <desc id="descripcion">La interfaz envía eventos al ViewModel. Room emite el catálogo mediante el repositorio; DataStore emite el filtro. Al actualizar, el repositorio consulta la API y escribe en Room antes de que cambie la lista visible.</desc>
+  <defs><marker id="punta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#1b5e20"/></marker></defs>
+  <rect width="960" height="390" rx="14" fill="#f5faf5"/>
+  <g font-family="Segoe UI,Arial,sans-serif" text-anchor="middle">
+    <text x="480" y="35" font-size="23" fill="#173b24" font-weight="700">El catálogo visible procede siempre de Room</text>
+    <g stroke="#2e7d32" stroke-width="2" fill="#fff">
+      <rect x="25" y="95" width="170" height="80" rx="8"/>
+      <rect x="260" y="95" width="185" height="80" rx="8"/>
+      <rect x="515" y="95" width="185" height="80" rx="8"/>
+      <rect x="775" y="95" width="155" height="80" rx="8"/>
+      <rect x="260" y="255" width="185" height="70" rx="8"/>
+      <rect x="515" y="255" width="185" height="70" rx="8"/>
+    </g>
+    <g fill="#173b24" font-size="19" font-weight="600">
+      <text x="110" y="129">Interfaz</text><text x="352" y="129">ViewModel</text>
+      <text x="608" y="129">Repository</text><text x="852" y="129">Room</text>
+      <text x="352" y="282">DataStore</text><text x="608" y="282">Fuente remota</text>
+    </g>
+    <g fill="#344b3d" font-size="15">
+      <text x="110" y="153">Compose</text><text x="352" y="153">Estado de pantalla</text>
+      <text x="608" y="153">Coordina los datos</text><text x="852" y="153">Catálogo local</text>
+      <text x="352" y="306">Filtro persistente</text><text x="608" y="306">Retrofit → API HTTPS</text>
+    </g>
+    <g stroke="#1b5e20" stroke-width="2.5" fill="none" marker-end="url(#punta)">
+      <path d="M195 115H255"/><path d="M445 115H510"/><path d="M700 115H770"/>
+      <path d="M775 159H705"/><path d="M515 159H450"/><path d="M260 159H200"/>
+      <path d="M352 255V181"/><path d="M590 175V249"/><path d="M628 255V181"/>
+    </g>
+    <g fill="#1b5e20" font-size="13">
+      <text x="225" y="91">evento</text><text x="480" y="91">acción</text><text x="738" y="91">escritura</text>
+      <text x="738" y="193">Flow</text><text x="480" y="193">fichas</text><text x="225" y="193">estado</text>
+      <text x="407" y="220">preferencia</text><text x="532" y="219">consulta</text><text x="678" y="219">respuesta</text>
+    </g>
+    <text x="480" y="366" font-size="16" fill="#344b3d">Si falla la petición, la UI muestra el error y conserva el catálogo local.</text>
+  </g>
+</svg>

@@ -1,0 +1,5 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+    <string name="app_name">Galería adaptable</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="vacia">No hay láminas con estos filtros.</string>
+</resources>

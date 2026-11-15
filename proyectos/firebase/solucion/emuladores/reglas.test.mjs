@@ -21,6 +21,7 @@ try {
   await assertFails(getDoc(doc(other.firestore(), 'usuarios/ana/notas/n1'))); passed++;
   await assertFails(setDoc(doc(other.firestore(), 'usuarios/ana/notas/n2'), { titulo: 'Intrusión' })); passed++;
   await assertFails(setDoc(doc(owner.firestore(), 'usuarios/ana/notas/n2'), { titulo: 'ab' })); passed++;
+  await assertFails(setDoc(doc(owner.firestore(), 'usuarios/ana/notas/n2'), { titulo: '   ' })); passed++;
   await assertFails(setDoc(doc(owner.firestore(), 'usuarios/ana/notas/n2'), { titulo: 'Válida', extra: true })); passed++;
   await new Promise((resolve, reject) => {
     const timer = setTimeout(() => { stop(); reject(new Error('No llegó actualización')); }, 5000);

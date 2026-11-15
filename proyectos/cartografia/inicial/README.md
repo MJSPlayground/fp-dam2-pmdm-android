@@ -1,0 +1,36 @@
+# Zona de paseo — inicial
+
+Abre esta carpeta desde **Open** en Android Studio, espera sincronización Gradle y ejecuta **app**. Mantiene SDK 36, mínimo 26, AGP 8.13.2, Kotlin 2.2.21 y MapLibre Native 12.2.0 del curso. Selecciona un Gradle JDK compatible, como JBR 21. No requiere claves ni Google Play Services.
+
+El esquema local arranca sin Internet. Muestra una zona propia aproximada de 500 m y permite simular un punto interior/exterior. El seguimiento real se activa por botón y se detiene en onStop; no hay servicio ni ubicación de fondo. Un botón distinto carga cartografía OpenFreeMap, con atribución visible y del SDK. El modo local no representa calles ni descarga teselas.
+
+Completa `cartografia-zona` en `Geometria.kt`, `cartografia-posicion` y `cartografia-busqueda` en `MainActivity.kt`. El ayudante de seguimiento, polígono, cámara, cliente y consulta de ruta están preparados. La clasificación inicial devuelve INCIERTA y los eventos pendientes se identifican en pantalla. No se incluyen las soluciones en el starter.
+
+## Recorrido de archivos
+
+- `MainActivity.kt`: MapView/Compose, mapa local/remoto, eventos, estado y cancelación.
+- `Geometria.kt`: distancia y clasificación; Kotlin puro con pruebas JVM.
+- `Seguimiento.kt`: permisos, proveedor disponible y listener de LocationManager.
+- `ServicioCartografico.kt`: HTTP en IO, parsers Nominatim/OSRM, límites y caché en memoria de hasta 16 respuestas válidas.
+- `servidor.py`: respuestas propias de laboratorio; no consulta proveedores externos.
+
+## Servidor reproducible
+
+En un terminal de esta carpeta ejecuta `py servidor.py` (Python 3). Escucha solo en `127.0.0.1:8091`; detén con Ctrl+C. En el emulador conserva `http://10.0.2.2:8091`. Activa la casilla de consultas y busca `Museo`. Otros nombres devuelven vacío; `ERROR` devuelve HTTP 503 y `ROTO`, un contrato incompatible. La ruta devuelve tres puntos propios: no son un itinerario real por calles.
+
+En dispositivo físico el host 10.0.2.2 no apunta a tu ordenador. Para probar el servidor con USB puedes configurar ADB reverse y usar `http://127.0.0.1:8091`, o un servidor propio HTTPS accesible. No abras el servidor a Internet ni atribuyas al teléfono una prueba hecha en emulador.
+
+Para un proveedor real, introduce la base autorizada del servicio con contrato compatible. La app no incluye la dirección pública Nominatim ni ejecuta búsquedas al escribir. La casilla autoriza enviar la consulta y los extremos públicos de la ruta, nunca la posición GPS. Verifica condiciones y cuota global del proveedor; un retardo de un móvil no controla el tráfico de toda el aula. HTTPS obligatorio fuera de loopback/host del emulador en debug. Release no habilita HTTP.
+
+## Pruebas
+
+```powershell
+.\gradlew.bat :app:assembleDebug :app:testDebugUnitTest :app:lintDebug :app:assembleDebugAndroidTest --console=plain
+py test_servidor.py
+```
+
+La comprobación de clasificación se omite hasta completar el TODO; no se cuenta como aprobada. Actívala con `-Paprendizaje.geocerca=true` en la tarea Gradle `:app:testDebugUnitTest`. Distancia, validación de coordenadas y parsers se comprueban desde el inicio.
+
+Registra aparte los resultados reales en `ESTADO-DESARROLLO.md` del repositorio. Compilar no demuestra GPS real, seguimiento de fondo ni disponibilidad del proveedor. Verifica manualmente parada al salir, concesión/denegación/aproximada, cartografía remota y ambos caminos de servicio. No se declara verificación física ni API antiguas sin ejecutarlas.
+
+Código original Apache-2.0, LICENSE incluido. MapLibre conserva sus licencias. Los datos remotos mantienen atribución OpenStreetMap/OpenMapTiles/OpenFreeMap; las geometrías locales sintéticas son propias.

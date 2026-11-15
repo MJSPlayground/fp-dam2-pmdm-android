@@ -1,0 +1,7 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+    <string name="app_name">Lista de revisión</string>
+    <string name="cargar">Volver a cargar</string>
+    <string name="cargando">Cargando notas…</string>
+    <string name="error">No se pudieron recuperar las notas. Reintenta.</string>
+    <string name="vacia">No hay notas</string>
+</resources>

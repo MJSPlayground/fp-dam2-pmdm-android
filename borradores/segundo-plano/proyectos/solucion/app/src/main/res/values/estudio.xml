@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+    <string name="canal">Avisos de estudio</string>
+    <string name="estado_trabajo">Trabajo %1$s: %2$s; reintentos: %3$d</string>
+    <string name="titulo_aviso">Revisión preparada</string>
+    <string name="texto_aviso">Consulta las comprobaciones de la aplicación.</string>
+    <string name="resumen">La revisión del laboratorio ha terminado. Comprueba los permisos, el estado del trabajo y la reproducción. Este aviso utiliza texto expandible y abre de nuevo la aplicación al pulsarlo.</string>
+    <string name="audio">Tono original del laboratorio</string>
+    <string name="autorizado">Notificaciones autorizadas</string>
+    <string name="denegado">Las notificaciones no están disponibles; revisa el permiso y los ajustes.</string>
+    <string name="permiso">Comprobar permiso</string>
+    <string name="inmediata">Aviso inmediato</string>
+    <string name="expandida">Aviso expandido</string>
+    <string name="programar">Programar revisión diferida</string>
+    <string name="cancelar">Cancelar revisión pendiente</string>
+    <string name="receiver">Enviar evento propio</string>
+    <string name="audio_explicacion">El tono se repetirá al pulsar Reproducir, incluso al salir de esta pantalla. Pulsa Detener para finalizarlo.</string>
+    <string name="play">Reproducir</string>
+    <string name="pause">Pausar</string>
+    <string name="stop">Detener</string>
+    <string name="audio_error">No se pudo conectar con el reproductor.</string>
+    <string name="fcm">La mensajería remota no está configurada. Las acciones locales funcionan sin una cuenta.</string>
+</resources>

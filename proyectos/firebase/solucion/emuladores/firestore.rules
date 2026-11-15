@@ -7,7 +7,7 @@ service cloud.firestore {
       allow create, update: if propietario()
         && request.resource.data.keys().hasOnly(['titulo'])
         && request.resource.data.titulo is string
-        && request.resource.data.titulo.size() >= 3
+        && request.resource.data.titulo.trim().size() >= 3
         && request.resource.data.titulo.size() <= 80;
     }
   }

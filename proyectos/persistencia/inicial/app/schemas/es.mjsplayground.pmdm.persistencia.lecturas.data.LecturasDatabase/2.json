@@ -1,0 +1,182 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "9d5e38c2d24b15f942ec25a11df5a06c",
+    "entities": [
+      {
+        "tableName": "autores",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`autorId` INTEGER NOT NULL, `nombre` TEXT NOT NULL, PRIMARY KEY(`autorId`))",
+        "fields": [
+          {
+            "fieldPath": "autorId",
+            "columnName": "autorId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "autorId"
+          ]
+        }
+      },
+      {
+        "tableName": "lecturas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`lecturaId` INTEGER NOT NULL, `titulo` TEXT NOT NULL, `autorId` INTEGER NOT NULL, `leida` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`lecturaId`), FOREIGN KEY(`autorId`) REFERENCES `autores`(`autorId`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "lecturaId",
+            "columnName": "lecturaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "titulo",
+            "columnName": "titulo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "autorId",
+            "columnName": "autorId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "leida",
+            "columnName": "leida",
+            "affinity": "INTEGER",
+            "notNull": true,
+            "defaultValue": "0"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "lecturaId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_lecturas_autorId",
+            "unique": false,
+            "columnNames": [
+              "autorId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_lecturas_autorId` ON `${TABLE_NAME}` (`autorId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "autores",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "autorId"
+            ],
+            "referencedColumns": [
+              "autorId"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "etiquetas",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`etiquetaId` INTEGER NOT NULL, `nombre` TEXT NOT NULL, PRIMARY KEY(`etiquetaId`))",
+        "fields": [
+          {
+            "fieldPath": "etiquetaId",
+            "columnName": "etiquetaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "etiquetaId"
+          ]
+        }
+      },
+      {
+        "tableName": "lectura_etiqueta",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`lecturaId` INTEGER NOT NULL, `etiquetaId` INTEGER NOT NULL, PRIMARY KEY(`lecturaId`, `etiquetaId`), FOREIGN KEY(`lecturaId`) REFERENCES `lecturas`(`lecturaId`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`etiquetaId`) REFERENCES `etiquetas`(`etiquetaId`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "lecturaId",
+            "columnName": "lecturaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "etiquetaId",
+            "columnName": "etiquetaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "lecturaId",
+            "etiquetaId"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_lectura_etiqueta_etiquetaId",
+            "unique": false,
+            "columnNames": [
+              "etiquetaId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_lectura_etiqueta_etiquetaId` ON `${TABLE_NAME}` (`etiquetaId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "lecturas",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "lecturaId"
+            ],
+            "referencedColumns": [
+              "lecturaId"
+            ]
+          },
+          {
+            "table": "etiquetas",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "etiquetaId"
+            ],
+            "referencedColumns": [
+              "etiquetaId"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9d5e38c2d24b15f942ec25a11df5a06c')"
+    ]
+  }
+}

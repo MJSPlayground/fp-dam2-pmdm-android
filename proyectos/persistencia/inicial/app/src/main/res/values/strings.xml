@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lecturas</string>
+    <string name="explicacion">La lista se observa desde Room. Puedes trabajar sin red con la demostración local.</string>
+    <string name="demo">Cargar demostración local</string>
+    <string name="actualizar">Actualizar desde API</string>
+    <string name="pendientes">Mostrar solo pendientes</string>
+    <string name="error">No se pudo completar la acción. Los datos guardados se conservan; puedes reintentar.</string>
+    <string name="vacia">No hay lecturas para este filtro.</string>
+    <string name="leida">Leída</string><string name="pendiente">Pendiente</string>
+    <string name="marcar_leida">Marcar leída</string><string name="marcar_pendiente">Marcar pendiente</string>
+</resources>

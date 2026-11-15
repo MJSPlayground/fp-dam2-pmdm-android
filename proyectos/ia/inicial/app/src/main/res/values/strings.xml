@@ -1,0 +1,11 @@
+﻿<resources>
+<string name="app_name">Consulta con texto e imagen</string>
+<string name="privacidad">Solo se envía al pulsar Consultar. El servidor local indica si usa simulación o un proveedor real. No incluyas datos personales.</string>
+<string name="pregunta">Pregunta</string><string name="seleccionar">Preparar una imagen propia</string><string name="quitar">Quitar imagen</string>
+<string name="imagen_lista">Imagen preparada sin metadatos originales.</string><string name="sin_imagen">Consulta solo de texto.</string>
+<string name="consultar">Consultar</string><string name="cancelar">Cancelar</string><string name="cancelada">Consulta cancelada.</string>
+<string name="error_consulta">Escribe entre 3 y 2000 caracteres.</string><string name="error_imagen">No se pudo preparar esa imagen.</string>
+<string name="error_red">No se obtuvo una respuesta. Revisa el servidor, sus límites y vuelve a intentarlo.</string>
+<string name="simulada">Respuesta simulada: comprueba el circuito, no es inferencia de IA.</string><string name="real">Respuesta de un modelo remoto.</string>
+<string name="verificar">Contrasta la respuesta con una fuente o con la imagen. Puede contener errores.</string>
+</resources>

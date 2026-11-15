@@ -25,10 +25,11 @@ class NubeIntegracionTest {
         esperar("Cerrar sesión")
         regla.onNodeWithText("Título de la nota").performTextInput("Nota desde Android")
         regla.onNodeWithText("Guardar nota").performClick()
-        esperar("Nota desde Android")
+        esperar("Nota guardada.")
+        esperar("Eliminar nota")
         regla.onNodeWithText("Eliminar nota").performScrollTo().performClick()
         esperar("Nota eliminada.")
-        regla.onNodeWithText("Nota desde Android").assertDoesNotExist()
+        regla.waitUntil(15000) { regla.onAllNodesWithText("Nota desde Android").fetchSemanticsNodes().isEmpty() }
         val bytes = ByteArrayOutputStream().also { out ->
             Bitmap.createBitmap(16, 16, Bitmap.Config.ARGB_8888).apply {
                 eraseColor(android.graphics.Color.GREEN)
@@ -44,7 +45,18 @@ class NubeIntegracionTest {
         regla.onNodeWithText("Descargar mi imagen").performScrollTo().performClick()
         esperar("Imagen descargada.")
         regla.onNodeWithContentDescription("Imagen privada descargada").assertExists()
+        regla.onNodeWithText("Título de la nota").performScrollTo().performTextInput("Borrador privado de la primera cuenta")
         regla.onNodeWithText("Cerrar sesión").performScrollTo().performClick()
+        esperar("Crear cuenta local")
+        regla.onNodeWithText("Correo local de prueba").performTextClearance()
+        regla.onNodeWithText("Correo local de prueba").performTextInput("otra-${System.nanoTime()}@example.test")
+        regla.onNodeWithText("Contraseña local de prueba").performTextInput("Solo-Emulador-84")
+        regla.onNodeWithText("Crear cuenta local").performClick()
+        esperar("Cerrar sesión")
+        regla.onNodeWithText("Borrador privado de la primera cuenta").assertDoesNotExist()
+        regla.onNodeWithContentDescription("Imagen privada descargada").assertDoesNotExist()
+        regla.onNodeWithText("Todavía no hay notas.").assertExists()
+        regla.onNodeWithText("Cerrar sesión").performClick()
         esperar("Crear cuenta local")
     }
 }

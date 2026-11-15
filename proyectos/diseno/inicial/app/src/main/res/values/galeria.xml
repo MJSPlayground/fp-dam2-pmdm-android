@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:locale="es">
+    <string name="catalogo">Catálogo</string>
+    <string name="accion_favorito">%1$s: %2$s</string>
+    <string name="menu">Menú</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="revision">Actualizaciones: %1$d</string>
+    <string name="naturaleza">Naturaleza</string>
+    <string name="ciudad">Ciudad</string>
+    <string name="todas">Todas</string>
+    <string name="lamina_bosque">Bosque</string>
+    <string name="lamina_montana">Montaña</string>
+    <string name="lamina_ciudad">Edificios</string>
+    <string name="lamina_app">Primera aplicación</string>
+    <string name="marcado">Guardado en favoritos</string>
+    <string name="sin_marcar">Sin guardar</string>
+    <string name="guardar">Guardar favorito</string>
+    <string name="quitar">Quitar favorito</string>
+    <string name="volver">Volver</string>
+    <string name="error_imagen">No se pudo cargar la imagen.</string>
+    <string name="descripcion">Lámina de la galería. Las ilustraciones vectoriales son originales; la captura remota procede de la primera aplicación de estos materiales. El título identifica el contenido también sin la imagen.</string>
+</resources>

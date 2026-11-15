@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Zona de paseo</string>
+    <string name="cargando">Preparando mapa…</string>
+    <string name="error_mapa">No se pudo cargar el mapa. Puedes usar el esquema local.</string>
+    <string name="local_listo">Esquema local sin calles. La zona sombreada aproxima un radio de 500 m.</string>
+    <string name="remoto_listo">Mapa remoto. Verde: centro; azul: posición; naranja: búsqueda o ruta.</string>
+    <string name="credito_local">Esquema propio: zona y marcadores. No necesita teselas ni red; no representa calles.</string>
+    <string name="credito_remoto">OpenFreeMap · © OpenMapTiles · Datos © OpenStreetMap contributors</string>
+    <string name="usar_remoto">Cargar cartografía remota</string>
+    <string name="usar_local">Usar esquema local sin red</string>
+    <string name="encuadrar">Encuadrar zona y ruta</string>
+    <string name="explicacion">Seguimiento solo con pantalla visible. Al salir se detiene; no se almacena historial. Las coordenadas GPS no se envían al servicio de demostración.</string>
+    <string name="iniciar">Iniciar seguimiento visible</string>
+    <string name="detener">Detener seguimiento</string>
+    <string name="simular_dentro">Simular centro de la zona</string>
+    <string name="simular_fuera">Simular punto exterior</string>
+    <string name="sin_lectura">Sin posición. Puedes simular puntos sin conceder permiso.</string>
+    <string name="siguiendo">Esperando actualizaciones. Intervalo solicitado: 5 s y 5 m; no es una garantía.</string>
+    <string name="denegado">Permiso denegado. La simulación y el mapa siguen disponibles.</string>
+    <string name="sin_proveedor">Sin proveedor autorizado. No hay seguimiento activo.</string>
+    <string name="detenido">Seguimiento detenido al pulsar o abandonar la pantalla.</string>
+    <string name="dentro">Dentro de la zona</string>
+    <string name="fuera">Fuera de la zona</string>
+    <string name="incierta">Posición incierta respecto al borde</string>
+    <string name="resultado">%1$s · Distancia %2$.0f m · Precisión %3$.0f m</string>
+    <string name="pendiente">Completa los TODO de la práctica para interpretar la posición o la búsqueda.</string>
+    <string name="servicios">Servicios de prueba. Servidor Python incluido; la ruta de ejemplo es sintética y no sirve para navegar. Un proveedor externo recibe la búsqueda y los extremos públicos de la ruta.</string>
+    <string name="base">URL base del servidor elegido</string>
+    <string name="consulta">Lugar público que buscar</string>
+    <string name="consentimiento">Permitir consultas explícitas a ese servidor</string>
+    <string name="buscar">Buscar lugar</string>
+    <string name="ruta">Consultar ruta pública de prueba</string>
+    <string name="consultando">Consultando servidor…</string>
+    <string name="lugar_listo">Lugar localizado: marcador naranja.</string>
+    <string name="sin_lugar">La búsqueda no devolvió ningún lugar.</string>
+    <string name="ruta_lista">Ruta recibida: línea naranja. El servidor del laboratorio devuelve una geometría sintética.</string>
+    <string name="error_servicio">No se pudo consultar: revisa URL, servicio y respuesta. Espera antes de reintentar.</string>
+    <string name="consulta_cancelada">Consulta cancelada al abandonar la pantalla.</string>
+</resources>

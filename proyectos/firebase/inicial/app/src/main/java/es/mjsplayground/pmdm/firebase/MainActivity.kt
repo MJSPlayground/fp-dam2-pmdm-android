@@ -42,32 +42,50 @@ class MainActivity : ComponentActivity() {
     // La Activity no reconstruye Firebase al recomponer ni al girar.
     private val repo by lazy { (application as LaboratorioApplication).repo }
     private var registro: ListenerRegistration? = null
-    private var conectado by mutableStateOf(false)
+    private var usuario by mutableStateOf<String?>(null)
+    private val conectado get() = usuario != null
+    private var generacion = 0L
+    private var ocupada by mutableStateOf(false)
     private var notas by mutableStateOf(emptyList<NotaNube>())
     private var aviso by mutableStateOf(R.string.inicio)
     private var imagen by mutableStateOf<android.graphics.Bitmap?>(null)
     private val authListener = FirebaseAuth.AuthStateListener { auth ->
+        generacion++
         registro?.remove(); registro = null; notas = emptyList(); imagen = null
-        conectado = auth.currentUser != null
-        if (conectado) registro = repo.observar { lista, error ->
-            if (error != null) aviso = R.string.error_datos else notas = lista.orEmpty()
+        usuario = auth.currentUser?.uid
+        ocupada = false
+        aviso = if (usuario == null) R.string.inicio else R.string.sesion
+        val uid = usuario
+        val version = generacion
+        if (uid != null) registro = repo.observar { lista, error ->
+            if (vigente(uid, version)) {
+                if (error != null) aviso = R.string.error_datos else notas = lista.orEmpty()
+            }
         }
     }
+    private fun vigente(uid: String?, version: Long) =
+        uid != null && uid == usuario && uid == repo.auth.currentUser?.uid && version == generacion
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState); enableEdgeToEdge()
         setContent { PrimeraAplicacionTheme {
             var correo by remember { mutableStateOf("") }
-            var clave by remember { mutableStateOf("") }
-            var titulo by remember { mutableStateOf("") }
+            var clave by remember(usuario) { mutableStateOf("") }
+            var titulo by remember(usuario) { mutableStateOf("") }
             val selector = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
-                if (uri != null && conectado) lifecycleScope.launch {
+                val uid = usuario
+                val version = generacion
+                if (uri != null && uid != null) lifecycleScope.launch {
+                    ocupada = true
                     aviso = R.string.trabajando
                     val bytes = withContext(Dispatchers.IO) { runCatching {
                         contentResolver.openInputStream(uri)?.use { leerAcotado(it) }
                     }.getOrNull() }
+                    if (!vigente(uid, version)) return@launch
                     val mime = contentResolver.getType(uri).orEmpty()
-                    if (bytes == null) aviso = R.string.error_imagen
-                    else repo.subir(bytes,mime) { aviso = if(it) R.string.subida else R.string.error_imagen }
+                    if (bytes == null) {aviso = R.string.error_imagen;ocupada=false}
+                    else repo.subir(bytes,mime) {
+                        if (vigente(uid, version)) {aviso = if(it) R.string.subida else R.string.error_imagen;ocupada=false}
+                    }
                 }
             }
             Scaffold(Modifier.fillMaxSize()) { margen ->
@@ -82,42 +100,63 @@ class MainActivity : ComponentActivity() {
                         OutlinedTextField(clave,{clave=it},label={Text(stringResource(R.string.clave))},
                             visualTransformation = androidx.compose.ui.text.input.PasswordVisualTransformation())
                         Button(onClick={
+                            ocupada=true
                             aviso=R.string.trabajando
                             repo.auth.createUserWithEmailAndPassword(correo,clave).addOnCompleteListener {
                                 aviso=if(it.isSuccessful) R.string.sesion else R.string.error_sesion
+                                ocupada=false
                             }
-                        },enabled=correo.isNotBlank()&&clave.length>=6) {Text(stringResource(R.string.crear))}
+                        },enabled=!ocupada&&correo.isNotBlank()&&clave.length>=6) {Text(stringResource(R.string.crear))}
                         Button(onClick={
+                            ocupada=true
                             aviso=R.string.trabajando
                             repo.auth.signInWithEmailAndPassword(correo,clave).addOnCompleteListener {
                                 aviso=if(it.isSuccessful) R.string.sesion else R.string.error_sesion
+                                ocupada=false
                             }
-                        },enabled=correo.isNotBlank()&&clave.isNotEmpty()) {Text(stringResource(R.string.entrar))}
+                        },enabled=!ocupada&&correo.isNotBlank()&&clave.isNotEmpty()) {Text(stringResource(R.string.entrar))}
                     } else {
                         Button(onClick={repo.auth.signOut();clave="";aviso=R.string.inicio}) {Text(stringResource(R.string.salir))}
                         OutlinedTextField(titulo,{titulo=it},label={Text(stringResource(R.string.titulo))})
-                        Button(onClick={repo.agregar(titulo){ok->aviso=if(ok)R.string.guardada else R.string.error_datos;if(ok)titulo=""}},enabled=tituloValido(titulo)) {Text(stringResource(R.string.guardar))}
+                        Button(onClick={
+                            val uid=usuario; val version=generacion
+                            ocupada=true
+                            repo.agregar(titulo){ok->
+                                if(vigente(uid,version)) {ocupada=false;aviso=if(ok)R.string.guardada else R.string.error_datos;if(ok)titulo=""}
+                            }
+                        },enabled=!ocupada&&tituloValido(titulo)) {Text(stringResource(R.string.guardar))}
                         if(notas.isEmpty())Text(stringResource(R.string.vacia))
                         notas.forEach { nota ->
                             Text(nota.titulo)
-                            Button(onClick={repo.eliminar(nota.id){aviso=if(it)R.string.eliminada else R.string.error_datos}}) {Text(stringResource(R.string.eliminar))}
+                            Button(onClick={
+                                val uid=usuario; val version=generacion
+                                ocupada=true
+                                repo.eliminar(nota.id){if(vigente(uid,version)){ocupada=false;aviso=if(it)R.string.eliminada else R.string.error_datos}}
+                            },enabled=!ocupada) {Text(stringResource(R.string.eliminar))}
                         }
-                        Button(onClick={selector.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))}) {Text(stringResource(R.string.subir))}
+                        Button(onClick={selector.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))},enabled=!ocupada) {Text(stringResource(R.string.subir))}
                         Button(onClick={
+                            val uid=usuario; val version=generacion
+                            ocupada=true
                             aviso=R.string.trabajando
                             repo.descargar { bytes ->
+                                if(!vigente(uid,version)) return@descargar
                                 lifecycleScope.launch {
-                                    imagen = withContext(Dispatchers.Default) { bytes?.let { datos ->
+                                    val nueva = withContext(Dispatchers.Default) { bytes?.let { datos ->
                                         // Límites de píxeles antes de decodificar; bytes acotados no bastan.
                                         val opciones=BitmapFactory.Options().apply{inJustDecodeBounds=true}
                                         BitmapFactory.decodeByteArray(datos,0,datos.size,opciones)
                                         if(opciones.outWidth !in 1..4096 || opciones.outHeight !in 1..4096) null
                                         else BitmapFactory.decodeByteArray(datos,0,datos.size,BitmapFactory.Options().apply{inSampleSize=4})
                                     } }
-                                    aviso=if(imagen==null) R.string.error_imagen else R.string.descargada
+                                    if(vigente(uid,version)) {
+                                        ocupada=false
+                                        imagen=nueva
+                                        aviso=if(imagen==null) R.string.error_imagen else R.string.descargada
+                                    } else nueva?.recycle()
                                 }
                             }
-                        }) {Text(stringResource(R.string.descargar))}
+                        },enabled=!ocupada) {Text(stringResource(R.string.descargar))}
                         imagen?.let {Image(it.asImageBitmap(),stringResource(R.string.imagen),Modifier.fillMaxWidth().heightIn(max=240.dp),contentScale=ContentScale.Fit)}
                     }
                 }
@@ -126,6 +165,7 @@ class MainActivity : ComponentActivity() {
     }
     override fun onStart() {super.onStart();if(BuildConfig.DEBUG)repo.auth.addAuthStateListener(authListener)}
     override fun onStop() {
+        generacion++
         registro?.remove();registro=null
         if(BuildConfig.DEBUG)repo.auth.removeAuthStateListener(authListener)
         super.onStop()

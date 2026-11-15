@@ -2,21 +2,15 @@
 
 Material complementario para profundizar después de la ruta principal. Ninguno de estos temas es requisito previo de los tres temas del itinerario.
 
-## Temas disponibles
-
 - [Kotlin avanzado, asincronía y efectos de Compose](../asincronia/index.md).
+- [Diseño visual avanzado, recursos y accesibilidad](../diseno/index.md).
+- [Persistencia y arquitectura avanzada](../persistencia/index.md).
+- [Redes, mensajería y Bluetooth avanzado](../redes/index.md).
+- [Firebase: backend y almacenamiento en la nube](../firebase/index.md).
+- [Notificaciones avanzadas y tareas en segundo plano](../segundo-plano/index.md).
+- [Inteligencia artificial en aplicaciones Android](../ia/index.md).
+- [Cartografía y geolocalización avanzada](../cartografia/index.md).
 - [Sensores, biometría y hardware](../sensores/index.md).
+- [Calidad, pruebas, publicación y mantenimiento](../calidad/index.md).
 
-## Temas en desarrollo
-
-- Diseño visual avanzado, recursos y accesibilidad.
-- Persistencia y arquitectura avanzada.
-- Redes, mensajería y Bluetooth avanzado.
-- Firebase: backend y almacenamiento en la nube.
-- Notificaciones avanzadas y tareas en segundo plano.
-- Inteligencia artificial en aplicaciones Android.
-- Cámara, edición y reproducción multimedia avanzada.
-- Cartografía y geolocalización avanzada.
-- Calidad, pruebas, publicación y mantenimiento.
-
-Las páginas y sus descargas se incorporarán aquí al completar sus comprobaciones.
+El tema de cámara, edición y reproducción multimedia avanzada está en elaboración y se incorporará al completar sus comprobaciones.

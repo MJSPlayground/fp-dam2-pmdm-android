@@ -48,3 +48,5 @@ El trabajo periódico tiene un intervalo mínimo y ventanas de flexibilidad; no 
 Una prueba con `TestListenableWorkerBuilder` ejecuta el Worker con parámetros controlados. Puede comprobar su decisión de reintento y el aviso generado. No demuestra que el planificador respete red, demora o reinicio.
 
 Para ese recorrido, encola realmente desde la app, observa ENQUEUED/RUNNING/SUCCEEDED o FAILED, cancela y repite con la red desactivada. Registra tiempos observados como observaciones, no como garantías de plataforma. La prueba remota o física que no puedas ejecutar sigue pendiente aunque el Worker aislado pase.
+
+`PlanificacionTest`, en la solución, envía el receiver propio, espera la solicitud real y su reintento hasta éxito, y comprueba después cancelación. No usa un reloj virtual: necesita un dispositivo con conexión y un tiempo de espera acotado. No sustituye probar la ausencia de red, reinicio ni políticas de fabricantes diferentes.

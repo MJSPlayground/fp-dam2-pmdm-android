@@ -1,5 +1,6 @@
 """Crea descargas individuales reproducibles sin cachés ni configuración privada."""
 from pathlib import Path
+import os
 from zipfile import ZipFile, ZIP_DEFLATED, ZipInfo
 from navigation import config, find_sections
 
@@ -7,11 +8,19 @@ ROOT = Path(__file__).resolve().parent.parent
 EXCLUDED = {"build", ".gradle", ".idea", ".git", ".kotlin", "__pycache__", "node_modules", ".firebase"}
 
 
+def source_files(root):
+    """No recorrer dependencias/cachés que nunca deben entrar en la descarga."""
+    for directory, folders, names in os.walk(root):
+        folders[:] = sorted(name for name in folders if name not in EXCLUDED)
+        for name in sorted(names):
+            yield Path(directory) / name
+
+
 def package():
     output = ROOT / "docs" / "descargas" / "proyectos"
     output.mkdir(parents=True, exist_ok=True)
     published = {slug for slug, _, _ in find_sections(config())}
-    projects = sorted(settings for settings in (ROOT / "proyectos").rglob("settings.gradle.kts")
+    projects = sorted(settings for settings in source_files(ROOT / "proyectos") if settings.name == "settings.gradle.kts"
                       if any(settings.relative_to(ROOT / "proyectos").as_posix().startswith(slug + "/") for slug in published))
     assert projects, "No hay proyectos para empaquetar"
     for settings in projects:
@@ -21,7 +30,7 @@ def package():
         for required in ("gradlew", "gradlew.bat", "gradle/wrapper/gradle-wrapper.jar", "README.md"):
             assert (project / required).is_file(), (slug, required)
         with ZipFile(archive, "w", compression=ZIP_DEFLATED) as target:
-            for source in sorted(project.rglob("*")):
+            for source in sorted(source_files(project)):
                 relative = source.relative_to(project)
                 if not source.is_file() or EXCLUDED.intersection(relative.parts):
                     continue

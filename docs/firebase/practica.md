@@ -10,6 +10,8 @@ Crearás una cuenta local, observarás sus notas en tiempo real y completarás e
 
     **Observa el código existente.** Dentro de `app/src/main/java/es/mjsplayground/pmdm/firebase`, abre `LaboratorioApplication.kt`, `NubeRepository.kt` y `MainActivity.kt`. Application conserva el repositorio una vez por proceso; la Activity presenta estado y eventos; el repositorio utiliza los tres servicios. Localiza `useEmulator` antes de cualquier consulta.
 
+    `SesionUsuario.kt` identifica a qué sesión pertenece una operación. Cada callback comprueba su turno antes de publicar resultados; cambiar de cuenta invalida los anteriores. Abrir Photo Picker no cambia la identidad. El borrador y la contraseña se reinician al cambiar de usuario. Esta infraestructura está preparada: no forma parte de los dos TODO.
+
     **Comprueba.** Introduce un correo de prueba terminado en `example.test` y una contraseña exclusiva de este laboratorio. Crea la cuenta: debe aparecer Cerrar sesión. En la interfaz local del emulador Auth debe existir esa cuenta. Cierra sesión e inicia de nuevo. Una clave equivocada debe mostrar un fallo recuperable, sin presentar la lista privada.
 
 ??? example "Notas: escritura y escucha resueltas"

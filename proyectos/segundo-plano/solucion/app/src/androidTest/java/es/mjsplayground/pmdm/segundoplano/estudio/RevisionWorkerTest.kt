@@ -24,6 +24,10 @@ class RevisionWorkerTest {
             .setInputData(workDataOf("fallos" to 1)).setRunAttemptCount(1).build()
         assertEquals(ListenableWorker.Result.success(), segundo.doWork())
         val manager = contexto.getSystemService(NotificationManager::class.java)
+        val limite = System.currentTimeMillis() + 5_000
+        while (manager.activeNotifications.none { it.id == Avisos.ID } && System.currentTimeMillis() < limite) {
+            Thread.sleep(50)
+        }
         assertTrue(manager.activeNotifications.any { it.id == Avisos.ID })
         manager.cancel(Avisos.ID)
     }

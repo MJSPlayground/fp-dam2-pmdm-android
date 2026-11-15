@@ -43,7 +43,7 @@ fun flujoBusqueda(
     esperaEscritura: Long = 300,
     latencia: Long = 600
 ): Flow<ResultadoBusqueda> = consultas.map {
-    // TODO flujo: combina consulta pausada y favoritos; cancela la b?squeda anterior.
+    // TODO flujo: combina consulta pausada y favoritos; cancela la búsqueda anterior.
     // Emite carga, simula latencia y representa ?xito/error sin consumir CancellationException.
     ResultadoBusqueda(libros = libros)
 }

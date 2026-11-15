@@ -33,3 +33,8 @@ Los resultados ejecutados y las comprobaciones remotas o físicas pendientes se
 registran en ESTADO-DESARROLLO.md. Una prueba del Worker aislado no demuestra el
 planificador del sistema. No se certifica FCM por compilar su servicio.
 Código Apache-2.0 y wrapper con avisos propios.
+
+RevisionWorkerTest comprueba intentos controlados y aviso; PlanificacionTest envía
+el receiver y espera una planificación real con reintento/cancelación; ReproduccionTest
+comprueba la sesión activa al detener la Activity. Esta última finaliza el audio al salir.
+La prueba de planificación necesita red y no representa una alarma exacta.

@@ -40,9 +40,50 @@ nav = [
       "asincronia/flujos.md", "asincronia/efectos.md", "asincronia/practica.md",
       "asincronia/actividades.md", "asincronia/repaso.md", "asincronia/soluciones.md",
     ] },
+    { "Diseño visual avanzado, recursos y accesibilidad" = [
+      "diseno/index.md", "diseno/distribucion.md", "diseno/imagenes.md",
+      "diseno/animaciones.md", "diseno/recursos.md", "diseno/practica.md",
+      "diseno/repaso.md", "diseno/soluciones.md",
+    ] },
+    { "Persistencia y arquitectura avanzada" = [
+      "persistencia/index.md", "persistencia/datastore.md", "persistencia/relaciones.md",
+      "persistencia/migraciones.md", "persistencia/offline.md", "persistencia/arquitectura.md",
+      "persistencia/hilt.md", "persistencia/practica.md", "persistencia/consolidacion.md",
+      "persistencia/repaso.md", "persistencia/soluciones-repaso.md",
+    ] },
+    { "Redes, mensajería y Bluetooth avanzado" = [
+      "redes/index.md", "redes/protocolos.md", "redes/ktor.md",
+      "redes/clasico.md", "redes/ble.md", "redes/practica.md",
+      "redes/repaso.md", "redes/soluciones-repaso.md",
+    ] },
+    { "Firebase: backend y almacenamiento en la nube" = [
+      "firebase/index.md", "firebase/configuracion.md", "firebase/autenticacion.md",
+      "firebase/documentos.md", "firebase/archivos.md", "firebase/practica.md",
+      "firebase/repaso.md", "firebase/soluciones.md",
+    ] },
+    { "Notificaciones avanzadas y tareas en segundo plano" = [
+      "segundo-plano/index.md", "segundo-plano/avisos.md", "segundo-plano/trabajos.md",
+      "segundo-plano/mensajeria.md", "segundo-plano/eventos.md", "segundo-plano/reproduccion.md",
+      "segundo-plano/practica.md", "segundo-plano/repaso.md", "segundo-plano/soluciones.md",
+    ] },
+    { "Inteligencia artificial en aplicaciones Android" = [
+      "ia/index.md", "ia/modelos.md", "ia/integracion.md",
+      "ia/multimodal.md", "ia/practica.md", "ia/repaso.md",
+      "ia/soluciones.md",
+    ] },
+    { "Cartografía y geolocalización avanzada" = [
+      "cartografia/index.md", "cartografia/seguimiento.md", "cartografia/capas.md",
+      "cartografia/servicios.md", "cartografia/offline.md", "cartografia/practica.md",
+      "cartografia/repaso.md", "cartografia/soluciones-repaso.md",
+    ] },
     { "Sensores, biometría y hardware" = [
-      "sensores/index.md", "sensores/lecturas.md", "sensores/hardware.md", "sensores/practica.md",
-      "sensores/actividades.md", "sensores/soluciones.md",
+      "sensores/index.md", "sensores/lecturas.md", "sensores/hardware.md",
+      "sensores/practica.md", "sensores/actividades.md", "sensores/soluciones.md",
+    ] },
+    { "Calidad, pruebas, publicación y mantenimiento" = [
+      "calidad/index.md", "calidad/pruebas.md", "calidad/interfaz.md",
+      "calidad/depuracion.md", "calidad/compilacion.md", "calidad/publicacion.md",
+      "calidad/practica.md", "calidad/repaso.md", "calidad/soluciones.md",
     ] },
   ] },
   { "Recursos y ayuda" = ["recursos/index.md"] },
@@ -52,14 +93,22 @@ nav = [
 generator = false
 # Solo estas carpetas representan temas publicables en PDF. Las agrupaciones
 # de navegación pueden contener tantos temas anidados como se necesiten.
-pdf_sections = ["ecosistema", "desarrollo", "multimedia", "asincronia", "sensores", "recursos"]
+pdf_sections = ["ecosistema", "desarrollo", "multimedia", "asincronia", "diseno", "persistencia", "redes", "firebase", "segundo-plano", "ia", "cartografia", "sensores", "calidad", "recursos"]
 
 [project.extra.pdf_titles]
 ecosistema = "El ecosistema Android y el entorno de desarrollo"
 desarrollo = "Desarrollo de aplicaciones con Kotlin y Jetpack Compose"
 multimedia = "Multimedia, localización y notificaciones en Android"
 asincronia = "Kotlin avanzado, asincronía y efectos de Compose"
+diseno = "Diseño visual avanzado, recursos y accesibilidad"
+persistencia = "Persistencia y arquitectura avanzada"
+redes = "Redes, mensajería y Bluetooth avanzado"
+firebase = "Firebase: backend y almacenamiento en la nube"
+segundo-plano = "Notificaciones avanzadas y tareas en segundo plano"
+ia = "Inteligencia artificial en aplicaciones Android"
+cartografia = "Cartografía y geolocalización avanzada"
 sensores = "Sensores, biometría y hardware"
+calidad = "Calidad, pruebas, publicación y mantenimiento"
 recursos = "Recursos y ayuda"
 
 [project.theme]

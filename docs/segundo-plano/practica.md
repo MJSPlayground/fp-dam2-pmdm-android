@@ -68,7 +68,7 @@
 
     **Comprueba.** Inicia el tono y sal a otra app. La sesión debe mantenerse y ofrecer controles del sistema. Pausa desde esos controles, vuelve a la app, reanuda y detén. No dejes el bucle sonando al terminar. Repite con pantalla bloqueada cuando el entorno lo permita y registra por separado auriculares/foco en hardware real.
 
-    La solución incluye una prueba del Worker con intentos controlados y otra que detiene la Activity mientras comprueba la sesión. Esos tests no acreditan por sí solos el planificador real, audición, auriculares ni entrega FCM.
+    La solución incluye una prueba del Worker con intentos controlados, otra que envía el evento propio y espera una planificación real con reintento/cancelación, y otra que detiene la Activity mientras comprueba la sesión. La prueba del planificador necesita red y espera condiciones reales del emulador; no acredita todos los estados de ahorro energético, audición, auriculares ni entrega FCM.
 
 ??? example "Mensajería remota y cierre"
 

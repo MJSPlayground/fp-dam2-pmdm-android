@@ -64,7 +64,7 @@ fun Buscador(modelo: BuscadorViewModel = viewModel()) {
     val ayuda = stringResource(R.string.ayuda_texto)
     var estable by remember { mutableStateOf(false) }
     // TODO efecto: un efecto con consulta como clave debe reiniciar estable y esperar un segundo.
-    // Mant?n preparado el efecto de ciclo de vida y el scope del bot?n Ayuda.
+    // Mantén preparado el efecto de ciclo de vida y el scope del botón Ayuda.
     val propietario = LocalLifecycleOwner.current
     var retornos by remember { mutableIntStateOf(0) }
     DisposableEffect(propietario) {

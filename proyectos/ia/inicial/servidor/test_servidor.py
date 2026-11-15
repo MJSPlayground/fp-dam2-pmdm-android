@@ -48,5 +48,10 @@ class ContratoTest(unittest.TestCase):
         finally:
             servidor.shutdown();servidor.server_close()
 
+    def test_limite_de_salida_se_identifica_como_parcial(self):
+        respuesta = io.BytesIO(json.dumps({'candidates':[{'finishReason':'MAX_TOKENS','content':{'parts':[{'text':'Texto parcial'}]}}]}).encode())
+        with patch.dict('os.environ', {'GEMINI_API_KEY':'valor-solo-de-prueba','GEMINI_MODEL':'modelo-de-prueba'}), patch.object(mod.urllib.request, 'urlopen', return_value=respuesta):
+            self.assertTrue(mod.generar({'pregunta':'Consulta de prueba'}, True)['incompleta'])
+
 
 if __name__=='__main__':unittest.main()

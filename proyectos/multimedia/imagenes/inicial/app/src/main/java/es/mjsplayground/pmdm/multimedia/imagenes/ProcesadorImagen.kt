@@ -78,7 +78,7 @@ class ProcesadorImagen(context: Context) {
 
     // --8<-- [start:imagen-transformacion]
     fun rotar90(bitmap: Bitmap): Bitmap {
-        // TODO imagen-transformacion: aplicar Matrix a los p?xeles; no girar solo la vista.
+        // TODO imagen-transformacion: aplicar Matrix a los píxeles; no girar solo la vista.
         throw UnsupportedOperationException("Completa imagen-transformacion")
     }
     // --8<-- [end:imagen-transformacion]

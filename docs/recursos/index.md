@@ -24,6 +24,13 @@ Los proyectos fijan una combinación estable. No se pretende utilizar la última
 | MapLibre Native Android | 12.2.0 | [SDK y ejemplos oficiales](https://maplibre.org/maplibre-native/android/examples/) |
 | Fragment (propietario de BiometricPrompt) | 1.8.9 | [Compatibilidad de la biblioteca](https://developer.android.com/jetpack/androidx/releases/fragment#1.8.9) |
 | Biometric | 1.1.0 | [Biblioteca estable](https://developer.android.com/jetpack/androidx/releases/biometric#1.1.0) |
+| Coil | 3.3.0 | [Publicación oficial](https://coil-kt.github.io/coil/changelog/#330---july-22-2025) |
+| DataStore | 1.2.1 | [Versiones AndroidX](https://developer.android.com/jetpack/androidx/releases/datastore) |
+| Hilt | 2.57.1 | [Publicaciones Dagger/Hilt](https://github.com/google/dagger/releases/tag/dagger-2.57.1) |
+| Ktor | 3.3.3 | [Versiones del proyecto](https://ktor.io/docs/releases.html) |
+| WorkManager | 2.10.5 | [Versiones AndroidX](https://developer.android.com/jetpack/androidx/releases/work) |
+| Firebase BoM | 34.7.0 | [Combinación elegida](https://firebase.google.com/support/release-notes/android#bom_v34-7-0) |
+| MockK | 1.14.6 | [Publicación oficial](https://github.com/mockk/mockk/releases/tag/1.14.6) |
 | Android mínimo de los proyectos | API 26 | Elección del curso |
 
 AGP 8.13 requiere Gradle 8.13 y como mínimo JDK 17. En Android Studio selecciona un Gradle JDK compatible —por ejemplo el JBR incluido en una versión compatible del IDE— y conserva el objetivo de bytecode del proyecto. Los proyectos introductorios no necesitan Room, Retrofit ni otras bibliotecas de datos.

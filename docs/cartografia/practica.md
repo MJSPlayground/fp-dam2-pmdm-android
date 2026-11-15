@@ -18,7 +18,7 @@ Observarás un polígono y una ruta resueltos; después completarás clasificaci
 
 ??? example "Ahora te toca: clasificar una posición incierta"
 
-    En `Geometria.kt`, completa `cartografia-zona` dentro de `clasificar`. Ya se validan argumentos finitos y dominios; conserva esos controles. Debe devolver Dentro si todo el intervalo de incertidumbre cabe en el radio, Fuera si queda completamente fuera e Incierta si toca o cruza el borde. La tabla de [seguimiento](seguimiento.md#distancia-y-precision) define las desigualdades y los casos límite.
+    En `Geometria.kt`, completa `cartografia-zona` dentro de `clasificar`. Ya se validan argumentos finitos y dominios; conserva esos controles. Debe devolver Dentro si todo el intervalo de incertidumbre cabe en el radio, incluido su borde; Fuera si queda completamente fuera; e Incierta en los casos restantes. La tabla de [seguimiento](seguimiento.md#distancia-y-precision) define las desigualdades y los casos límite.
 
     **Ahora te toca.** Implementa las tres salidas con `when` o condiciones equivalentes. No compares la distancia sola: una lectura a 10 m del centro con precisión de 800 m no permite afirmar pertenencia a la zona de 500 m.
 

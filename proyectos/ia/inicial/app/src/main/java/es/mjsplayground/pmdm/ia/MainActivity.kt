@@ -42,11 +42,7 @@ class MainActivity : ComponentActivity() {
             val estado by vm.estado.collectAsStateWithLifecycle()
             var pregunta by rememberSaveable{mutableStateOf("")}
             val selector=rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()){uri->
-                if(uri!=null)lifecycleScope.launch{
-                    try {vm.imagen(withContext(Dispatchers.IO){prepararImagen(applicationContext,uri)})}
-                    catch(cancelada:kotlinx.coroutines.CancellationException){throw cancelada}
-                    catch(_:Exception){vm.falloImagen()}
-                }
+                if(uri!=null)vm.preparar {withContext(Dispatchers.IO){prepararImagen(applicationContext,uri)}}
             }
             Scaffold(Modifier.fillMaxSize().imePadding()){margen->
                 Column(Modifier.padding(margen).padding(16.dp).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)){
@@ -55,12 +51,14 @@ class MainActivity : ComponentActivity() {
                     OutlinedTextField(pregunta,{pregunta=it},label={Text(stringResource(R.string.pregunta))})
                     Button(onClick={selector.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))},enabled=!estado.cargando){Text(stringResource(R.string.seleccionar))}
                     Text(stringResource(if(estado.imagenPreparada)R.string.imagen_lista else R.string.sin_imagen))
-                    Button(onClick={vm.imagen(null)},enabled=estado.imagenPreparada&&!estado.cargando){Text(stringResource(R.string.quitar))}
-                    Button(onClick={vm.consultar(pregunta)},enabled=!estado.cargando&&consultaValida(pregunta)){Text(stringResource(R.string.consultar))}
+                    if(estado.preparando)Text(stringResource(R.string.preparando))
+                    Button(onClick=vm::quitarImagen,enabled=(estado.imagenPreparada||estado.preparando)&&!estado.cargando){Text(stringResource(R.string.quitar))}
+                    Button(onClick={vm.consultar(pregunta)},enabled=!estado.cargando&&!estado.preparando&&consultaValida(pregunta)){Text(stringResource(R.string.consultar))}
                     if(estado.cargando){CircularProgressIndicator();Button(onClick=vm::cancelar){Text(stringResource(R.string.cancelar))}}
                     estado.mensaje?.let{Text(stringResource(it))}
                     if(estado.respuesta.isNotEmpty()){
                         Text(stringResource(if(estado.simulada)R.string.simulada else R.string.real))
+                        if(estado.incompleta)Text(stringResource(R.string.parcial))
                         Text(estado.respuesta)
                         Text(stringResource(R.string.verificar))
                     }

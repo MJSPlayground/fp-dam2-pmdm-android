@@ -72,7 +72,8 @@ def generar(datos, real=False):
     texto = ''.join(p.get('text', '') for p in candidatos[0].get('content', {}).get('parts', []))
     if not texto.strip():
         raise ValueError('Respuesta vacía')
-    return {'respuesta': texto[:16000], 'simulada': False}
+    return {'respuesta': texto[:16000], 'simulada': False,
+            'incompleta': candidatos[0].get('finishReason') == 'MAX_TOKENS' or len(texto) > 16000}
 
 
 class Servidor(ThreadingHTTPServer):

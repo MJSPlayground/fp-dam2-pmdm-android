@@ -73,3 +73,25 @@ Diseño visual, persistencia/arquitectura y cartografía se desarrollan en rutas
 - Navegador: 58 páginas, 2 tamaños, 2 temas, teclado, 6 pares PDF y19 ZIP descargados/inspeccionados correctos. Pruebas abren también contenido plegado y comprueban hash interior y pistas cerradas. Capturas PDF renderizadas/revisadas de guiadas Cuaderno/imágenes/asincronía: código, pistas y continuidad entre páginas legibles, sin cortes observados.
 - En esta sesión el emulador presentó capturas obsoletas y UiAutomator sin root después de iniciar Photo Picker. Se reinició sin borrar datos y las pruebas Compose de sensores volvieron a pasar. No se certifica selección/captura física ni salida audible por esas pruebas; la lógica de procesamiento sí tiene instrumentación real.
 - Las compilaciones locales de web pueden recoger temas no versionados que otros agentes están redactando. La publicación se valida sobre una instantánea Git aislada del hito, para que los borradores no entren accidentalmente en Pages. Se conserva el árbol de trabajo original.
+
+## Reanudación protegida y ampliaciones (15 de noviembre)
+
+Resguardo 38c696a subido a recuperacion/multimedia-noviembre antes de desarrollar: incluye cambios Firebase y todas las fuentes de agentes recuperadas, sin builds/cachés/credenciales. main sigue en a9713fc y su workflow43654834529 terminó correctamente; el worktree QA permanece en esa instantánea.
+
+| Tema | Estado real de esta ronda |
+| --- | --- |
+| Ecosistema, Kotlin/Compose y multimedia | Publicados en main; guías Nexo revisadas sin reiniciar proyectos |
+| Asincronía y sensores | Publicados; pruebas y limitaciones del hito anterior conservadas |
+| Diseño | Desarrollado: build/lint ambos,5JVM y1Compose; matriz visual amplia pendiente |
+| Persistencia | Desarrollado: build/lint ambos,1JVM y5instrumentadas; migración/relaciones/DataStore/caché/UI,APIreal y reinicio comprobados |
+| Redes | Desarrollado: build/lint ambos,11JVM solución y1Compose; Ktor contra servidor propio; Bluetooth físico pendiente |
+| Cartografía | Desarrollado: build/lint ambos,14JVM solución,1Compose y6HTTP; búsqueda/ruta propias desdeAndroid; seguimiento físico/fondo pendiente |
+| Firebase | Corrección en validación final: sesiones/selector, reglas trim y pruebas ampliadas; no declarar cerrado aún |
+| Segundo plano | Cerrado localmente: build/lint ambos,3JVM y3instrumentadas; planificación real/reintento/aviso/cancelación/MediaSession; FCMreal/Doze/reinicio pendientes |
+| IA | Teoría/guía/clientes/backend completos;4JVM y5pruebas servidor; preparación versionada y respuesta parcial; UI pendiente |
+| Calidad | Desarrollado: build/lint ambos,7JVM y3Compose solución; ReleaseR8 y AAB construidos sin firma privada/publicación |
+| Multimedia avanzada | En elaboración en borradores, fuera de navegación |
+
+Se integran navegación y descargas de los diez temas de ampliación desarrollados, todavía en rama de recuperación. El siguiente cierre requiere terminar Firebase/IA, exportar/revisar PDF y web globales, y completar multimedia avanzada antes de afirmar encargo terminado. Los borradores no se integran indiscriminadamente en main.
+
+Revisiones independientes de prácticas realizadas sobre las fuentes nuevas: sin bloqueantes didácticos en Diseño/Persistencia/Calidad/IA y guiadas del itinerario; se corrigieron UTF8 de README/comentarios y precisión de borde de geocerca. No equivalen a aprobación docente. Hardware físico, TalkBack y servicios reales se conservan como pruebas pendientes específicas, no como cobertura inferida.

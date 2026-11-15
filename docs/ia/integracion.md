@@ -28,6 +28,8 @@ El servidor solo activa llamadas externas si se inicia con `--real`. Entonces ne
 
 El adaptador utiliza la [API GenerateContent](https://ai.google.dev/api/generate-content), que admite partes de texto e imagen. La clave se coloca en una cabecera y la petición establece un límite de salida. La respuesta puede no tener candidatos o terminar por una condición que no permita mostrar contenido; eso se trata como resultado no disponible, sin inventar una respuesta.
 
+Si termina por el límite de salida, el servidor marca `incompleta` y la pantalla avisa de que la respuesta es parcial. Un texto truncado no se presenta como una explicación terminada.
+
 Se mantiene el identificador de modelo fuera del APK para poder sustituirlo cuando cambie la disponibilidad. Activar un proveedor real requiere revisar condiciones, región, tratamiento de datos y cuotas de esa cuenta. Este material no crea la cuenta, activa facturación ni ejecuta peticiones de pago.
 
 ## Estado y cancelación

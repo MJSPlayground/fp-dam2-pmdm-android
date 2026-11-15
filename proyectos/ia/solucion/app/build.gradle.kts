@@ -31,6 +31,7 @@ dependencies {
     implementation(libs.coroutines)
     implementation(libs.exif)
     testImplementation(libs.junit)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
 
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))

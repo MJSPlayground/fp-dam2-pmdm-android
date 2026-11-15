@@ -39,7 +39,7 @@ class ReproduccionTest {
             pantalla.activityRule.scenario.moveToState(Lifecycle.State.CREATED)
             instrumentation.runOnMainSync { assertTrue(controlador.isPlaying) }
             val manager = contexto.getSystemService(NotificationManager::class.java)
-            assertTrue(manager.activeNotifications.isNotEmpty())
+            assertTrue(manager.activeNotifications.any { it.id != Avisos.ID })
         } finally {
             instrumentation.runOnMainSync { controlador.stop(); controlador.release() }
         }

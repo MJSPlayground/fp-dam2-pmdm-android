@@ -38,7 +38,7 @@ La estimación de precisión de una lectura impide tratar el punto como una cert
 | --- | --- |
 | `d + p <= r` | Dentro: incluso el extremo más lejano cabe en la zona |
 | `d − p > r` | Fuera: incluso el extremo más cercano queda fuera |
-| Cualquier otro caso | Incierta: el intervalo toca o cruza el borde |
+| Cualquier otro caso | Incierta: el intervalo no queda contenido ni completamente fuera |
 
 Por ejemplo, con radio 500 m, distancia 490 m y precisión 10 m se informa Dentro. Con distancia 510 m y la misma precisión, el intervalo toca el borde: Incierta. Con 511 m, Fuera. Esta regla **didáctica** no convierte la precisión estimada en una garantía estadística ni basta para decisiones de seguridad.
 

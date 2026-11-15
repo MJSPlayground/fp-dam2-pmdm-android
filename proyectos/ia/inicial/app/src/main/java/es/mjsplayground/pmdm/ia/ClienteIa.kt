@@ -20,7 +20,7 @@ fun consultaValida(texto: String): Boolean {
     return false
 }
 
-data class Respuesta(val texto: String, val simulada: Boolean)
+data class Respuesta(val texto: String, val simulada: Boolean, val incompleta: Boolean = false)
 
 /** Solo se invoca fuera del hilo de UI. Destino fijo de laboratorio, sin credenciales cliente. */
 class ClienteIa {
@@ -48,7 +48,7 @@ class ClienteIa {
                 texto.toString()
             }
             val json=JSONObject(respuesta)
-            return Respuesta(json.getString("respuesta"),json.getBoolean("simulada"))
+            return Respuesta(json.getString("respuesta"),json.getBoolean("simulada"),json.optBoolean("incompleta",false))
         } finally {conexion.disconnect()}
     }
 }

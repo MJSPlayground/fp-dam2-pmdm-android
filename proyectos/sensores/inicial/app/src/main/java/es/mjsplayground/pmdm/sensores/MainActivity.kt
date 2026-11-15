@@ -116,7 +116,7 @@ class MainActivity : FragmentActivity(), SensorEventListener {
         lectura = when (event.sensor.type) {
             Sensor.TYPE_ACCELEROMETER -> getString(R.string.vector_aceleracion, v[0], v[1], v[2], magnitud(v[0],v[1],v[2]))
             Sensor.TYPE_GYROSCOPE -> getString(R.string.vector_giro, radianesAGrados(v[0]), radianesAGrados(v[1]), radianesAGrados(v[2]))
-            // TODO sensor-luz: seguir el caso de presi?n utilizando su recurso y unidad.
+            // TODO sensor-luz: seguir el caso de presión utilizando su recurso y unidad.
             Sensor.TYPE_LIGHT -> getString(R.string.esperando)
             Sensor.TYPE_PRESSURE -> getString(R.string.medida_presion, v[0])
             Sensor.TYPE_AMBIENT_TEMPERATURE -> getString(R.string.medida_temperatura, v[0])

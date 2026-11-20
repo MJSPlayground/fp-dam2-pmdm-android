@@ -1,5 +1,15 @@
 # Estado del encargo integral
 
+## Adaptación al aula — piloto en curso (20 de noviembre)
+
+- Rama de trabajo `adaptacion/entorno-aula-java25`; se conserva la web publicada mientras se comprueba la migración. El árbol inicial estaba limpio y coincidía con `origin/main` en `f1b6495`.
+- Referencia solicitada: Android Studio Rabbit 2 2026.2.2 Patch 1 (AI-262.10968.63.2622.16840690), JBR 25.0.4 / Java 25.0.4.1, SDK 37.0, Build Tools 36.0.0 y AVD API 37. No se instalan otros JDK/SDK ni se cambia la configuración global.
+- Causa reproducida del fallo anterior: Gradle 8.13 y su compilador Kotlin DSL no interpretan Java 25; `help --stacktrace` falla en `JavaVersion.parse`, antes de configurar Android. La ausencia inicial del SDK ya se ha resuelto parcialmente mediante la instalación realizada por el propietario.
+- Piloto limitado a cinco soluciones: Ecosistema, Cuaderno, Persistencia/Hilt, Reproductor/Media3 y Firebase. Candidata: AGP 9.2.1, Gradle 9.4.1, Kotlin/Compose Compiler 2.2.21 con soporte Kotlin integrado de AGP, KSP 2.3.4 y Hilt 2.59.2. Se conserva el resto de bibliotecas; `compileSdk` sube a 37 y se mantienen `targetSdk 36`, `minSdk 26` y bytecode 17.
+- Ecosistema, Cuaderno y Persistencia ya superan assembleDebug, testDebugUnitTest, lintDebug y assembleDebugAndroidTest con JBR 25. Cuaderno: 13 JVM correctas; Persistencia: una JVM correcta; Ecosistema no contiene JVM. Media3/Firebase e instrumentación aún pendientes en este punto.
+- El emulador instalado termina durante el arranque, antes de ejecutar apps: código de acceso inválido `3221225477` en el intento directo. Se están comprobando variantes temporales de arranque; no se certifica ejecución Android ni sincronización visual del IDE por los builds Gradle.
+- Evidencias locales ignoradas: `qa-captures/entorno-aula/`. No se ha modificado el temario ni se declara terminada la adaptación.
+
 El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y once ampliaciones completos. Se autoriza implementación y publicación progresiva en `main`; no se autoriza difusión en Moodle ni modificación de otros repositorios.
 
 ## Situación actual — completo y publicado

@@ -25,6 +25,9 @@ def main():
                 data = data.replace(b"\r\n", b"\n")
             values["wrapper:" + name] = hashlib.sha256(data).hexdigest()
         values["wrapper:properties"] = (project / "gradle/wrapper/gradle-wrapper.properties").read_text()
+        criteria = (project / "gradle/gradle-daemon-jvm.properties").read_text(encoding="utf-8")
+        assert "toolchainUrl" not in criteria, settings
+        values["daemon:jdk"] = criteria
         app = (project / "app/build.gradle.kts").read_text(encoding="utf-8")
         top = (project / "build.gradle.kts").read_text(encoding="utf-8")
         for name in ("compileSdk", "targetSdk", "minSdk"):

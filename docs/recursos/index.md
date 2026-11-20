@@ -41,9 +41,12 @@ El entorno del aula es la referencia oficial de todos los proyectos Android de P
 | Firebase BoM | 34.7.0 | [Combinación elegida](https://firebase.google.com/support/release-notes/android#bom_v34-7-0) |
 | MockK | 1.14.6 | [Publicación oficial](https://github.com/mockk/mockk/releases/tag/1.14.6) |
 | UiAutomator (pruebas del selector del sistema) | 2.3.0 | [Versiones AndroidX Test](https://developer.android.com/jetpack/androidx/releases/test-uiautomator) |
+| Espresso Core (instrumentación Compose) | 3.7.0 | [Compatibilidad de inyección de eventos](https://developer.android.com/jetpack/androidx/releases/test#espresso-3.7.0) |
 | Android mínimo de los proyectos | API 26 | Elección del curso |
 
 En **Settings → Build, Execution, Deployment → Build Tools → Gradle**, utiliza el JBR 25 incluido en Android Studio para **Gradle JDK**. En la terminal, `JAVA_HOME` debe señalar un JDK 25 y `ANDROID_HOME` tu SDK local. Son rutas propias de cada ordenador: no las escribas en los archivos compartidos del proyecto ni incluyas `local.properties` en las descargas. El Wrapper descarga Gradle 9.4.1 y verifica su SHA-256.
+
+`gradle/gradle-daemon-jvm.properties` fija Java 25 para el proceso de construcción y utiliza un JDK local; no contiene direcciones para descargar otros JDK. Las pruebas instrumentadas declaran Espresso 3.7.0 explícitamente para evitar que una dependencia transitiva antigua de Compose utilice métodos internos retirados de Android 17.
 
 AGP 9 incorpora el soporte de Kotlin: los proyectos ya no aplican `org.jetbrains.kotlin.android`. El plugin Compose y, donde se utiliza, Serialization fijan Kotlin 2.2.21; KSP 2 genera el código de Room y Hilt. No añadas de nuevo el plugin Kotlin Android ni mezcles KAPT y KSP. Consulta la [migración oficial a Kotlin integrado](https://developer.android.com/build/migrate-to-built-in-kotlin).
 

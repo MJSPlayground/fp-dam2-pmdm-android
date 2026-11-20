@@ -5,6 +5,7 @@ compose-bom = "2025.12.00"
 activity = "1.11.0"
 
 [libraries]
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 androidx-compose-ui = { module = "androidx.compose.ui:ui" }

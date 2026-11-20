@@ -8,6 +8,7 @@ media = "1.9.4"
 camera = "1.5.3"
 cropper = "4.7.0"
 [libraries]
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
 core = { module = "androidx.core:core-ktx", version.ref = "core" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }

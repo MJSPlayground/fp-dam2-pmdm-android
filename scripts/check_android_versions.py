@@ -19,6 +19,9 @@ def main():
         project = ROOT / settings.removesuffix("settings.gradle.kts")
         catalog = tomllib.loads((project / "gradle/libs.versions.toml").read_text(encoding="utf-8"))
         values = {"version:" + key: value for key, value in catalog["versions"].items()}
+        for library in catalog.get("libraries", {}).values():
+            if isinstance(library.get("version"), str):
+                values["library:" + library["module"]] = library["version"]
         for name in ("gradlew", "gradlew.bat", "gradle/wrapper/gradle-wrapper.jar"):
             data = (project / name).read_bytes()
             if name != "gradle/wrapper/gradle-wrapper.jar":

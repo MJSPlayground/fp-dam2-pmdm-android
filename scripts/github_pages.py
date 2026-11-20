@@ -29,7 +29,8 @@ def request(path, method="GET", data=None):
     )
     try:
         with urllib.request.urlopen(req, timeout=30) as response:
-            return json.load(response)
+            body = response.read()
+            return json.loads(body) if body else None
     except urllib.error.HTTPError as error:
         if error.code == 404 and method == "GET":
             return None

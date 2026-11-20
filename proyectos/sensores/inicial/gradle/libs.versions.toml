@@ -5,6 +5,7 @@ compose-bom = "2025.12.00"
 activity = "1.11.0"
 
 [libraries]
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 fragment = { module = "androidx.fragment:fragment-ktx", version = "1.8.9" }
 biometric = { module = "androidx.biometric:biometric", version = "1.1.0" }
 junit = { module = "junit:junit", version = "4.13.2" }

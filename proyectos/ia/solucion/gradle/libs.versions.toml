@@ -5,6 +5,7 @@ compose-bom = "2025.12.00"
 activity = "1.11.0"
 
 [libraries]
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version = "2.9.4" }
 lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version = "2.9.4" }
 lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version = "2.9.4" }

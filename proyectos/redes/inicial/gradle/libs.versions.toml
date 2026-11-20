@@ -11,6 +11,7 @@ media = "1.9.4"
 maplibre = "12.2.0"
 
 [libraries]
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 ktor-core = { module = "io.ktor:ktor-client-core", version = "3.3.3" }
 ktor-android = { module = "io.ktor:ktor-client-android", version = "3.3.3" }
 ktor-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version = "3.3.3" }

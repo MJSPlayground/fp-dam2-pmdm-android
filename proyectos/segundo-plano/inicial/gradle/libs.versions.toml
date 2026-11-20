@@ -11,6 +11,7 @@ media = "1.9.4"
 maplibre = "12.2.0"
 
 [libraries]
+androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version = "3.7.0" }
 work-runtime = { module = "androidx.work:work-runtime-ktx", version = "2.10.5" }
 work-testing = { module = "androidx.work:work-testing", version = "2.10.5" }
 media-session = { module = "androidx.media3:media3-session", version.ref = "media" }

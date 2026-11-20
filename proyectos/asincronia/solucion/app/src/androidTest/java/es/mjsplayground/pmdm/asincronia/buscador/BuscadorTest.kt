@@ -30,6 +30,7 @@ class BuscadorTest {
         pantalla.waitUntil(5_000) {
             pantalla.onAllNodesWithText("Kotlin y corrutinas").fetchSemanticsNodes().isEmpty()
         }
+        esperarTexto("Kotlin en práctica")
         pantalla.onNodeWithText("Kotlin en práctica").assertIsDisplayed()
         pantalla.onNodeWithText("Kotlin y corrutinas").assertDoesNotExist()
         pantalla.onNodeWithText("Buscar por título").performTextReplacement("!error")

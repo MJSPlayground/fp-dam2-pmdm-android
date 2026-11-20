@@ -49,6 +49,8 @@ El índice es la base aprobada de contenidos; la redacción concreta, las biblio
 
 ## Tecnología, código y validación
 
+- **El entorno del aula es la referencia oficial.** La combinación única se documenta en `docs/recursos/index.md`; el JDK 25 ejecuta Gradle y no determina el bytecode Android. No actualizar automáticamente AGP, Gradle, Kotlin, plugins ni bibliotecas ni aceptar propuestas del IDE sin comprobar el impacto. Validar primero un piloto representativo (básico, Cuaderno/Room/KSP, Hilt, Media3 y Firebase) y después las variantes iniciales, soluciones y checkpoints. Ejecutar `python scripts/check_android_versions.py` y las pruebas técnicas antes de publicar. No incorporar rutas locales ni instalar/cambiar herramientas del aula sin autorización expresa.
+
 - Stack de referencia: **Kotlin, Jetpack Compose, Material 3, Gradle Kotlin DSL, Room/SQLite, Retrofit/HTTP, Media3, OpenStreetMap/MapLibre**.
 - Antes de escribir tutoriales ejecutables, comprobar en la **documentación oficial** Android Studio estable, AGP, Kotlin, Compose BOM, Navigation, Room/KSP, Retrofit, Media3 y MapLibre. Fijar combinaciones compatibles y documentarlas en un único lugar. **No inventar versiones, APIs, métodos ni dependencias.**
 - Diferenciar mapa OpenStreetMap, SDK y **proveedor de teselas**; respetar atribución y políticas de uso, sin sobrecargar los servidores públicos.

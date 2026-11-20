@@ -1,6 +1,6 @@
 # notificaciones — inicial
 
-Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 36 y Gradle JDK compatible (JDK 17 o el JBR 21 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
+Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 37 y Gradle JDK compatible (JBR 25 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
 
 El aviso básico, canal, permiso y destino están implementados. Completa únicamente `notificacion-nota` en `Avisos.notaGuardada()` siguiendo el aviso resuelto. La segunda acción informa de su TODO hasta completarlo.
 

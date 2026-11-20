@@ -16,7 +16,7 @@ En **SDK Platforms**, instala Android API 36 para los proyectos del curso. En **
 
 La [configuración común del curso](../recursos/index.md) identifica las versiones fijadas. Al abrir un proyecto proporcionado, conserva sus scripts Gradle: aceptar una actualización automática del plugin puede cambiar requisitos de JDK y romper la reproducción de la práctica.
 
-En **Settings → Build, Execution, Deployment → Build Tools → Gradle**, revisa **Gradle JDK**. Usa el JBR del IDE compatible con Gradle o un JDK compatible; no selecciones un Java instalado al azar. La base AGP 8.13 exige como mínimo JDK 17 y Gradle 8.13. El JDK que ejecuta Gradle y la versión del bytecode configurada para la app son decisiones distintas.
+En **Settings → Build, Execution, Deployment → Build Tools → Gradle**, revisa **Gradle JDK**. Selecciona el JBR 25 incluido en Android Studio Rabbit 2 del aula. Los proyectos incluyen Gradle 9.4.1 y AGP 9.2.1; conserva esa combinación de [Recursos](../recursos/index.md). El JDK 25 que ejecuta Gradle y el bytecode 17 generado para la app son decisiones distintas: no necesitas instalar Java 17.
 
 ## Crear un dispositivo virtual
 

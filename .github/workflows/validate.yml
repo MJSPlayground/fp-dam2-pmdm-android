@@ -26,13 +26,13 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '25'
       - uses: android-actions/setup-android@v3
         with:
           # El paquete heredado "tools" ya no está disponible en el repositorio SDK.
           packages: platform-tools
       - name: Instalar plataforma del curso
-        run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
+        run: sdkmanager "platforms;android-37.0" "build-tools;36.0.0"
       - uses: gradle/actions/setup-gradle@v6
         with:
           cache-provider: basic
@@ -78,6 +78,7 @@ jobs:
         run: python -m playwright install --with-deps --only-shell chromium
       - name: Comprobar navegación y generar PDF
         run: |
+          python scripts/check_android_versions.py
           python scripts/test_navigation.py
           python scripts/test_lan_server.py
           python scripts/package_projects.py
@@ -93,6 +94,7 @@ jobs:
         with:
           path: site/
   deploy:
+    if: github.ref == 'refs/heads/main'
     needs: [build, android]
     runs-on: ubuntu-latest
     permissions:

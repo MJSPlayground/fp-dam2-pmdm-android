@@ -1,7 +1,7 @@
 # Lista de revisión — inicial
 
 Abre esta carpeta desde Open en Android Studio, sincroniza Gradle y ejecuta app en
-API 26 o posterior, con SDK 36 y el Gradle JDK de Recursos. No requiere red ni cuentas.
+API 26 o posterior, con SDK 37 y el Gradle JDK de Recursos. No requiere red ni cuentas.
 La aplicación preparada carga dos notas locales mediante DemoRepository y ViewModel.
 
 Completa los TODO de pruebas en test/RevisionTest.kt y androidTest/RevisionUiTest.kt. MainDispatcherRule está preparada y debe leerse antes de usarla. Las pruebas pendientes están @Ignore: omitir no equivale a superar. La producción no necesita cambios para resolver la guía.

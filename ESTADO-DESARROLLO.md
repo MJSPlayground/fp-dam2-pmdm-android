@@ -10,6 +10,14 @@
 - El emulador instalado termina durante el arranque, antes de ejecutar apps: código de acceso inválido `3221225477` en el intento directo. Se están comprobando variantes temporales de arranque; no se certifica ejecución Android ni sincronización visual del IDE por los builds Gradle.
 - Evidencias locales ignoradas: `qa-captures/entorno-aula/`. No se ha modificado el temario ni se declara terminada la adaptación.
 
+### Piloto compilado y extensión a las 39 variantes
+
+- Las cinco soluciones superaron las cuatro tareas Gradle con JBR 25. Firebase: cuatro JVM y 13 comprobaciones de reglas con Emulator Suite local y Java 25 correctas. No se eliminaron tests ni funcionalidades; hasta este punto no hicieron falta cambios del código de las apps.
+- Ecosistema se abrió en Android Studio Rabbit 2 y terminó la sincronización real del IDE en 2 min 24 s; registro del 20/11 a las 09:57. Esto acredita sincronización del IDE de ese proyecto, no de los otros 38.
+- Tras los intentos fallidos, el emulador API 37 arrancó con opciones temporales `-gpu host -feature -Vulkan -no-snapshot`; autorización ADB solo para la sesión, sin marcar autorización permanente. La imagen expone API 37 y boot completo. La instrumentación del piloto está en curso; se conserva el diagnóstico de los fallos previos.
+- Extendida en rama la configuración a las 39 variantes; Wrapper 9.4.1 regenerado (scripts/JAR) y checksum oficial de la distribución. Comprobador de coherencia de catálogos, SDK, bytecode y Wrapper correcto. Compilación completa local en curso con dos procesos y CI preparada con cuatro grupos y Java 25. El despliegue queda restringido a main también en workflow_dispatch.
+- Referencia técnica actualizada en Recursos, README y AGENTS, instrucciones Gradle de los proyectos y fragmentos afectados. Se conservan target/min/bytecode, temario, aplicaciones y estructura de la web. Publicación y descargas aún pendientes de validación final.
+
 El alcance aprobado es `CONTENIDOS_PMDM_Android.md`: tres temas principales y once ampliaciones completos. Se autoriza implementación y publicación progresiva en `main`; no se autoriza difusión en Moodle ni modificación de otros repositorios.
 
 ## Situación actual — completo y publicado

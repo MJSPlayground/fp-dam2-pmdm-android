@@ -1,7 +1,7 @@
 # Avisos y reproducción — inicial
 
 Abre esta carpeta con Android Studio, sincroniza y ejecuta app en API 26 o superior,
-SDK36 y Gradle JDK de Recursos. Concede notificaciones para probar los avisos locales.
+SDK 37 y Gradle JDK de Recursos. Concede notificaciones para probar los avisos locales.
 No requiere cuenta Firebase para notificaciones, trabajo local ni audio.
 
 TODO en Avisos.kt: estilo expandido; Trabajos.kt: solicitud WorkManager y receiver; MainActivity.kt: habilitar la solicitud al completarla. La notificación básica y MediaSessionService están preparadas como referencias.

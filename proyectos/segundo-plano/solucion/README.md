@@ -1,7 +1,7 @@
 # Avisos y reproducción — solucion
 
 Abre esta carpeta con Android Studio, sincroniza y ejecuta app en API 26 o superior,
-SDK36 y Gradle JDK de Recursos. Concede notificaciones para probar los avisos locales.
+SDK 37 y Gradle JDK de Recursos. Concede notificaciones para probar los avisos locales.
 No requiere cuenta Firebase para notificaciones, trabajo local ni audio.
 
 Solución de la práctica: aviso expandido, solicitud única con 10s de demora mínima, condición de red, fallo simulado inicial y reintento exponencial. El receiver propio delega esa misma solicitud.

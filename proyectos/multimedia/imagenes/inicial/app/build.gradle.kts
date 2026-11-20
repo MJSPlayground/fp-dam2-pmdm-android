@@ -1,11 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 }
 android {
     namespace = "es.mjsplayground.pmdm.multimedia.imagenes"
-    compileSdk = 36
+    compileSdk = 37
     defaultConfig {
         applicationId = "es.mjsplayground.pmdm.multimedia.imagenes"
         minSdk = 26

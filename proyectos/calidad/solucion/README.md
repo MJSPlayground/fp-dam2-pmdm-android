@@ -1,7 +1,7 @@
 # Lista de revisión — solucion
 
 Abre esta carpeta desde Open en Android Studio, sincroniza Gradle y ejecuta app en
-API 26 o posterior, con SDK 36 y el Gradle JDK de Recursos. No requiere red ni cuentas.
+API 26 o posterior, con SDK 37 y el Gradle JDK de Recursos. No requiere red ni cuentas.
 La aplicación preparada carga dos notas locales mediante DemoRepository y ViewModel.
 
 RevisionTest prueba validación, Repository con tiempo virtual, carga/error/reintento/sustitución del ViewModel con MockK. RevisionUiTest prueba estados y un evento Compose. Versiones.kt/VersionesTest resuelven la actividad autónoma separada del inicial.

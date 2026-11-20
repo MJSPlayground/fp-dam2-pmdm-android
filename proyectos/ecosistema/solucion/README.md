@@ -2,8 +2,8 @@
 
 Abre esta carpeta (solucion) desde **Open** en Android Studio. La raíz contiene
 `settings.gradle.kts` y `gradlew.bat`. Espera la sincronización de Gradle e instala
-Android SDK Platform 36 cuando lo solicite. Selecciona el JDK de Gradle compatible
-con Gradle 8.13 (JDK 17 o JBR 21 del IDE). No actualices automáticamente las versiones
+Android SDK Platform 37 cuando lo solicite. Selecciona el JDK de Gradle compatible
+con Gradle 9.4.1 (JBR 25 del IDE). No actualices automáticamente las versiones
 para reproducir esta práctica.
 
 Selecciona un dispositivo virtual o un teléfono con Android 8.0/API 26 o posterior.

@@ -1,6 +1,6 @@
 # Lecturas — inicial
 
-Ampliación de persistencia y arquitectura. Abre **esta carpeta** en Android Studio mediante Open sobre `settings.gradle.kts`, sincroniza, selecciona **app** y pulsa Run con un emulador API 26 o posterior. SDK 36 y JDK de Gradle 17 o JBR 21 del IDE. No abras la carpeta que contiene ambos proyectos como si fuera un solo build.
+Ampliación de persistencia y arquitectura. Abre **esta carpeta** en Android Studio mediante Open sobre `settings.gradle.kts`, sincroniza, selecciona **app** y pulsa Run con un emulador API 26 o posterior. SDK 37 y JBR 25 del IDE para Gradle. No abras la carpeta que contiene ambos proyectos como si fuera un solo build.
 
 En una instalación nueva, la pantalla empieza vacía. **Cargar demostración local** añade dos lecturas con autor y etiquetas; no necesita conexión. **Actualizar desde API** consulta cinco publicaciones HTTPS de JSONPlaceholder y las adapta a fichas de lectura. No son libros reales de una API bibliográfica. Marcar y filtrar son decisiones locales, que no se suben al servicio.
 
@@ -18,7 +18,7 @@ Ambas etapas tienen el mismo applicationId: instalar otra sustituye la anterior.
 
 ## Dependencias verificables
 
-Stack común del curso: Kotlin 2.2.21, AGP 8.13.2, KSP 2.2.21-2.0.4, Room 2.8.4 y Compose BOM 2025.12.00. Esta ampliación añade Hilt 2.57.1 y DataStore 1.2.1, fijados en `gradle/libs.versions.toml`. Consulta [Hilt](https://developer.android.com/training/dependency-injection/hilt-android), [procesamiento KSP](https://dagger.dev/dev-guide/ksp.html) y [DataStore 1.2.1](https://developer.android.com/jetpack/androidx/releases/datastore#1.2.1). Hilt y Room usan KSP; no se mezcla con KAPT.
+Stack común del curso: Kotlin 2.2.21, AGP 9.2.1, KSP 2.3.4, Room 2.8.4 y Compose BOM 2025.12.00. Esta ampliación añade Hilt 2.59.2 y DataStore 1.2.1, fijados en `gradle/libs.versions.toml`. Consulta [Hilt](https://developer.android.com/training/dependency-injection/hilt-android), [procesamiento KSP](https://dagger.dev/dev-guide/ksp.html) y [DataStore 1.2.1](https://developer.android.com/jetpack/androidx/releases/datastore#1.2.1). Hilt y Room usan KSP; no se mezcla con KAPT.
 
 ## Pruebas incluidas
 

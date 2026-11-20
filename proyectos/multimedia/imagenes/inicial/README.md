@@ -1,7 +1,7 @@
 # imagenes — inicial
 
 Abre esta carpeta **inicial** desde **Open** en Android Studio y espera la sincronización
-Gradle. Instala Android SDK36 y selecciona JDK17 o JBR21 para Gradle. Escoge **app**,
+Gradle. Instala Android SDK 37 y selecciona JBR 25 para Gradle. Escoge **app**,
 un emulador o dispositivo API26 o posterior y pulsa **Run**.
 
 La aplicación sigue el tema claro/oscuro del sistema. Inicial y solución comparten

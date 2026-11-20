@@ -40,7 +40,7 @@ En el script del módulo se declaran tres decisiones diferentes. Este fragmento 
 
 ```kotlin title="app/build.gradle.kts — fragmento"
 android {
-    compileSdk = 36
+    compileSdk = 37
     defaultConfig {
         minSdk = 26
         targetSdk = 36

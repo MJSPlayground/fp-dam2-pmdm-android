@@ -1,6 +1,6 @@
 # Mensajería cercana — inicial
 
-Abre esta carpeta desde **Open** en Android Studio y espera sincronización Gradle. Ejecuta **app** con SDK 36 y Gradle JDK compatible (JDK 17 o JBR 21). Mínimo API 26. Mantiene Kotlin 2.2.21 y añade Ktor 3.3.3 con motor Android y JSON; catálogo fijado y wrapper incluidos.
+Abre esta carpeta desde **Open** en Android Studio y espera sincronización Gradle. Ejecuta **app** con SDK 37 y Gradle JDK compatible (JBR 25). Mínimo API 26. Mantiene Kotlin 2.2.21 y añade Ktor 3.3.3 con motor Android y JSON; catálogo fijado y wrapper incluidos.
 
 El inicio no pide permisos Bluetooth ni inicia radio. HTTP funciona de forma independiente. Para Bluetooth utiliza solamente dos equipos propios o autorizados y mensajes públicos fijos del laboratorio. No se conectan equipos automáticamente. Los permisos se solicitan según la acción y todas las operaciones se cierran al salir.
 

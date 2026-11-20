@@ -16,7 +16,7 @@ Resuelve las preguntas usando los archivos y mensajes del IDE. Las respuestas de
 
 ## Razonar sobre compatibilidad
 
-7. Un proyecto declara `minSdk = 26`, `targetSdk = 36` y `compileSdk = 36`. Explica si puede instalarse en API 25, 26 y 37. ¿Garantiza esto que una función nueva de API 33 pueda ejecutarse directamente en API 26?
+7. Un proyecto declara `minSdk = 26`, `targetSdk = 36` y `compileSdk = 37`. Explica si puede instalarse en API 25, 26 y 37. ¿Garantiza esto que una función nueva de API 33 pueda ejecutarse directamente en API 26?
 8. Un teléfono recibe una actualización del sistema. ¿Ha cambiado también la versión de Gradle del proyecto del ordenador? Justifica la respuesta.
 9. ¿Por qué aumentar `compileSdk` no debe hacerse como remedio para cualquier error de compilación?
 

@@ -1,6 +1,6 @@
 # Zona de paseo — inicial
 
-Abre esta carpeta desde **Open** en Android Studio, espera sincronización Gradle y ejecuta **app**. Mantiene SDK 36, mínimo 26, AGP 8.13.2, Kotlin 2.2.21 y MapLibre Native 12.2.0 del curso. Selecciona un Gradle JDK compatible, como JBR 21. No requiere claves ni Google Play Services.
+Abre esta carpeta desde **Open** en Android Studio, espera sincronización Gradle y ejecuta **app**. Mantiene SDK 37, mínimo 26, AGP 9.2.1, Kotlin 2.2.21 y MapLibre Native 12.2.0 del curso. Selecciona un Gradle JDK compatible, como JBR 25. No requiere claves ni Google Play Services.
 
 El esquema local arranca sin Internet. Muestra una zona propia aproximada de 500 m y permite simular un punto interior/exterior. El seguimiento real se activa por botón y se detiene en onStop; no hay servicio ni ubicación de fondo. Un botón distinto carga cartografía OpenFreeMap, con atribución visible y del SDK. El modo local no representa calles ni descarga teselas.
 

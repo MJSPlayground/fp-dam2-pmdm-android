@@ -2,8 +2,7 @@
 
 Este proyecto es una etapa de la misma aplicación incremental. No abras toda la carpeta
 desarrollo como proyecto Gradle: abre esta carpeta **compose** mediante **Open** en
-Android Studio y espera la sincronización. Usa Android SDK 36 y JDK de Gradle17 o
-JBR21 del IDE. Selecciona **app**, un emulador/API26 o posterior, y **Run**.
+Android Studio y espera la sincronización. Usa Android SDK 37 y JBR 25 del IDE para Gradle. Selecciona **app**, un emulador/API26 o posterior, y **Run**.
 
 ## Progresión
 

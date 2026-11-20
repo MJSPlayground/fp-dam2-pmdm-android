@@ -1,6 +1,6 @@
 # Mesa de edición — inicial
 
-Abre **esta carpeta** mediante Open en Android Studio, espera la sincronización y ejecuta **app**. SDK 36, mínimo API 26 y JDK de Gradle 17 o JBR 21 del IDE. No abras el directorio que contiene inicial y solución como un solo proyecto Gradle.
+Abre **esta carpeta** mediante Open en Android Studio, espera la sincronización y ejecuta **app**. SDK 37, mínimo API 26 y JBR 25 del IDE para Gradle. No abras el directorio que contiene inicial y solución como un solo proyecto Gradle.
 
 ## Funcionamiento
 

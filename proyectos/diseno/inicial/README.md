@@ -1,7 +1,7 @@
 # Galería adaptable — inicial
 
 Abre esta carpeta desde Open en Android Studio, espera la sincronización, selecciona
-el Gradle JDK compatible de Recursos y ejecuta app en API 26 o posterior. SDK 36.
+el Gradle JDK compatible de Recursos y ejecuta app en API 26 o posterior. SDK 37.
 
 MainActivity contiene cuadrícula, categorías LazyRow, navegación, refresco simulado,
 imágenes Coil y transición a detalle. Datos.kt conserva catálogo y operaciones puras.

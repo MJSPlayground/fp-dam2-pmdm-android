@@ -1,6 +1,6 @@
 # mapa — solucion
 
-Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 36 y Gradle JDK compatible (JDK 17 o el JBR 21 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
+Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 37 y Gradle JDK compatible (JBR 25 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
 
 La solución muestra un lugar público en Madrid y una lectura puntual de ubicación con marcador independiente. Gestiona denegación, ausencia de proveedor, resultado nulo, cancelación al salir y fallo de cartografía.
 

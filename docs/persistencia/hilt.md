@@ -6,7 +6,7 @@ En Cuaderno un contenedor construía base, cliente y repositorio. Esa construcci
 
 **Inversión de control** significa que una clase no dirige la creación de todos sus colaboradores. **Inyección por constructor** significa recibirlos como argumentos. Hilt automatiza parte de ese trabajo; no decide las reglas de negocio ni vuelve innecesarios los constructores.
 
-El proyecto conserva Kotlin 2.2.21, AGP 8.13.2, KSP 2.2.21-2.0.4 y Room 2.8.4 de la configuración común. Añade Hilt 2.57.1 mediante el plugin `com.google.dagger.hilt.android`, biblioteca `hilt-android` y procesador `hilt-compiler` con KSP. No mezcla KAPT y KSP para generar tipos que deban colaborar. Consulta la [configuración oficial](https://dagger.dev/hilt/gradle-setup.html) y las [limitaciones del procesamiento KSP](https://dagger.dev/dev-guide/ksp.html).
+El proyecto conserva Kotlin 2.2.21, AGP 9.2.1, KSP 2.3.4 y Room 2.8.4 de la configuración común. Añade Hilt 2.59.2 mediante el plugin `com.google.dagger.hilt.android`, biblioteca `hilt-android` y procesador `hilt-compiler` con KSP. No mezcla KAPT y KSP para generar tipos que deban colaborar. Consulta la [configuración oficial](https://dagger.dev/hilt/gradle-setup.html) y las [limitaciones del procesamiento KSP](https://dagger.dev/dev-guide/ksp.html).
 
 Estas versiones se fijan en `gradle/libs.versions.toml` de ambos proyectos. La versión de plugin, biblioteca y procesador de Hilt coincide. Una versión nueva de una dependencia no implica que se pueda cambiar una sola entrada sin comprobar toda la combinación.
 

@@ -29,7 +29,7 @@ El laboratorio se identifica como `demo-pmdm`. Sus opciones se construyen explí
 
 ## Iniciar y detener los servicios
 
-Cada ZIP incluye una carpeta `emuladores` con configuración, reglas, versiones y pruebas. Para este servicio externo se necesita Node22 y JDK21 además del entorno Android. En la terminal del ordenador, entra en esa carpeta, ejecuta `npm ci` y después `npm start`. La primera instalación descarga herramientas; el arranque puede descargar los emuladores oficiales. Mantén esa terminal abierta y detén con Ctrl+C al terminar.
+Cada ZIP incluye una carpeta `emuladores` con configuración, reglas, versiones y pruebas. Para este servicio externo se necesita Node 22 o posterior y Java 25 además del entorno Android. En la terminal del ordenador, entra en esa carpeta, ejecuta `npm ci` y después `npm start`. La primera instalación descarga herramientas; el arranque puede descargar los emuladores oficiales. Mantén esa terminal abierta y detén con Ctrl+C al terminar.
 
 Después abre el proyecto Android y pulsa Run. Si otro programa ocupa un puerto, detén ese proceso propio o cambia de forma coherente la configuración y las direcciones del cliente; no termines servicios ajenos para liberar puertos. No ejecutes `npm test` mientras siga activo `npm start`, porque las pruebas inician su propia sesión temporal.
 

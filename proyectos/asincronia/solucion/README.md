@@ -1,7 +1,7 @@
 # Buscador con flujos — solución
 
 Abre esta carpeta desde **Open** en Android Studio. Espera la sincronización Gradle,
-selecciona el Gradle JDK compatible de Recursos, SDK 36 y un dispositivo API 26 o
+selecciona el Gradle JDK compatible de Recursos, SDK 37 y un dispositivo API 26 o
 posterior; ejecuta **app**. No requiere red, cuenta, permisos ni servicios externos.
 
 `MainActivity` abre la pantalla; `BuscadorViewModel` expone consultas y resultados;

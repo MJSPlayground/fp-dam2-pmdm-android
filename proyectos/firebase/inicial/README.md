@@ -1,9 +1,9 @@
 # Notas en Firebase local — inicial
 
 Abre esta carpeta en Android Studio, sincroniza y ejecuta **app** en emulador
-API26 o superior, con SDK36 y el JBR compatible. Solo Debug habilita el laboratorio.
+API26 o superior, con SDK 37 y el JBR compatible. Solo Debug habilita el laboratorio.
 
-Primero inicia Emulator Suite en la subcarpeta `emuladores`. Necesita Node22 y JDK21:
+Primero inicia Emulator Suite en la subcarpeta `emuladores`. Necesita Node22 y Java 25:
 
 ```powershell
 npm ci

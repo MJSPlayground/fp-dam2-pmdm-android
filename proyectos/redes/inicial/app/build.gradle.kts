@@ -1,12 +1,11 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.serialization)
 }
 android {
     namespace = "es.mjsplayground.pmdm.redes"
-    compileSdk = 36
+    compileSdk = 37
     defaultConfig {
         applicationId = "es.mjsplayground.pmdm.redes"
         minSdk = 26

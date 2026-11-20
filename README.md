@@ -29,6 +29,8 @@ El exportador construye Zensical, genera PDF por tema y global y reconstruye el 
 
 Cada proyecto Android incluye Gradle Wrapper y un README con instrucciones de apertura desde Android Studio, ejecución y pruebas técnicas. No se requiere Gradle global. No versionar `local.properties`, cachés, APK, AAB, keystores ni credenciales.
 
+El **entorno del aula es la referencia oficial**. La combinación completa se mantiene únicamente en [Recursos y requisitos técnicos](docs/recursos/index.md), incluidos JDK de construcción y bytecode Android. No aceptar actualizaciones automáticas del IDE ni cambiar dependencias desde otro ordenador sin validar primero el piloto representativo y después los 39 proyectos. `python scripts/check_android_versions.py` comprueba que los catálogos independientes, SDK y componentes del Wrapper conservan versiones coherentes; CI ejecuta esta comprobación además de los builds, pruebas y lint.
+
 ## Publicación
 
 `.github/workflows/validate.yml` construye y comprueba antes de desplegar en GitHub Pages desde `main`. Pages utiliza el modo **GitHub Actions**. El propietario ha autorizado la publicación de los hitos comprobados. No se cambia la visibilidad del repositorio ni se difunde desde Moodle.

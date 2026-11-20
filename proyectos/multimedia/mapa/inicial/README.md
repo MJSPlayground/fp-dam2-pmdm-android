@@ -1,6 +1,6 @@
 # mapa — inicial
 
-Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 36 y Gradle JDK compatible (JDK 17 o el JBR 21 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
+Abre esta carpeta desde **Open** en Android Studio, espera la sincronización Gradle y ejecuta **app** en un emulador o dispositivo API 26 o posterior. Necesitas SDK 37 y Gradle JDK compatible (JBR 25 de Android Studio). Las versiones se fijan en el catálogo; no hace falta Gradle global.
 
 El mapa, el ciclo de vida, el estilo y un marcador de referencia están implementados. Completa `mapa-permiso`, `mapa-lectura` y `mapa-posicion` en `MainActivity.kt` siguiendo la práctica. `UbicacionActual` se entrega como ayuda de plataforma.
 

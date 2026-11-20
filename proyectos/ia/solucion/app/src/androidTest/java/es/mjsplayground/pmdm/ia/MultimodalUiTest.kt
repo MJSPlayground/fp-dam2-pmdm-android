@@ -3,12 +3,14 @@ package es.mjsplayground.pmdm.ia
 import android.content.ContentValues
 import android.graphics.Bitmap
 import android.os.Build
+import android.os.SystemClock
 import android.provider.MediaStore
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.Until
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -23,7 +25,9 @@ class MultimodalUiTest {
     private val dispositivo get() = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     private fun esperar(texto: String) {
         try {
-            regla.waitUntil(15000) { regla.onAllNodesWithText(texto).fetchSemanticsNodes().isNotEmpty() }
+            regla.waitUntil(15000) {
+                regla.onAllNodesWithText(texto).fetchSemanticsNodes(atLeastOneRootRequired = false).isNotEmpty()
+            }
         } catch (fallo: AssertionError) {
             println(regla.onRoot().printToString())
             dispositivo.takeScreenshot(File(regla.activity.externalCacheDir,"ia-multimodal-fallo.png"))
@@ -49,9 +53,20 @@ class MultimodalUiTest {
             resolver.openOutputStream(uri)!!.use { it.write(bytes) }
             regla.onNodeWithText("Pregunta").performTextInput("Describe la imagen sintética de prueba")
             regla.onNodeWithText("Preparar una imagen propia").performScrollTo().performClick()
-            val miniatura = dispositivo.wait(Until.findObject(By.res(java.util.regex.Pattern.compile(".*:id/icon_thumbnail"))),15000)
+            // API 37: Photo Picker Compose expone descripciones y no el ID antiguo.
+            val selector = By.res(java.util.regex.Pattern.compile(".*:id/icon_thumbnail"))
+            val plazo = SystemClock.uptimeMillis() + 15000
+            var miniatura: UiObject2? = null
+            while (miniatura == null && SystemClock.uptimeMillis() < plazo) {
+                miniatura = dispositivo.findObject(selector)
+                    ?: dispositivo.findObject(By.descStartsWith("Photo taken on"))
+                if (miniatura == null) SystemClock.sleep(100)
+            }
             assertNotNull("Debe aparecer la miniatura del fixture propio en PhotoPicker",miniatura)
             miniatura!!.click()
+            dispositivo.wait(
+                Until.findObject(By.pkg("com.google.android.photopicker").text("Done")), 5000
+            )?.click()
             esperar(regla.activity.getString(R.string.imagen_lista))
             // El selector puede devolver el foco al campo. Cerramos el IME como haría
             // el usuario antes de tocar una acción, evitando una transición de insets.

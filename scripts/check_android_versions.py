@@ -41,6 +41,8 @@ def main():
             match = re.search(rf"{name}\s*=\s*JavaVersion.VERSION_(\d+)", app)
             assert match, (settings, name)
             values[name] = match[1]
+        kotlin_target = re.search(r"JvmTarget\.JVM_(\d+)", app)
+        assert kotlin_target and kotlin_target[1] == values["targetCompatibility"], settings
         assert "org.jetbrains.kotlin.android" not in str(catalog.get("plugins", {})), settings
         assert "libs.plugins.kotlin.android" not in top + app, settings
         assert "org.gradle.java.home" not in (project / "gradle.properties").read_text(), settings
@@ -60,6 +62,11 @@ def main():
     for key, row in documented.items():
         assert rows[row] == common["version:" + key][0], f"Recursos: versión incoherente de {row}"
     assert rows["Espresso Core (instrumentación Compose)"] == common["library:androidx.test.espresso:espresso-core"][0]
+    assert rows["SDK de compilación (`compileSdk`)"].split()[0] == common["compileSdk"][0]
+    assert rows["SDK objetivo (`targetSdk`)"] == common["targetSdk"][0]
+    assert rows["Android mínimo de los proyectos"] == "API " + common["minSdk"][0]
+    wrapper_version = re.search(r"gradle-([\d.]+)-bin\.zip", common["wrapper:properties"][0])
+    assert wrapper_version and rows["Gradle Wrapper"] == wrapper_version[1]
     print(f"OK Android: {len(tracked)} proyectos; catálogos, SDK, bytecode y wrappers coherentes")
 
 

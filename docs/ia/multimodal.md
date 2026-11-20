@@ -4,7 +4,7 @@
 
 Una consulta multimodal combina una instrucción con una imagen. «Describe la foto» y «localiza el texto del cartel y explica qué no se puede leer» piden tareas diferentes. El modelo no conoce automáticamente el contexto de la persona ni puede identificar con certeza algo que no aparece de forma suficiente en los píxeles.
 
-El laboratorio utiliza Photo Picker para que la persona elija contenido concreto. Elegirlo no inicia una consulta: primero se prepara una copia y después se pulsa Consultar. Esto permite retirar el adjunto antes de enviar. Cancelar el selector conserva la decisión anterior y no debe presentarse como una respuesta de IA.
+El laboratorio utiliza Photo Picker para que la persona elija contenido concreto. En la imagen API 37 del aula, selecciona la miniatura y confirma con **Done**. Elegirlo no inicia una consulta: primero se prepara una copia y después se pulsa Consultar. Esto permite retirar el adjunto antes de enviar. Cancelar el selector conserva la decisión anterior y no debe presentarse como una respuesta de IA.
 
 ## Preparar lo necesario y retirar metadatos
 

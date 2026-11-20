@@ -36,7 +36,7 @@ Crearás una cuenta local, observarás sus notas en tiempo real y completarás e
 
 ??? example "Subida resuelta y descarga equivalente"
 
-    **Observa el código existente.** Seleccionar y subir abre Photo Picker. La lectura está acotada a 1 MiB más un byte para detectar exceso. `subir` verifica longitud y MIME, prepara metadatos y escribe en el objeto privado del UID. El resultado del selector no es la confirmación de subida.
+    **Observa el código existente.** Seleccionar y subir abre Photo Picker. En la imagen API 37 del aula, elige la miniatura y confirma con **Done** para volver a la app. La lectura está acotada a 1 MiB más un byte para detectar exceso. `subir` verifica longitud y MIME, prepara metadatos y escribe en el objeto privado del UID. El resultado del selector no es la confirmación de subida.
 
     **Ahora te toca — `nube-descargar`.** Completa `descargar(termina)`: recupera la misma referencia de objeto del usuario, descarga como máximo `LIMITE_IMAGEN` bytes y entrega el array si termina bien o `null` si falla. La Activity ya decodifica una vista previa con dimensiones y muestreo controlados; no reemplaces esa parte por una lectura ilimitada.
 

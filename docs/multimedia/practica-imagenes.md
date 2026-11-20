@@ -18,7 +18,7 @@ Lee [permisos](permisos.md), [imágenes](imagenes.md) y [transformaciones](trans
     | `ImagenViewModel.kt` | Trabajo asíncrono y estado | Nada |
     | `ProcesadorImagen.kt` | Lectura acotada, EXIF y PNG | `imagen-transformacion`, `imagen-jpeg` |
 
-    **Comprueba.** Selecciona una imagen: debe verse con sus dimensiones. Cancela otra selección: debe permanecer la imagen anterior. Exporta PNG: debe aparecer nombre, MIME y bytes. Giro y JPEG muestran un error recuperable hasta completar sus TODO; Compartir muestra el aviso de pendiente.
+    **Comprueba.** Selecciona una imagen y confirma con **Done** si aparece en Photo Picker: debe verse con sus dimensiones. Cancela otra selección: debe permanecer la imagen anterior. Exporta PNG: debe aparecer nombre, MIME y bytes. Giro y JPEG muestran un error recuperable hasta completar sus TODO; Compartir muestra el aviso de pendiente.
 
 ??? example "Selección y captura: comprender lo resuelto"
 

@@ -3,12 +3,14 @@ package es.mjsplayground.pmdm.firebase
 import android.content.ContentValues
 import android.graphics.Bitmap
 import android.os.Build
+import android.os.SystemClock
 import android.provider.MediaStore
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
+import androidx.test.uiautomator.UiObject2
 import androidx.test.uiautomator.Until
 import java.io.ByteArrayOutputStream
 import java.io.File
@@ -24,7 +26,15 @@ class SelectorSesionTest {
     private val dispositivo get() = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
     private val repo get() = (regla.activity.application as LaboratorioApplication).repo
     private fun esperar(texto: String) {
-        regla.waitUntil(20000) { regla.onAllNodesWithText(texto).fetchSemanticsNodes().isNotEmpty() }
+        try {
+            regla.waitUntil(20000) {
+                regla.onAllNodesWithText(texto).fetchSemanticsNodes(atLeastOneRootRequired = false).isNotEmpty()
+            }
+        } catch (fallo: Throwable) {
+            dispositivo.dumpWindowHierarchy(File(regla.activity.externalCacheDir, "firebase-espera-fallida.xml"))
+            dispositivo.takeScreenshot(File(regla.activity.externalCacheDir, "firebase-espera-fallida.png"))
+            throw fallo
+        }
     }
     private fun cuenta(prefijo: String) {
         regla.onNodeWithText("Correo local de prueba").performScrollTo().performTextClearance()
@@ -109,12 +119,23 @@ class SelectorSesionTest {
             resolver.openOutputStream(uri)!!.use { it.write(bytes) }
             regla.onNodeWithText("Seleccionar y subir imagen").performScrollTo().performClick()
             val selector = By.res(java.util.regex.Pattern.compile(".*:id/icon_thumbnail"))
-            val miniatura = dispositivo.wait(Until.findObject(selector), 15000)
+            // API 37 usa un Photo Picker Compose sin icon_thumbnail; la imagen
+            // del aula en inglés expone la miniatura mediante su descripción.
+            val plazo = SystemClock.uptimeMillis() + 15000
+            var miniatura: UiObject2? = null
+            while (miniatura == null && SystemClock.uptimeMillis() < plazo) {
+                miniatura = dispositivo.findObject(selector)
+                    ?: dispositivo.findObject(By.descStartsWith("Photo taken on"))
+                if (miniatura == null) SystemClock.sleep(100)
+            }
             if (miniatura == null) {
                 dispositivo.dumpWindowHierarchy(File(regla.activity.externalCacheDir, "picker-sin-miniatura.xml"))
                 fail("No se encontró miniatura en PhotoPicker; revisa el XML del selector")
             }
             miniatura!!.click()
+            dispositivo.wait(
+                Until.findObject(By.pkg("com.google.android.photopicker").text("Done")), 5000
+            )?.click()
             esperar("Imagen subida al emulador.")
             assertEquals(uidA, repo.auth.currentUser?.uid)
             regla.onNodeWithText("Descargar mi imagen").performScrollTo().performClick()

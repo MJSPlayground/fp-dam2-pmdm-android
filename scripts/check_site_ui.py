@@ -16,7 +16,7 @@ from pypdf import PdfReader
 
 from export_pdfs import launch_chromium
 from navigation import ROOT, config, find_sections, flatten_nav
-from package_projects import source_files
+from package_projects import EXCLUDED, source_files
 
 SITE = ROOT / "site"
 PREFIX = urlparse(config()["site_url"]).path
@@ -226,6 +226,14 @@ def check(*, published=False):
                         assert "settings.gradle.kts" in names and "gradlew.bat" in names
                         assert not any("build/" in name or ".gradle/" in name or "local.properties" in name for name in names)
                         source_project = source_projects[Path(urlparse(target).path).name]
+                        expected_names = {
+                            file.relative_to(source_project).as_posix()
+                            for file in source_files(source_project)
+                            if file.is_file() and not EXCLUDED.intersection(file.relative_to(source_project).parts)
+                            and file.name != "local.properties"
+                            and file.suffix.lower() not in {".apk", ".aab", ".jks", ".keystore", ".log"}
+                        }
+                        assert set(names) == expected_names, (target, "Inventario ZIP distinto de la fuente")
                         for name in names:
                             source_file = (source_project / name).resolve()
                             assert source_file.is_relative_to(source_project.resolve()), (target, name)

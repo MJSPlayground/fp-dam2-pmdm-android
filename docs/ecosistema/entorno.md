@@ -12,7 +12,7 @@ En el asistente inicial selecciona una instalación que incluya el SDK y el emul
 
 Desde la pantalla inicial abre **More Actions → SDK Manager**; dentro de un proyecto también puedes acceder desde **Tools → SDK Manager**. Los nombres o la posición pueden variar entre versiones del IDE.
 
-En **SDK Platforms**, instala Android API 36 para los proyectos del curso. En **SDK Tools**, comprueba que están instalados Android SDK Platform-Tools, Android Emulator y los Build-Tools que requiera Gradle. No necesitas el NDK para las prácticas introductorias.
+En **SDK Platforms**, instala Android API 37 para los proyectos del curso. En **SDK Tools**, comprueba que están instalados Android SDK Platform-Tools, Android Emulator y los Build-Tools que requiera Gradle. No necesitas el NDK para las prácticas introductorias.
 
 La [configuración común del curso](../recursos/index.md) identifica las versiones fijadas. Al abrir un proyecto proporcionado, conserva sus scripts Gradle: aceptar una actualización automática del plugin puede cambiar requisitos de JDK y romper la reproducción de la práctica.
 
@@ -20,7 +20,7 @@ En **Settings → Build, Execution, Deployment → Build Tools → Gradle**, rev
 
 ## Crear un dispositivo virtual
 
-Abre **Tools → Device Manager**. Crea un dispositivo con un perfil de teléfono, elige una imagen de sistema API 36 y descarga la imagen si se solicita. Selecciona una arquitectura compatible con tu equipo: en equipos Windows x64 suele corresponder una imagen x86_64.
+Abre **Tools → Device Manager**. Crea un dispositivo con un perfil de teléfono, elige una imagen de sistema API 37 y descarga la imagen si se solicita. Selecciona una arquitectura compatible con tu equipo: en equipos Windows x64 suele corresponder una imagen x86_64.
 
 Ponle un nombre reconocible, como `TelefonoCurso`, y termina el asistente. Pulsa el botón de inicio del dispositivo. Espera a ver la pantalla de inicio de Android: que exista una entrada en Device Manager no significa que el sistema ya esté arrancado.
 

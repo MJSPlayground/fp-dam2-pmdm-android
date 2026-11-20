@@ -4,12 +4,26 @@
 
 El entorno del aula es la referencia oficial de todos los proyectos Android de PMDM. Conserva las versiones del proyecto mientras realizas una práctica: una actualización puede exigir otro SDK, plugin o JDK. No aceptes actualizaciones automáticas de Android Studio sin comprobar antes su compatibilidad con esta configuración.
 
+### Herramientas y plataforma
+
 | Componente | Versión del curso | Referencia |
 | --- | --- | --- |
 | Android Studio | Rabbit 2 · 2026.2.2 Patch 1 · estable · AI-262.10968.63.2622.16840690 | [Compatibilidad del IDE](https://developer.android.com/studio/releases) |
 | JDK que ejecuta Gradle | Java 25; JBR del IDE 25.0.4 | [Compatibilidad Gradle/Java](https://docs.gradle.org/current/userguide/compatibility.html) |
 | Android Gradle Plugin | 9.2.1 | [Compatibilidad oficial](https://developer.android.com/build/releases/agp-9-2-0-release-notes) |
 | Gradle Wrapper | 9.4.1 | Matriz de AGP anterior; no requiere Gradle global |
+| SDK de compilación (`compileSdk`) | 37 (paquete SDK `platforms;android-37.0`) | [Niveles SDK](https://developer.android.com/guide/topics/manifest/uses-sdk-element) |
+| SDK objetivo (`targetSdk`) | 36 | Se conserva el comportamiento objetivo de las aplicaciones |
+| Android mínimo de los proyectos | API 26 | Elección del curso |
+| SDK Build Tools | 36.0.0 | Versión predeterminada de AGP 9.2 |
+| Bytecode Java y Kotlin | 17 | Independiente del JDK 25 que ejecuta Gradle |
+| Platform Tools / ADB | 37.0.3 | [Herramientas de plataforma](https://developer.android.com/tools/releases/platform-tools) |
+| Emulador de referencia | Android Emulator 37.3.10; Medium Phone API 37.0, x86_64, Google Play | [Emulador](https://developer.android.com/studio/run/emulator) |
+
+### Bibliotecas
+
+| Componente | Versión del curso | Referencia |
+| --- | --- | --- |
 | Kotlin y plugin Compose | 2.2.21 | [Versiones Kotlin](https://kotlinlang.org/docs/releases.html) |
 | Compose BOM | 2025.12.00 | [Publicación de diciembre](https://developer.android.com/blog/posts/whats-new-in-the-jetpack-compose-december-release) |
 | Activity Compose | 1.11.0 | [Activity](https://developer.android.com/jetpack/androidx/releases/activity#1.11.0) |
@@ -20,12 +34,6 @@ El entorno del aula es la referencia oficial de todos los proyectos Android de P
 | Room | 2.8.4 | [Room](https://developer.android.com/jetpack/androidx/releases/room#2.8.4) |
 | KSP | 2.3.4 | [KSP con soporte AGP 9](https://github.com/google/ksp/releases/tag/2.3.4) |
 | Retrofit y conversor Serialization | 3.0.0 | [Publicación oficial](https://github.com/lysine-dev/retrofit/releases/tag/3.0.0) |
-| SDK de compilación (`compileSdk`) | 37 (paquete SDK `platforms;android-37.0`) | [Niveles SDK](https://developer.android.com/guide/topics/manifest/uses-sdk-element) |
-| SDK objetivo (`targetSdk`) | 36 | Se conserva el comportamiento objetivo de las aplicaciones |
-| SDK Build Tools | 36.0.0 | Versión predeterminada de AGP 9.2 |
-| Bytecode Java y Kotlin | 17 | Independiente del JDK 25 que ejecuta Gradle |
-| Platform Tools / ADB | 37.0.3 | [Herramientas de plataforma](https://developer.android.com/tools/releases/platform-tools) |
-| Emulador de referencia | Android Emulator 37.3.10; Medium Phone API 37.0, x86_64, Google Play | [Emulador](https://developer.android.com/studio/run/emulator) |
 | ExifInterface | 1.4.2 | [Publicaciones oficiales](https://developer.android.com/jetpack/androidx/releases/exifinterface#1.4.2) |
 | Media3 | 1.9.4 | [Publicación elegida](https://developer.android.com/jetpack/androidx/releases/media3#1.9.4) |
 | CameraX | 1.5.3 | [Versiones oficiales](https://developer.android.com/jetpack/androidx/releases/camera) |
@@ -42,7 +50,6 @@ El entorno del aula es la referencia oficial de todos los proyectos Android de P
 | MockK | 1.14.6 | [Publicación oficial](https://github.com/mockk/mockk/releases/tag/1.14.6) |
 | UiAutomator (pruebas del selector del sistema) | 2.3.0 | [Versiones AndroidX Test](https://developer.android.com/jetpack/androidx/releases/test-uiautomator) |
 | Espresso Core (instrumentación Compose) | 3.7.0 | [Compatibilidad de inyección de eventos](https://developer.android.com/jetpack/androidx/releases/test#espresso-3.7.0) |
-| Android mínimo de los proyectos | API 26 | Elección del curso |
 
 En **Settings → Build, Execution, Deployment → Build Tools → Gradle**, utiliza el JBR 25 incluido en Android Studio para **Gradle JDK**. En la terminal, `JAVA_HOME` debe señalar un JDK 25 y `ANDROID_HOME` tu SDK local. Son rutas propias de cada ordenador: no las escribas en los archivos compartidos del proyecto ni incluyas `local.properties` en las descargas. El Wrapper descarga Gradle 9.4.1 y verifica su SHA-256.
 

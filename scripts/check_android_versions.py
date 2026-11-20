@@ -49,6 +49,17 @@ def main():
                 assert common[key][0] == value, f"{settings}: {key}={value}; difiere de {common[key][1]}"
             else:
                 common[key] = (value, settings)
+    resources = (ROOT / "docs/recursos/index.md").read_text(encoding="utf-8")
+    rows = {parts[1].strip(): parts[2].strip() for line in resources.splitlines()
+            if line.startswith("|") and len(parts := line.split("|")) >= 4}
+    documented = {"agp": "Android Gradle Plugin", "kotlin": "Kotlin y plugin Compose",
+                  "compose-bom": "Compose BOM", "activity": "Activity Compose",
+                  "lifecycle": "Lifecycle", "navigation": "Navigation Compose",
+                  "room": "Room", "ksp": "KSP", "media": "Media3",
+                  "maplibre": "MapLibre Native Android", "hilt": "Hilt"}
+    for key, row in documented.items():
+        assert rows[row] == common["version:" + key][0], f"Recursos: versión incoherente de {row}"
+    assert rows["Espresso Core (instrumentación Compose)"] == common["library:androidx.test.espresso:espresso-core"][0]
     print(f"OK Android: {len(tracked)} proyectos; catálogos, SDK, bytecode y wrappers coherentes")
 
 

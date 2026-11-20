@@ -50,7 +50,7 @@ android {
 
 `compileSdk` determina las APIs que el compilador conoce. `minSdk` fija el sistema mínimo donde se podrá instalar la aplicación. `targetSdk` declara para qué nivel se ha preparado y probado su comportamiento: Android aplica determinados cambios de compatibilidad según ese valor. **No es un máximo de instalación.**
 
-En el ejemplo, un dispositivo API 25 queda fuera; uno API 26 puede instalar la app. Pero compilar contra API 36 no hace que una API introducida en 33 exista en el dispositivo 26: habrá que comprobar la versión antes de usarla o utilizar una API de compatibilidad apropiada. Estudiaremos estos casos al introducir permisos y notificaciones.
+En el ejemplo, un dispositivo API 25 queda fuera; uno API 26 puede instalar la app. Pero compilar contra API 37 no hace que una API introducida en 33 exista en el dispositivo 26: habrá que comprobar la versión antes de usarla o utilizar una API de compatibilidad apropiada. Estudiaremos estos casos al introducir permisos y notificaciones.
 
 Consulta la [referencia de niveles SDK](https://developer.android.com/guide/topics/manifest/uses-sdk-element). En proyectos modernos, estos valores se configuran en Gradle; no los dupliques manualmente en el manifiesto.
 
@@ -60,4 +60,4 @@ Un **emulador** reproduce un dispositivo Android virtual en el ordenador. Su per
 
 Un **dispositivo real** permite observar hardware, consumo, cámara, radios, permisos del fabricante y comportamiento táctil reales. La simulación de una ubicación demuestra cómo responde la aplicación a coordenadas conocidas, pero no verifica la recepción GNSS de un teléfono. Necesitaremos ambos tipos de prueba.
 
-Al empezar, utiliza un teléfono virtual con API 36. Al incorporar compatibilidad, prueba también el nivel mínimo soportado y una ventana de mayor tamaño. Registra el perfil y la versión de cada comprobación: «funciona en mi emulador» no indica qué se ha probado.
+Al empezar, utiliza un teléfono virtual con API 37. Al incorporar compatibilidad, prueba también el nivel mínimo soportado y una ventana de mayor tamaño. Registra el perfil y la versión de cada comprobación: «funciona en mi emulador» no indica qué se ha probado.
